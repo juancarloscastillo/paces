@@ -1,0 +1,132 @@
+# Librerías
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(ggtext)
+library(dplyr)
+```
+
+# Data
+```{r}
+load(file= "../input/data/proc/data.Rdata")
+load(file= "../input/data/proc/data2009.Rdata")
+```
+
+# Conocimiento cívico
+## Análisis descriptivo
+### P1: ¿Cuál es la mejor razón para tener una república?
+```{r}
+data$P1[data$P1==5]<-NA
+data$P1[data$P1==9]<-NA
+
+data_p1=data %>% select(P1,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p1 <- na.omit(data_p1)
+
+data_p1$P1 <- factor(data_p1$P1, levels = c(1,2,3,4), labels = c("
+  <br>
+  Permite  a  muchas  personas  hacer  cambios <br> 
+  a las leyes
+  <br>", "
+  <br> 
+  Hace que el sistema legal sea fácil de entender <br> 
+  para los ciudadanos comunes y corrientes
+  <br>", "
+  <br>
+  Significa  que  las  leyes   pueden   mantenerse <br> 
+  secretas hasta que se aplican en las cortes
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>Significa que ningún grupo tiene todo el poder <br> 
+  sobre las leyes (alternativa correcta) </span></strong></b> 
+  <br>
+  "))
+p1 <- data_p1 %>%
+  group_by("Alternativas"=P1) %>%
+  summarise(counts = n())
+p1 <- p1 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p1 <- ggplot(p1, aes(WeightFunction(data_p1$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=10) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("   En la mayoría de los países, un grupo de personas crea las leyes en el Congreso. Otro grupo de 
+personas aplica las leyes en las cortes de justicia ¿Cuál es la MEJOR razón para tener este sistema?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold"))
+
+plot_p1
+```
+
+## Análisis comparativo
+### P6: ¿Cuál de las alternativas es un hecho?
+```{r}
+data$P6[data$P6==5]<-NA
+data$P6[data$P6==9]<-NA
+
+data2009$CI137M1[data2009$CI137M1==6]<-NA
+data2009$CI137M1[data2009$CI137M1==7]<-NA
+data2009$CI137M1[data2009$CI137M1==9]<-NA
+
+data$P6_A = ifelse(data$P6==1,100,0)
+data$P6_B = ifelse(data$P6==2,100,0)
+data$P6_C = ifelse(data$P6==3,100,0)
+data$P6_D = ifelse(data$P6==4,100,0)
+
+data2009$CI137M1_A = ifelse(data2009$CI137M1==1,100,0)
+data2009$CI137M1_B = ifelse(data2009$CI137M1==2,100,0)
+data2009$CI137M1_C = ifelse(data2009$CI137M1==3,100,0)
+data2009$CI137M1_D = ifelse(data2009$CI137M1==4,100,0)
+
+pregunta_2009<- rbind(psych::describe(data2009$CI137M1_A),
+               psych::describe(data2009$CI137M1_B),psych::describe(data2009$CI137M1_C),psych::describe(data2009$CI137M1_D))
+pregunta_2009 <- pregunta_2009 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pregunta_2019<- rbind(psych::describe(data$P6_A),
+               psych::describe(data$P6_B),psych::describe(data$P6_C),psych::describe(data$P6_D))
+pregunta_2019 <- pregunta_2019 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pregunta_2009$dep <-  1 # 
+pregunta_2009$year <- c("Es dañino para las familias <br>
+                        que las mujeres trabajen","Los hombres son mejores <br> 
+                        dirigentes políticos que las mujeres","Las mujeres deberían <br>
+                        involucrarse más en la política","<strong><span style='color:#FF2D00'>La mayoría de los líderes de los países del <br> 
+                        mundo son hombres (alternativa correcta) </span></strong></b>")
+
+
+pregunta_2019$dep <-  2 #
+pregunta_2019$year <-  c("Es dañino para las familias <br>
+                        que las mujeres trabajen","Los hombres son mejores <br> 
+                        dirigentes políticos que las mujeres","Las mujeres deberían <br>
+                        involucrarse más en la política","<strong><span style='color:#FF2D00'>La mayoría de los líderes de los países del <br> 
+                        mundo son hombres (alternativa correcta) </span></strong></b>")
+table_pertot <-rbind(pregunta_2009,pregunta_2019)
+str(table_pertot)
+
+table_pertot$ocup2 <- factor(table_pertot$dep, levels=c(2,1), labels=c("Estudio ciudadania 2019","ICCS 2009"))
+
+plot_p6 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(year),-mean), y=mean, fill=ocup2)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
+     theme(legend.position="top") +
+     labs(fill = " ") +
+   scale_fill_brewer(palette = "Purples") +
+      guides(fill = guide_legend(reverse = TRUE)) +
+    coord_flip() + 
+     ggtitle("Tres de estas afirmaciones son opiniones y una es un 
+      hecho. ¿Cuál de las siguientes es un HECHO?")  +
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_markdown(colour = "grey20", size = 14),#, face = "bold"),
+          text = element_text(size = 14, face = "bold"))
+plot_p6
+ggsave(plot_p6, file = "../output/graphs/graph_p6.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
+

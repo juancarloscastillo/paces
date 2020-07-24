@@ -1,0 +1,65 @@
+---
+title: "Procesamiento de datos - ejemplo"
+---
+
+# Descripción general
+
+Este código procesa los datos originales y genera un archivo con la información necesaria para realizar los análisis.
+
+# Librerías
+
+```{r}
+pacman::p_load(dplyr,
+               xlsx,
+               haven)
+```
+
+# Data
+
+```{r}
+data <- read.xlsx("../input/data/original/Base_Final_Estudiantes_1644_20_01_2020.v2+posoct.xlsx", 1)
+data2009 <- read_dta("../input/data/original/isachlc2.dta")
+```
+
+# Información de la sesión
+
+```{r}
+print(paste("R", getRversion()))
+print("*** Versiones de librerías")
+for (package_name in sort(loadedNamespaces())) {
+    print(paste(package_name, packageVersion(package_name)))
+}
+```
+
+# Preparación
+
+```{r}
+# Conocimiento cívico: análisis descriptivo
+## P1
+data$P1[data$P1==5]<-NA
+data$P1[data$P1==9]<-NA
+
+# Conocimiento cívico: comparación iccs 2009 y estudio 2019
+## P6
+data$P6[data$P6==5]<-NA
+data$P6[data$P6==9]<-NA
+data2009$CI137M1[data2009$CI137M1==6]<-NA
+data2009$CI137M1[data2009$CI137M1==7]<-NA
+data2009$CI137M1[data2009$CI137M1==9]<-NA
+data$P6_A = ifelse(data$P6==1,100,0)
+data$P6_B = ifelse(data$P6==2,100,0)
+data$P6_C = ifelse(data$P6==3,100,0)
+data$P6_D = ifelse(data$P6==4,100,0)
+data2009$CI137M1_A = ifelse(data2009$CI137M1==1,100,0)
+data2009$CI137M1_B = ifelse(data2009$CI137M1==2,100,0)
+data2009$CI137M1_C = ifelse(data2009$CI137M1==3,100,0)
+data2009$CI137M1_D = ifelse(data2009$CI137M1==4,100,0)
+```
+
+# Data proc
+
+```{r}
+save(data, file= "../input/data/proc/data.Rdata")
+save(data2009, file= "../input/data/proc/data2009.Rdata")
+```
+
