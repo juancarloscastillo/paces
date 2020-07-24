@@ -16,9 +16,6 @@ load(file= "../input/data/proc/data2009.Rdata")
 ## Análisis descriptivo
 ### P1: ¿Cuál es la mejor razón para tener una república?
 ```{r}
-data$P1[data$P1==5]<-NA
-data$P1[data$P1==9]<-NA
-
 data_p1=data %>% select(P1,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p1 <- na.omit(data_p1)
 
@@ -66,23 +63,6 @@ plot_p1
 ## Análisis comparativo
 ### P6: ¿Cuál de las alternativas es un hecho?
 ```{r}
-data$P6[data$P6==5]<-NA
-data$P6[data$P6==9]<-NA
-
-data2009$CI137M1[data2009$CI137M1==6]<-NA
-data2009$CI137M1[data2009$CI137M1==7]<-NA
-data2009$CI137M1[data2009$CI137M1==9]<-NA
-
-data$P6_A = ifelse(data$P6==1,100,0)
-data$P6_B = ifelse(data$P6==2,100,0)
-data$P6_C = ifelse(data$P6==3,100,0)
-data$P6_D = ifelse(data$P6==4,100,0)
-
-data2009$CI137M1_A = ifelse(data2009$CI137M1==1,100,0)
-data2009$CI137M1_B = ifelse(data2009$CI137M1==2,100,0)
-data2009$CI137M1_C = ifelse(data2009$CI137M1==3,100,0)
-data2009$CI137M1_D = ifelse(data2009$CI137M1==4,100,0)
-
 pregunta_2009<- rbind(psych::describe(data2009$CI137M1_A),
                psych::describe(data2009$CI137M1_B),psych::describe(data2009$CI137M1_C),psych::describe(data2009$CI137M1_D))
 pregunta_2009 <- pregunta_2009 %>% select(n,mean,sd,median,trimmed,min,max)
