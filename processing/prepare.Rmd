@@ -11,7 +11,8 @@ Este código procesa los datos originales y genera un archivo con la informació
 ```{r}
 pacman::p_load(dplyr,
                openxlsx,
-               haven)
+               haven,
+               sjPlot)
 ```
 
 # Data
@@ -19,6 +20,8 @@ pacman::p_load(dplyr,
 ```{r}
 data <- read.xlsx("../input/data/original/Base_Final_Estudiantes_1644_20_01_2020.v2+posoct.xlsx", 1)
 data2009 <- read_dta("../input/data/original/isachlc2.dta")
+dataprof <- read_dta("../input/data/original/Base Docentes v2.dta")
+dataapod <- read_dta("../input/data/original/Base Apoderados v2.dta")
 ```
 
 # Información de la sesión
@@ -32,7 +35,7 @@ for (package_name in sort(loadedNamespaces())) {
 ```
 
 # Preparación
-
+## Data estudiantes
 ```{r}
 # Conocimiento cívico: análisis descriptivo
 ## P1
@@ -164,7 +167,7 @@ data2009$CI137M1_B = ifelse(data2009$CI137M1==2,100,0)
 data2009$CI137M1_C = ifelse(data2009$CI137M1==3,100,0)
 data2009$CI137M1_D = ifelse(data2009$CI137M1==4,100,0)
 
-# Conocimiento cívico: índice y cruces (región, colegio, sexo y educación de los padres)
+##Escala de conocimiento civico
 data$c1 <- ifelse(data$P1==4,1,0) ## 0 = respuesta incorrecta y 1 = respuesta correcta
 data$c2 <- ifelse(data$P2==4,1,0)
 data$c3 <- ifelse(data$P3==4,1,0)
@@ -183,7 +186,19 @@ data$c11 <- ifelse(data$P11==1,1,0)
 data$c12 <- ifelse(data$P12==3,1,0)
 data$c13 <- ifelse(data$P13==3,1,0)
 data$c14 <- ifelse(data$P14==4,1,0)
-data$Conocimiento_civico_factual= as.numeric(data$c9 + data$c10 + data$c11 + + data$c12 + data$c13 + data$c14)               
+data$Conocimiento_civico_factual= as.numeric(data$c9 + data$c10 + data$c11 + + data$c12 + data$c13 + data$c14)
+
+## Formación ciudadana
+data$P52A[data$P52A==9]<-NA
+data$P52B[data$P52B==5]<-NA
+data$P52B[data$P52B==9]<-NA
+data$P52C[data$P52C==5]<-NA
+data$P52C[data$P52C==9]<-NA
+data$P52D[data$P52D==5]<-NA
+data$P52D[data$P52D==9]<-NA
+data$P52E[data$P52E==5]<-NA
+data$P52E[data$P52E==9]<-NA
+
 ## Sexo
 data$P58[data$P58==4]<-NA
 data$P58[data$P58==9]<-NA
@@ -209,7 +224,27 @@ data_mun = data %>%  filter(Dependencia == 1) %>% as.data.frame()
 data_sub = data %>%  filter(Dependencia == 2) %>% as.data.frame()
 data_priv = data %>%  filter(Dependencia == 3) %>% as.data.frame()
 ```
+## Data docentes
+```{r}
+sjPlot::view_df(dataprof)
+# Importancia de distintos aspectos en la formación ciudadana
+dataprof$P27A[dataprof$P27A==9]<-NA
+dataprof$P27B[dataprof$P27B==9]<-NA
+dataprof$P27C[dataprof$P27C==9]<-NA
+dataprof$P27D[dataprof$P27D==9]<-NA
+dataprof$P27E[dataprof$P27E==9]<-NA
 
+```
+## Data apoderados
+```{r}
+sjPlot::view_df(dataapod)
+# Importancia de distintos aspectos en la formación ciudadana
+dataapod$P34A[dataapod$P34A==9]<-NA
+dataapod$P34B[dataapod$P34B==9]<-NA
+dataapod$P34C[dataapod$P34C==9]<-NA
+dataapod$P34D[dataapod$P34D==9]<-NA
+dataapod$P34E[dataapod$P34E==9]<-NA
+```
 # Data proc
 ```{r}
 save(data, file= "../input/data/proc/data.Rdata")
@@ -231,5 +266,8 @@ save(data_bas, file= "../input/data/proc/data_bas.Rdata")
 save(data_media, file= "../input/data/proc/data_media.Rdata")
 save(data_tec, file= "../input/data/proc/data_tec.Rdata")
 save(data_univ, file= "../input/data/proc/data_univ.Rdata")
+
+save(dataprof, file= "../input/data/proc/data_prof.Rdata")
+save(dataapod, file= "../input/data/proc/data_apod.Rdata")
 ```
 
