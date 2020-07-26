@@ -10,6 +10,23 @@ library(dplyr)
 ```{r}
 load(file= "../input/data/proc/data.Rdata")
 load(file= "../input/data/proc/data2009.Rdata")
+
+load(file= "../input/data/proc/data_antofa.Rdata")
+load(file= "../input/data/proc/data_maule.Rdata")
+load(file= "../input/data/proc/data_metro.Rdata")
+
+load(file= "../input/data/proc/data_mun.Rdata")
+load(file= "../input/data/proc/data_sub.Rdata")
+load(file= "../input/data/proc/data_priv.Rdata")
+
+load(file= "../input/data/proc/data_muj.Rdata")
+load(file= "../input/data/proc/data_hom.Rdata")
+
+load(file= "../input/data/proc/data_binc.Rdata")
+load(file= "../input/data/proc/data_bas.Rdata")
+load(file= "../input/data/proc/data_media.Rdata")
+load(file= "../input/data/proc/data_tec.Rdata")
+load(file= "../input/data/proc/data_univ.Rdata")
 ```
 
 # Conocimiento cívico
@@ -21,20 +38,27 @@ data_p1 <- na.omit(data_p1)
 
 data_p1$P1 <- factor(data_p1$P1, levels = c(1,2,3,4), labels = c("
   <br>
-  Permite  a  muchas  personas  hacer  cambios <br> 
-  a las leyes
+  <strong>
+  Permite  a  muchas  personas  hacer <br> 
+  cambios a las leyes</strong></b>
   <br>", "
   <br> 
-  Hace que el sistema legal sea fácil de entender <br> 
-  para los ciudadanos comunes y corrientes
+  <strong>
+  Hace que el sistema legal sea fácil <br> 
+  de entender para los ciudadanos <br>
+  comunes y corrientes</strong></b>
   <br>", "
   <br>
-  Significa  que  las  leyes   pueden   mantenerse <br> 
-  secretas hasta que se aplican en las cortes
+  <strong>
+  Significa  que  las  leyes   pueden <br> 
+  mantenerse secretas hasta que se <br> 
+  aplican en las cortes</strong></b>
   <br>","
   <br>
- <strong><span style='color:#FF2D00'>Significa que ningún grupo tiene todo el poder <br> 
-  sobre las leyes (alternativa correcta) </span></strong></b> 
+ <strong><span style='color:#FF2D00'>
+  Significa que ningún grupo tiene <br> 
+  todo el poder sobre las leyes <br>
+  (alternativa correcta) </span></strong></b> 
   <br>
   "))
 p1 <- data_p1 %>%
@@ -47,20 +71,1049 @@ p1 <- p1 %>%
 plot_p1 <- ggplot(p1, aes(WeightFunction(data_p1$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=10) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("   En la mayoría de los países, un grupo de personas crea las leyes en el Congreso. Otro grupo de 
+  ggtitle(" En la mayoría de los países, un grupo de personas crea las leyes en el Congreso. Otro grupo de 
 personas aplica las leyes en las cortes de justicia ¿Cuál es la MEJOR razón para tener este sistema?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold"))
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p1
 ```
+### P2: La constitución de un país se refiere a 
+```{r}
+data_p2=data %>% select(P2,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p2 <- na.omit(data_p2)
 
+data_p2$P2 <- factor(data_p2$P2, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Declaraciones sobre las relaciones<br> 
+  con los países vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Declaraciones del Presidente de la <br> 
+  República al Congreso Nacional</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Declaraciones de los partidos<br> 
+  políticos a sus seguidores</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Declaraciones  de  principio  que <br>
+  establecen el sistema de gobierno <br>
+  y las leyes (alternativa correcta) </span></strong></b> 
+  <br>
+  "))
+p2 <- data_p2 %>%
+  group_by("Alternativas"=P2) %>%
+  summarise(counts = n())
+p2 <- p2 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p2 <- ggplot(p2, aes(WeightFunction(data_p2$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("La constitución de un país se refiere a") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p2
+```
+### P3: ¿Cuál de las siguientes acciones sería considerada ilegal en un país democrático?
+```{r}
+data_p3=data %>% select(P3,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p3 <- na.omit(data_p3)
+
+data_p3$P3 <- factor(data_p3$P3, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Solicitar un debate público sobre <br> 
+  asuntos políticos con los países <br> 
+  vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Hacer una demostración pacifica en <br> 
+  contra de una ley a la que se opone</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Enviar declaraciones políticas por <br> 
+  correo a los ciudadanos</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Dañar las oficinas de una organización <br>
+  (alternativa correcta) </span></strong></b> 
+  <br>
+  "))
+p3 <- data_p3 %>%
+  group_by("Alternativas"=P3) %>%
+  summarise(counts = n())
+p3 <- p3 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p3 <- ggplot(p3, aes(WeightFunction(data_p3$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuál de las siguientes acciones sería considerada ilegal en un país democrático?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p3
+```
+### P4: En países democráticos, una tarea importante del Congreso es…
+```{r}
+data_p4=data %>% select(P4,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p4 <- na.omit(data_p4)
+data_p4$P4 <- factor(data_p4$P4, levels = c(1,4,3,2), labels = c("
+  <br>
+  <strong>
+  Hacer que las leyes se cumplan, <br> 
+  tomando presos a los criminales <br> 
+  vecinos</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Supervisar a las cortes de <br> 
+  justicia</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Evitar cambios en el sistema <br>
+  legislativo</strong></b> 
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  Discutir y votar las leyes <br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p4 <- data_p4 %>%
+  group_by("Alternativas"=P4) %>%
+  summarise(counts = n())
+p4 <- p4 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p4 <- ggplot(p4, aes(WeightFunction(data_p4$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("En países democráticos, una tarea importante del Congreso es…") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p4
+```
+### P5: Acción de un dictador que evidencia que reestablecerá la democracia en el país
+```{r}
+data_p5=data %>% select(P5,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p5 <- na.omit(data_p5)
+
+data_p5$P5 <- factor(data_p5$P5, levels = c(1,2,4,3), labels = c("
+  <br>
+  <strong>
+  Hacer declaraciones apoyando a otros<br> 
+  líderes de su partido <br> 
+  vecino</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Realiza una marcha por la democracia <br> 
+  en la ciudad más grande</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Hace declaraciones en la prensa sobre <br>
+  la necesidad de la democracia</strong></b> 
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  Fija una fecha de elecciones con varios <br>
+  candidatos de distintos partidos <br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p5 <- data_p5 %>%
+  group_by("Alternativas"=P5) %>%
+  summarise(counts = n())
+p5 <- p5 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5 <- ggplot(p5, aes(WeightFunction(data_p5$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Un dictador acuerda restablecer la democracia de su país ¿cuál de las siguientes acciones  
+                  sería la evidencia más convincente de que realmente lo hará?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p5
+```
+### P6: ¿cuál de las siguientes afirmaciones es un HECHO?
+```{r}
+data_p6=data %>% select(P6,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p6 <- na.omit(data_p6)
+
+data_p6$P6 <- factor(data_p6$P6, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Es dañino para las familias que las<br> 
+  mujeres trabajen</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los hombres son mejores dirigentes <br> 
+  políticos que las mujeres</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Las mujeres deberían involucrarse <br>
+  más en la política</strong></b> 
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  La mayoría de los líderes de los <br>
+  países del mundo son hombres <br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p6 <- data_p6 %>%
+  group_by("Alternativas"=P6) %>%
+  summarise(counts = n())
+p6 <- p6 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p6 <- ggplot(p6, aes(WeightFunction(data_p6$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Tres de estas afirmaciones son opiniones y una es un hecho. ¿Cuál de las siguientes es un HECHO?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p6
+```
+### P7: ¿Cuál de los impuestos es pagado habitualmente por todos los chilenos?
+```{r}
+data_p7=data %>% select(P7,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p7 <- na.omit(data_p7)
+
+data_p7$P7 <- factor(data_p7$P7, levels = c(1,2,4,5,6,3), labels = c("
+  <br>
+  <strong>
+  Impuesto a la Renta</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Impuesto a las Bencinas</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Impuesto a la Herencia</strong></b> 
+  <br>",
+  "<br>
+ <strong>
+  Impuesto a los Alcoholes <br>
+  y Tabacos</strong></b> 
+  <br>",
+  "<br>
+ <strong>
+  Ninguno</strong></b> 
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  IVA (alternativa <br>
+  correcta)</span></strong></b>
+  <br>"))
+p7 <- data_p7 %>%
+  group_by("Alternativas"=P7) %>%
+  summarise(counts = n())
+p7 <- p7 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p7 <- ggplot(p7, aes(WeightFunction(data_p7$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("A continuación, se muestra un listado de impuestos. ¿Cuál de ellos es
+                  pagado habitualmente por todos los chilenos?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p7
+```
+### P8: ¿Para qué se usan los impuestos que pagamos los chilenos?
+```{r}
+data_p8=data %>% select(P8,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p8 <- na.omit(data_p8)
+
+data_p8$P8 <- factor(data_p8$P8, levels = c(1,3,4,2), labels = c("
+  <br>
+  <strong>
+  Para comprar productos de primera<br> 
+  necesidad de las personas</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Para pagar nuestros sueldos</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Para financiar empresas y <br>
+  fundaciones</strong></b> 
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  Para financiar al estado y los <br> 
+  bienes y servicios públicos <br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p8 <- data_p8 %>%
+  group_by("Alternativas"=P8) %>%
+  summarise(counts = n())
+p8 <- p8 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p8 <- ggplot(p8, aes(WeightFunction(data_p8$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Para qué se usan los impuestos que pagamos los chilenos?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p8
+```
+## P9: ¿Cuál el nombre del presidente del senado de Chile?
+```{r}
+data_p9=data %>% select(P9,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p9 <- na.omit(data_p9)
+
+data_p9$P9 <- factor(data_p9$P9, levels = c(2,3,4,1), labels = c("
+  <br>
+  <strong>
+  Carlos Ominami</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Evelyn Mathei</strong></b> 
+  <br>", "
+  <br> 
+  <strong>
+  Camila Vallejos</strong></b>
+  <br>","
+  <br>
+  <strong><span style='color:#FF2D00'>
+  Jaime Quintana<br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p9 <- data_p9 %>%
+  group_by("Alternativas"=P9) %>%
+  summarise(counts = n())
+p9 <- p9 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p9 <- ggplot(p9, aes(WeightFunction(data_p9$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuál el nombre del presidente del senado de Chile?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+
+plot_p9
+```
+## P10: ¿Alrededor de qué monto es el salario mínimo en Chile?
+```{r}
+data_p10=data %>% select(P10,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p10 <- na.omit(data_p10)
+
+data_p10$P10 <- factor(data_p10$P10, levels = c(1,2,4,5,3), labels = c("
+  <br>
+  <strong>
+  Alrededor de 100 mil</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Alrededor de 200 mil</strong></b> 
+  <br>", "
+  <br> 
+  <strong>
+  Alrededor de 400 mil</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Alrededor de 500 mil</strong></b>
+  <br>","
+  <br>
+  <strong><span style='color:#FF2D00'>
+  Alrededor de 300 mil<br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p10 <- data_p10 %>%
+  group_by("Alternativas"=P10) %>%
+  summarise(counts = n())
+p10 <- p10 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p10 <- ggplot(p10, aes(WeightFunction(data_p10$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Alrededor de qué monto es el salario mínimo en Chile?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold", hjust=0.5))
+
+plot_p10
+```
+## P11: ¿Quién es el Ministro del Interior?
+```{r}
+data_p11=data %>% select(P11,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p11 <- na.omit(data_p11)
+
+data_p11$P11 <- factor(data_p11$P11, levels = c(2,3,4,1), labels = c("
+  <br>
+  <strong>
+  Rodrigo Hinzpeter</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Rodrigo Peñailillo</strong></b> 
+  <br>", "
+  <br> 
+  <strong>
+  Cecilia Pérez</strong></b>
+  <br>","
+  <br>
+  <strong><span style='color:#FF2D00'>
+  Andrés Chadwick<br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p11 <- data_p11 %>%
+  group_by("Alternativas"=P11) %>%
+  summarise(counts = n())
+p11 <- p11 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p11 <- ggplot(p11, aes(WeightFunction(data_p11$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Quién es el Ministro del Interior?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+
+plot_p11
+```
+## P12: ¿Quién es el Presidente de Brasil?
+```{r}
+data_p12=data %>% select(P12,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p12 <- na.omit(data_p12)
+
+data_p12$P12 <- factor(data_p12$P12, levels = c(1,2,4,3), labels = c("
+  <br>
+  <strong>
+  Lula da Silva</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Dilma Roussef</strong></b> 
+  <br>", "
+  <br> 
+  <strong>
+  Edson Arantes <br>
+  do Nascimiento </strong></b>
+  <br>","
+  <br>
+  <strong><span style='color:#FF2D00'>
+  Jair Bolsonaro<br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p12 <- data_p12 %>%
+  group_by("Alternativas"=P12) %>%
+  summarise(counts = n())
+p12 <- p12 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p12 <- ggplot(p12, aes(WeightFunction(data_p12$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Quién es el Ministro del Interior?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+
+plot_p12
+```
+## P13: ¿Qué significa la sigla "IPC"?
+```{r}
+data_p13=data %>% select(P13,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p13 <- na.omit(data_p13)
+
+data_p13$P13 <- factor(data_p13$P13, levels = c(1,2,4,3), labels = c("
+  <br>
+  <strong>
+  Indice Parametrico <br>
+  de Consumo</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Instituto del Partido <br> 
+  Comunista</strong></b> 
+  <br>", "
+  <br> 
+  <strong>
+  Indicador de Participación <br>
+  Comunal </strong></b>
+  <br>","
+  <br>
+  <strong><span style='color:#FF2D00'>
+  Indice de Precios al <br> 
+  Consumidor<br>
+  (alternativa correcta)</span></strong></b>
+  <br>"))
+p13 <- data_p13 %>%
+  group_by("Alternativas"=P13) %>%
+  summarise(counts = n())
+p13 <- p13 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p13 <- ggplot(p13, aes(WeightFunction(data_p13$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Qué significa la sigla IPC?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+
+plot_p13
+```
+## P14: ¿En que Ciudad está el Congreso Nacional?
+```{r}
+data_p14=data %>% select(P14,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p14 <- na.omit(data_p14)
+
+data_p14$P14 <- factor(data_p14$P14, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Concepción</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Santiago</strong></b> 
+  <br>", "
+  <br> 
+  <strong>
+  Rancagua </strong></b>
+  <br>","
+  <br>
+  <strong><span style='color:#FF2D00'>
+  Valparaiso<br>
+  (alternativa<br> correcta)</span></strong></b>
+  <br>"))
+p14 <- data_p14 %>%
+  group_by("Alternativas"=P14) %>%
+  summarise(counts = n())
+p14 <- p14 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p14 <- ggplot(p14, aes(WeightFunction(data_p14$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En que Ciudad está el Congreso Nacional?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+
+plot_p14
+```
 ## Análisis comparativo
+### P1: ¿Cuál es la mejor razón para tener una república?
+```{r}
+pregunta_2009<- rbind(psych::describe(data2009$CI2RDM2_A),
+               psych::describe(data2009$CI2RDM2_B),psych::describe(data2009$CI2RDM2_C),psych::describe(data2009$CI2RDM2_D))
+pregunta_2009 <- pregunta_2009 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pregunta_2019<- rbind(psych::describe(data$P1_A),
+               psych::describe(data$P1_B),psych::describe(data$P1_C),psych::describe(data$P1_D))
+pregunta_2019 <- pregunta_2019 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pregunta_2009$est <-  1 # 
+pregunta_2009$resp <- c("
+  <br>
+  <strong>
+  Permite  a  muchas  personas  hacer <br> 
+  cambios a las leyes</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Hace que el sistema legal sea fácil <br> 
+  de entender para los ciudadanos <br>
+  comunes y corrientes</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Significa  que  las  leyes   pueden <br> 
+  mantenerse secretas hasta que se <br> 
+  aplican en las cortes</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Significa que ningún grupo tiene <br> 
+  todo el poder sobre las leyes <br>
+  (alternativa correcta) </span></strong></b> 
+  <br>
+  ")
+
+pregunta_2019$est <-  2 #
+pregunta_2019$resp <-  c("
+  <br>
+  <strong>
+  Permite  a  muchas  personas  hacer <br> 
+  cambios a las leyes</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Hace que el sistema legal sea fácil <br> 
+  de entender para los ciudadanos <br>
+  comunes y corrientes</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Significa  que  las  leyes   pueden <br> 
+  mantenerse secretas hasta que se <br> 
+  aplican en las cortes</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Significa que ningún grupo tiene <br> 
+  todo el poder sobre las leyes <br>
+  (alternativa correcta) </span></strong></b> 
+  <br>
+  ")
+table_pertot <-rbind(pregunta_2009,pregunta_2019)
+str(table_pertot)
+
+table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
+
+plot2_p1 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
+     theme(legend.position="top") +
+     labs(fill = " ") +
+   scale_fill_brewer(palette = "Purples") +
+      guides(fill = guide_legend(reverse = TRUE)) +
+    coord_flip() + 
+     ggtitle("En  la  mayoría  de  los  países,  un  grupo  de  personas  crea  las  leyes  en 
+el Congreso. Otro grupo de personas aplica las leyes en las cortes
+de justicia ¿Cuál es la MEJOR razón para tener este sistema?")  +
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_markdown(colour = "grey20", size = 14),
+          plot.title = element_text(hjust=0.5),
+          text = element_text(size = 14, face = "bold"))
+plot2_p1
+ggsave(plot2_p1, file = "../output/graphs/graph_p1.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+
+```
+### P2: La constitución de un país se refiere a 
+```{r}
+pregunta_2009<- rbind(psych::describe(data2009$CI128M1_A),
+               psych::describe(data2009$CI128M1_B),psych::describe(data2009$CI128M1_C),psych::describe(data2009$CI128M1_D))
+pregunta_2009 <- pregunta_2009 %>% select(n,mean,sd,median,trimmed,min,max)
+
+## OP sub
+pregunta_2019<- rbind(psych::describe(data$P2_A),
+               psych::describe(data$P2_B),psych::describe(data$P2_C),psych::describe(data$P2_D))
+pregunta_2019 <- pregunta_2019 %>% select(n,mean,sd,median,trimmed,min,max)
+
+## Gráfico
+pregunta_2009$est <-  1 # 
+pregunta_2009$resp <- c("
+  <br>
+  <strong>
+  Declaraciones sobre las relaciones<br> 
+  con los países vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Declaraciones del Presidente de la <br> 
+  República al Congreso Nacional</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Declaraciones de los partidos<br> 
+  políticos a sus seguidores</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Declaraciones  de  principio  que <br>
+  establecen el sistema de gobierno <br>
+  y las leyes (alternativa correcta) </span></strong></b> 
+  <br>
+  ")
+
+pregunta_2019$est <-  2 #
+pregunta_2019$resp <- c("
+  <br>
+  <strong>
+  Declaraciones sobre las relaciones<br> 
+  con los países vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Declaraciones del Presidente de la <br> 
+  República al Congreso Nacional</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Declaraciones de los partidos<br> 
+  políticos a sus seguidores</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Declaraciones  de  principio  que <br>
+  establecen el sistema de gobierno <br>
+  y las leyes (alternativa correcta) </span></strong></b> 
+  <br>
+  ")
+table_pertot <-rbind(pregunta_2009,pregunta_2019)
+str(table_pertot)
+
+table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
+
+plot2_p2 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens), x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
+     theme(legend.position="top") +
+     labs(fill = " ") +
+   scale_fill_brewer(palette = "Purples") +
+      guides(fill = guide_legend(reverse = TRUE)) +
+    coord_flip() + 
+     ggtitle("La constitución de un país se refiere a...")  +
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_markdown(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(size = 17.5, face = "bold", hjust=0.5))
+plot2_p2
+ggsave(plot2_p2, file = "../output/graphs/graph_p2.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
+### P3: ¿Cuál de las siguientes acciones sería considerada ilegal en un país democrático?
+```{r}
+pregunta_2009<- rbind(psych::describe(data2009$CI110M1_A),
+               psych::describe(data2009$CI110M1_B),psych::describe(data2009$CI110M1_C),psych::describe(data2009$CI110M1_D))
+pregunta_2009 <- pregunta_2009 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pregunta_2019<- rbind(psych::describe(data$P3_A),
+               psych::describe(data$P3_B),psych::describe(data$P3_C),psych::describe(data$P3_D))
+pregunta_2019 <- pregunta_2019 %>% select(n,mean,sd,median,trimmed,min,max)
+
+## Gráfico
+pregunta_2009$est <-  1 # 
+pregunta_2009$resp <- c("
+  <br>
+  <strong>
+  Solicitar un debate público sobre <br> 
+  asuntos políticos con los países <br> 
+  vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Hacer una demostración pacifica en <br> 
+  contra de una ley a la que se opone</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Enviar declaraciones políticas por <br> 
+  correo a los ciudadanos</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Dañar las oficinas de una organización <br>
+  (alternativa correcta) </span></strong></b> 
+  <br>
+  ")
+
+pregunta_2019$est <-  2 #
+pregunta_2019$resp <-  c("
+  <br>
+  <strong>
+  Solicitar un debate público sobre <br> 
+  asuntos políticos con los países <br> 
+  vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Hacer una demostración pacifica en <br> 
+  contra de una ley a la que se opone</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Enviar declaraciones políticas por <br> 
+  correo a los ciudadanos</strong></b>
+  <br>","
+  <br>
+ <strong><span style='color:#FF2D00'>
+  Dañar las oficinas de una organización <br>
+  (alternativa correcta) </span></strong></b> 
+  <br>
+  ")
+table_pertot <-rbind(pregunta_2009,pregunta_2019)
+str(table_pertot)
+
+table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
+
+plot2_p3 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
+     theme(legend.position="top") +
+     labs(fill = " ") +
+   scale_fill_brewer(palette = "Purples") +
+      guides(fill = guide_legend(reverse = TRUE)) +
+    coord_flip() + 
+     ggtitle("¿Cuál de las siguientes acciones sería considerada ilegal 
+en un país democrático?")  +
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_markdown(colour = "grey20", size = 14), 
+          plot.title = element_text(hjust=0.5),
+          text = element_text(size = 14, face = "bold"))
+plot2_p3
+ggsave(plot2_p3, file = "../output/graphs/graph_p3.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
+### P4: En países democráticos, una tarea importante del Congreso es…
+```{r}
+pregunta_2009<- rbind(psych::describe(data2009$CI113M1_A),
+               psych::describe(data2009$CI113M1_B),psych::describe(data2009$CI113M1_C),psych::describe(data2009$CI113M1_D))
+pregunta_2009 <- pregunta_2009 %>% select(n,mean,sd,median,trimmed,min,max)
+pregunta_2019<- rbind(psych::describe(data$P4_A),
+               psych::describe(data$P4_B),psych::describe(data$P4_C),psych::describe(data$P4_D))
+pregunta_2019 <- pregunta_2019 %>% select(n,mean,sd,median,trimmed,min,max)
+pregunta_2009$est <-  1 # 
+pregunta_2009$resp <- c("
+  <br>
+  <strong>
+  Hacer que las leyes se cumplan, <br> 
+  tomando presos a los criminales <br> 
+  vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  Discutir y votar las leyes <br>
+  (alternativa correcta)</span></strong></b>
+  <br>","
+  <br>
+ <strong>
+  Evitar cambios en el sistema <br>
+  legislativo</strong></b> 
+  <br>", "
+  <br>
+  <strong>
+  Supervisar a las cortes de <br> 
+  justicia</strong></b>
+  <br>")
+pregunta_2019$est <-  2 #
+pregunta_2019$resp <- c("
+  <br>
+  <strong>
+  Hacer que las leyes se cumplan, <br> 
+  tomando presos a los criminales <br> 
+  vecinos</strong></b>
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  Discutir y votar las leyes <br>
+  (alternativa correcta)</span></strong></b>
+  <br>","
+  <br>
+ <strong>
+  Evitar cambios en el sistema <br>
+  legislativo</strong></b> 
+  <br>", "
+  <br>
+  <strong>
+  Supervisar a las cortes de <br> 
+  justicia</strong></b>
+  <br>")
+table_pertot <-rbind(pregunta_2009,pregunta_2019)
+table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
+plot2_p4 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
+     theme(legend.position="top") +
+     labs(fill = " ") +
+   scale_fill_brewer(palette = "Purples") +
+      guides(fill = guide_legend(reverse = TRUE)) +
+    coord_flip() + 
+     ggtitle("En países democráticos, una tarea importante del Congreso es…")  +
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_markdown(colour = "grey20", size = 14), 
+          plot.title = element_text(hjust=0.5),
+          text = element_text(size = 14, face = "bold"))
+plot2_p4
+ggsave(plot2_p4, file = "../output/graphs/graph_p4.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
+### P5: Acción de un dictador que evidencia que reestablecerá la democracia en el país
+```{r}
+pregunta_2009<- rbind(psych::describe(data2009$CI129M1_A),
+               psych::describe(data2009$CI129M1_B),psych::describe(data2009$CI129M1_C),psych::describe(data2009$CI129M1_D))
+pregunta_2009 <- pregunta_2009 %>% select(n,mean,sd,median,trimmed,min,max)
+pregunta_2019<- rbind(psych::describe(data$P5_A),
+               psych::describe(data$P5_B),psych::describe(data$P5_C),psych::describe(data$P5_D))
+pregunta_2019 <- pregunta_2019 %>% select(n,mean,sd,median,trimmed,min,max)
+pregunta_2009$est <-  1 # 
+pregunta_2009$resp <- c("
+  <br>
+  <strong>
+  Hacer declaraciones apoyando a otros<br> 
+  líderes de su partido vecino</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Realiza una marcha por la democracia<br>
+  en la ciudad más grande</strong></b>
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  Fija una fecha de elecciones con varios<br>
+  candidatos de distintos partidos<br>
+  (alternativa correcta)</span></strong></b>
+  <br>","
+  <br>
+ <strong>
+  Hace declaraciones en la prensa sobre <br>
+  la necesidad de la democracia</strong></b> 
+  <br>")
+pregunta_2019$est <-  2 #
+pregunta_2019$resp <-  c("
+  <br>
+  <strong>
+  Hacer declaraciones apoyando a otros<br> 
+  líderes de su partido vecino</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Realiza una marcha por la democracia<br>
+  en la ciudad más grande</strong></b>
+  <br>", "
+  <br> 
+  <strong><span style='color:#FF2D00'>
+  Fija una fecha de elecciones con varios<br>
+  candidatos de distintos partidos<br>
+  (alternativa correcta)</span></strong></b>
+  <br>","
+  <br>
+ <strong>
+  Hace declaraciones en la prensa sobre <br>
+  la necesidad de la democracia</strong></b> 
+  <br>")
+table_pertot <-rbind(pregunta_2009,pregunta_2019)
+str(table_pertot)
+table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
+plot2_p5 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
+     theme(legend.position="top") +
+     labs(fill = " ") +
+   scale_fill_brewer(palette = "Purples") +
+      guides(fill = guide_legend(reverse = TRUE)) +
+    coord_flip() + 
+     ggtitle("Un dictador acuerda restablecer la democracia de su país ¿cuál de 
+las siguientes acciones sería la evidencia más convincente 
+de que realmente lo hará?")  +
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_markdown(colour = "grey20", size = 14),
+          plot.title = element_text(hjust=0.5),
+          text = element_text(size = 14, face = "bold"))
+plot2_p5
+ggsave(plot2_p5, file = "../output/graphs/graph_p5.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
 ### P6: ¿Cuál de las alternativas es un hecho?
 ```{r}
 pregunta_2009<- rbind(psych::describe(data2009$CI137M1_A),
@@ -71,16 +1124,16 @@ pregunta_2019<- rbind(psych::describe(data$P6_A),
                psych::describe(data$P6_B),psych::describe(data$P6_C),psych::describe(data$P6_D))
 pregunta_2019 <- pregunta_2019 %>% select(n,mean,sd,median,trimmed,min,max)
 
-pregunta_2009$dep <-  1 # 
-pregunta_2009$year <- c("Es dañino para las familias <br>
+pregunta_2009$est <-  1 # 
+pregunta_2009$resp <- c("Es dañino para las familias <br>
                         que las mujeres trabajen","Los hombres son mejores <br> 
                         dirigentes políticos que las mujeres","Las mujeres deberían <br>
                         involucrarse más en la política","<strong><span style='color:#FF2D00'>La mayoría de los líderes de los países del <br> 
                         mundo son hombres (alternativa correcta) </span></strong></b>")
 
 
-pregunta_2019$dep <-  2 #
-pregunta_2019$year <-  c("Es dañino para las familias <br>
+pregunta_2019$est <-  2 #
+pregunta_2019$resp <-  c("Es dañino para las familias <br>
                         que las mujeres trabajen","Los hombres son mejores <br> 
                         dirigentes políticos que las mujeres","Las mujeres deberían <br>
                         involucrarse más en la política","<strong><span style='color:#FF2D00'>La mayoría de los líderes de los países del <br> 
@@ -88,9 +1141,9 @@ pregunta_2019$year <-  c("Es dañino para las familias <br>
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
 str(table_pertot)
 
-table_pertot$ocup2 <- factor(table_pertot$dep, levels=c(2,1), labels=c("Estudio ciudadania 2019","ICCS 2009"))
+table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 
-plot_p6 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(year),-mean), y=mean, fill=ocup2)) +
+plot2_p6 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
      geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
      theme_bw(base_size = 14) +
@@ -102,11 +1155,125 @@ plot_p6 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_te
       guides(fill = guide_legend(reverse = TRUE)) +
     coord_flip() + 
      ggtitle("Tres de estas afirmaciones son opiniones y una es un 
-      hecho. ¿Cuál de las siguientes es un HECHO?")  +
+hecho. ¿Cuál de las siguientes es un HECHO?")  +
     theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
-          axis.text.y = element_markdown(colour = "grey20", size = 14),#, face = "bold"),
+          axis.text.y = element_markdown(colour = "grey20", size = 14), 
+          plot.title = element_text(hjust=0.5),
           text = element_text(size = 14, face = "bold"))
-plot_p6
-ggsave(plot_p6, file = "../output/graphs/graph_p6.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+plot2_p6
+ggsave(plot2_p6, file = "../output/graphs/graph_p6.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
+## Cruces: conocimiento civico factual
+### Región
+```{r}
+table_preposh1<- rbind(psych::describe(data_antofa$Conocimiento_civico_factual),
+               psych::describe(data_maule$Conocimiento_civico_factual),psych::describe(data_metro$Conocimiento_civico_factual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+table_preposh1$reg <- c("Antofagasta","Maule","Metropolitana")
+Conocimiento_civico_factual_region <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=reg, y=mean, fill=reg)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento civico 
+factual (escala de 0 a 6)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento civico factual por región")
+Conocimiento_civico_factual_region
+ggsave(Conocimiento_civico_factual_region, file = "../output/graphs/Conocimiento_civico_factual_region.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
+```
+### Colegio
+```{r}
+table_preposh1<- rbind(psych::describe(data_mun$Conocimiento_civico_factual),
+               psych::describe(data_sub$Conocimiento_civico_factual),psych::describe(data_priv$Conocimiento_civico_factual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+table_preposh1$dep <- c("Municipales","Subvencionados","Particulares")
+Conocimiento_civico_factual_colegio <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=dep, y=mean, fill=dep)) +
+     geom_bar(position = 'dodge', stat='identity')+#,width=0.8) 
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento civico 
+factual (escala de 0 a 6)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento civico factual por dependencia 
+administrativa de la escuela")
+Conocimiento_civico_factual_colegio
+ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimiento_civico_factual_colegio.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
+```
+### Sexo
+```{r}
+table_preposh1<- rbind(psych::describe(data_muj$Conocimiento_civico_factual),
+               psych::describe(data_hom$Conocimiento_civico_factual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+table_preposh1$sexo <- c("Mujeres","Hombres")
+Conocimiento_civico_factual_sexo <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=sexo, y=mean, fill=sexo)) +
+     geom_bar(position = 'dodge', stat='identity')+ 
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento civico 
+factual (escala de 0 a 6)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento civico factual por género")
+Conocimiento_civico_factual_sexo
+ggsave(Conocimiento_civico_factual_sexo, file = "../output/graphs/Conocimiento_civico_factual_sexo.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
+```
+### Nivel educativo de los padres (más alto)
+```{r}
+save(data_binc, file= "../input/data/proc/data_binc.Rdata")
+save(data_bas, file= "../input/data/proc/data_bas.Rdata")
+save(data_media, file= "../input/data/proc/data_media.Rdata")
+save(data_tec, file= "../input/data/proc/data_tec.Rdata")
+save(data_univ, file= "../input/data/proc/data_univ.Rdata")
+
+table_preposh1<- rbind(psych::describe(data_binc$Conocimiento_civico_factual),
+               psych::describe(data_bas$Conocimiento_civico_factual),psych::describe(data_media$Conocimiento_civico_factual),psych::describe(data_tec$Conocimiento_civico_factual),psych::describe(data_univ$Conocimiento_civico_factual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+table_preposh1$edpad <- c("Básica incompleta", "Básica completa", "Enseñanza media", "Técnica superior", "Universitaria")
+Conocimiento_civico_factual_edpadres <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=edpad, y=mean, fill=edpad)) +
+     geom_bar(position = 'dodge', stat='identity')+
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento civico 
+factual (escala de 0 a 6)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento civico factual por nivel educativo
+de los padres (el más alto entre los dos)")   
+Conocimiento_civico_factual_edpadres
+ggsave(Conocimiento_civico_factual_edpadres, file = "../output/graphs/Conocimiento_civico_factual_edpadres.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
 ```
 

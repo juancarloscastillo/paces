@@ -10,7 +10,7 @@ Este código procesa los datos originales y genera un archivo con la informació
 
 ```{r}
 pacman::p_load(dplyr,
-               xlsx,
+               openxlsx,
                haven)
 ```
 
@@ -38,8 +38,117 @@ for (package_name in sort(loadedNamespaces())) {
 ## P1
 data$P1[data$P1==5]<-NA
 data$P1[data$P1==9]<-NA
+## P2
+data$P2[data$P2==5]<-NA
+data$P2[data$P2==9]<-NA
+## P3
+data$P3[data$P3==5]<-NA
+data$P3[data$P3==9]<-NA
+## P4
+data$P4[data$P4==5]<-NA
+data$P4[data$P4==9]<-NA
+## P5
+data$P5[data$P5==5]<-NA
+data$P5[data$P5==9]<-NA
+## P6
+data$P6[data$P6==5]<-NA
+data$P6[data$P6==9]<-NA
+## P7
+data$P7[data$P7==7]<-NA
+data$P7[data$P7==9]<-NA
+## P8
+data$P8[data$P8==5]<-NA
+data$P8[data$P8==9]<-NA
+## P9
+data$P9[data$P9==5]<-NA
+data$P9[data$P9==9]<-NA
+## P10
+data$P10[data$P10==6]<-NA
+data$P10[data$P10==9]<-NA
+## P11
+data$P11[data$P11==5]<-NA
+data$P11[data$P11==9]<-NA
+## P12
+data$P12[data$P12==5]<-NA
+data$P12[data$P12==9]<-NA
+## P13
+data$P13[data$P13==5]<-NA
+data$P13[data$P13==9]<-NA
+## P14
+data$P14[data$P14==5]<-NA
+data$P14[data$P14==9]<-NA
 
 # Conocimiento cívico: comparación iccs 2009 y estudio 2019
+## P1
+data$P1[data$P1==5]<-NA
+data$P1[data$P1==9]<-NA
+data2009$CI2RDM2[data2009$CI2RDM2==6]<-NA
+data2009$CI2RDM2[data2009$CI2RDM2==7]<-NA
+data2009$CI2RDM2[data2009$CI2RDM2==9]<-NA
+data$P1_A = ifelse(data$P1==1,100,0)
+data$P1_B = ifelse(data$P1==2,100,0)
+data$P1_C = ifelse(data$P1==3,100,0)
+data$P1_D = ifelse(data$P1==4,100,0)
+data2009$CI2RDM2_A = ifelse(data2009$CI2RDM2==1,100,0)
+data2009$CI2RDM2_B = ifelse(data2009$CI2RDM2==2,100,0)
+data2009$CI2RDM2_C = ifelse(data2009$CI2RDM2==3,100,0)
+data2009$CI2RDM2_D = ifelse(data2009$CI2RDM2==4,100,0)
+## P2
+data$P2[data$P2==5]<-NA
+data$P2[data$P2==9]<-NA
+data2009$CI128M1[data2009$CI128M1==6]<-NA
+data2009$CI128M1[data2009$CI128M1==7]<-NA
+data2009$CI128M1[data2009$CI128M1==9]<-NA
+data$P2_A = ifelse(data$P2==1,100,0)
+data$P2_B = ifelse(data$P2==2,100,0)
+data$P2_C = ifelse(data$P2==3,100,0)
+data$P2_D = ifelse(data$P2==4,100,0)
+data2009$CI128M1_A = ifelse(data2009$CI128M1==1,100,0)
+data2009$CI128M1_B = ifelse(data2009$CI128M1==2,100,0)
+data2009$CI128M1_C = ifelse(data2009$CI128M1==3,100,0)
+data2009$CI128M1_D = ifelse(data2009$CI128M1==4,100,0)
+## P3
+data$P3[data$P3==5]<-NA
+data$P3[data$P3==9]<-NA
+data2009$CI110M1[data2009$CI110M1==6]<-NA
+data2009$CI110M1[data2009$CI110M1==7]<-NA
+data2009$CI110M1[data2009$CI110M1==9]<-NA
+data$P3_A = ifelse(data$P3==1,100,0)
+data$P3_B = ifelse(data$P3==2,100,0)
+data$P3_C = ifelse(data$P3==3,100,0)
+data$P3_D = ifelse(data$P3==4,100,0)
+data2009$CI110M1_A = ifelse(data2009$CI110M1==1,100,0)
+data2009$CI110M1_B = ifelse(data2009$CI110M1==2,100,0)
+data2009$CI110M1_C = ifelse(data2009$CI110M1==3,100,0)
+data2009$CI110M1_D = ifelse(data2009$CI110M1==4,100,0)
+## P4
+data$P4[data$P4==5]<-NA
+data$P4[data$P4==9]<-NA
+data2009$CI113M1[data2009$CI113M1==6]<-NA
+data2009$CI113M1[data2009$CI113M1==7]<-NA
+data2009$CI113M1[data2009$CI113M1==9]<-NA
+data$P4_A = ifelse(data$P4==1,100,0)
+data$P4_B = ifelse(data$P4==2,100,0)
+data$P4_C = ifelse(data$P4==3,100,0)
+data$P4_D = ifelse(data$P4==4,100,0)
+data2009$CI113M1_A = ifelse(data2009$CI113M1==1,100,0)
+data2009$CI113M1_B = ifelse(data2009$CI113M1==2,100,0)
+data2009$CI113M1_C = ifelse(data2009$CI113M1==3,100,0)
+data2009$CI113M1_D = ifelse(data2009$CI113M1==4,100,0)
+## P5 
+data$P5[data$P5==5]<-NA
+data$P5[data$P5==9]<-NA
+data2009$CI129M1[data2009$CI129M1==6]<-NA
+data2009$CI129M1[data2009$CI129M1==7]<-NA
+data2009$CI129M1[data2009$CI129M1==9]<-NA
+data$P5_A = ifelse(data$P5==1,100,0)
+data$P5_B = ifelse(data$P5==2,100,0)
+data$P5_C = ifelse(data$P5==3,100,0)
+data$P5_D = ifelse(data$P5==4,100,0)
+data2009$CI129M1_A = ifelse(data2009$CI129M1==1,100,0)
+data2009$CI129M1_B = ifelse(data2009$CI129M1==2,100,0)
+data2009$CI129M1_C = ifelse(data2009$CI129M1==3,100,0)
+data2009$CI129M1_D = ifelse(data2009$CI129M1==4,100,0)
 ## P6
 data$P6[data$P6==5]<-NA
 data$P6[data$P6==9]<-NA
@@ -54,12 +163,73 @@ data2009$CI137M1_A = ifelse(data2009$CI137M1==1,100,0)
 data2009$CI137M1_B = ifelse(data2009$CI137M1==2,100,0)
 data2009$CI137M1_C = ifelse(data2009$CI137M1==3,100,0)
 data2009$CI137M1_D = ifelse(data2009$CI137M1==4,100,0)
+
+# Conocimiento cívico: índice y cruces (región, colegio, sexo y educación de los padres)
+data$c1 <- ifelse(data$P1==4,1,0) ## 0 = respuesta incorrecta y 1 = respuesta correcta
+data$c2 <- ifelse(data$P2==4,1,0)
+data$c3 <- ifelse(data$P3==4,1,0)
+data$c4 <- ifelse(data$P4==2,1,0)
+data$c5 <- ifelse(data$P5==3,1,0)
+data$c6 <- ifelse(data$P6==4,1,0)
+data$c7 <- ifelse(data$P7==3,1,0)
+data$c8 <- ifelse(data$P8==2,1,0)
+data$c9 <- ifelse(data$P9==1,1,0)
+data$Conocimiento_civico_conceptual= as.numeric(data$c1 + data$c2 + data$c3 + data$c4 + data$c5 + data$c6 + data$c7 + data$c8) 
+data$c7 <- ifelse(data$P7==3,1,0)
+data$c8 <- ifelse(data$P8==2,1,0)
+data$c9 <- ifelse(data$P9==1,1,0)
+data$c10 <- ifelse(data$P10==3,1,0)
+data$c11 <- ifelse(data$P11==1,1,0)
+data$c12 <- ifelse(data$P12==3,1,0)
+data$c13 <- ifelse(data$P13==3,1,0)
+data$c14 <- ifelse(data$P14==4,1,0)
+data$Conocimiento_civico_factual= as.numeric(data$c9 + data$c10 + data$c11 + + data$c12 + data$c13 + data$c14)               
+## Sexo
+data$P58[data$P58==4]<-NA
+data$P58[data$P58==9]<-NA
+data_muj = data %>%  filter(P58 == 2) %>% as.data.frame()
+data_hom = data %>%  filter(P58 == 1) %>% as.data.frame()
+## Nivel educativo más alto de los padres
+data$P66[data$P66==8]<-NA #ed. madre
+data$P66[data$P66==9]<-NA
+data$P67[data$P67==8]<-NA #ed. padre
+data$P67[data$P67==9]<-NA
+data$edpadres <- ifelse(data$P66>data$P67,data$P66,data$P67)
+data_binc = data %>%  filter(edpadres == 1) %>% as.data.frame()
+data_bas = data %>%  filter(edpadres == 2) %>% as.data.frame()
+data_media = data %>%  filter(edpadres == 3) %>% as.data.frame()
+data_tec = data %>%  filter(edpadres == 4) %>% as.data.frame()
+data_univ = data %>%  filter(edpadres == 5) %>% as.data.frame()
+## Separación entre regiones
+data_antofa = data %>%  filter(REGION == 2) %>% as.data.frame()
+data_maule = data %>%  filter(REGION == 7) %>% as.data.frame()
+data_metro = data %>%  filter(REGION == 13) %>% as.data.frame()
+## Dependencia escolar
+data_mun = data %>%  filter(Dependencia == 1) %>% as.data.frame()
+data_sub = data %>%  filter(Dependencia == 2) %>% as.data.frame()
+data_priv = data %>%  filter(Dependencia == 3) %>% as.data.frame()
 ```
 
 # Data proc
-
 ```{r}
 save(data, file= "../input/data/proc/data.Rdata")
 save(data2009, file= "../input/data/proc/data2009.Rdata")
+
+save(data_antofa, file= "../input/data/proc/data_antofa.Rdata")
+save(data_maule, file= "../input/data/proc/data_maule.Rdata")
+save(data_metro, file= "../input/data/proc/data_metro.Rdata")
+
+save(data_mun, file= "../input/data/proc/data_mun.Rdata")
+save(data_sub, file= "../input/data/proc/data_sub.Rdata")
+save(data_priv, file= "../input/data/proc/data_priv.Rdata")
+
+save(data_muj, file= "../input/data/proc/data_muj.Rdata")
+save(data_hom, file= "../input/data/proc/data_hom.Rdata")
+
+save(data_binc, file= "../input/data/proc/data_binc.Rdata")
+save(data_bas, file= "../input/data/proc/data_bas.Rdata")
+save(data_media, file= "../input/data/proc/data_media.Rdata")
+save(data_tec, file= "../input/data/proc/data_tec.Rdata")
+save(data_univ, file= "../input/data/proc/data_univ.Rdata")
 ```
 
