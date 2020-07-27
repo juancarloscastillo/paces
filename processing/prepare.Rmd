@@ -189,6 +189,7 @@ data$c14 <- ifelse(data$P14==4,1,0)
 data$Conocimiento_civico_factual= as.numeric(data$c9 + data$c10 + data$c11 + + data$c12 + data$c13 + data$c14)
 
 ## Formación ciudadana
+### Aspectos relevantes
 data$P52A[data$P52A==9]<-NA
 data$P52B[data$P52B==5]<-NA
 data$P52B[data$P52B==9]<-NA
@@ -198,6 +199,25 @@ data$P52D[data$P52D==5]<-NA
 data$P52D[data$P52D==9]<-NA
 data$P52E[data$P52E==5]<-NA
 data$P52E[data$P52E==9]<-NA
+### Aspecto más relevante de la formación ciudadana
+data$P53[data$P53=="AB"]<-NA
+data$P53[data$P53=="AD"]<-NA
+data$P53[data$P53=="AE"]<-NA
+data$P53[data$P53=="BD"]<-NA
+data$P53[data$P53=="EA"]<-NA
+data$P53[data$P53=="ED"]<-NA
+data$P53[data$P53=="NR"]<-NA
+### Quién juega el rol más importante en cada uno de esos aspectos
+data$P55A[data$P55A==4]<-NA
+data$P55A[data$P55A==9]<-NA
+data$P55B[data$P55B==4]<-NA
+data$P55B[data$P55B==9]<-NA
+data$P55C[data$P55C==4]<-NA
+data$P55C[data$P55C==9]<-NA
+data$P55D[data$P55D==4]<-NA
+data$P55D[data$P55D==9]<-NA
+data$P55E[data$P55E==4]<-NA
+data$P55E[data$P55E==9]<-NA
 
 ## Sexo
 data$P58[data$P58==4]<-NA
@@ -233,7 +253,14 @@ dataprof$P27B[dataprof$P27B==9]<-NA
 dataprof$P27C[dataprof$P27C==9]<-NA
 dataprof$P27D[dataprof$P27D==9]<-NA
 dataprof$P27E[dataprof$P27E==9]<-NA
-
+# Aspecto más relevante en la formación ciudadana
+dataprof$P28[dataprof$P28=="NR"]<-NA
+# Quién juega el rol más importante en los distintos aspectos de la formación ciudadana
+dataprof$P30A[dataprof$P30A==9]<-NA
+dataprof$P30B[dataprof$P30B==9]<-NA
+dataprof$P30C[dataprof$P30C==9]<-NA
+dataprof$P30D[dataprof$P30D==9]<-NA
+dataprof$P30E[dataprof$P30E==9]<-NA
 ```
 ## Data apoderados
 ```{r}
@@ -244,6 +271,16 @@ dataapod$P34B[dataapod$P34B==9]<-NA
 dataapod$P34C[dataapod$P34C==9]<-NA
 dataapod$P34D[dataapod$P34D==9]<-NA
 dataapod$P34E[dataapod$P34E==9]<-NA
+# Aspecto más relevante en la formación ciudadana
+dataapod$P35[dataapod$P35=="AB"]<-NA
+dataapod$P35[dataapod$P35=="AE"]<-NA
+dataapod$P35[dataapod$P35=="NR"]<-NA
+# Quién juega el rol más importante en los distintos aspectos de la formación ciudadana
+dataapod$P37A[dataapod$P37A==9]<-NA
+dataapod$P37B[dataapod$P37B==9]<-NA
+dataapod$P37C[dataapod$P37C==9]<-NA
+dataapod$P37D[dataapod$P37D==9]<-NA
+dataapod$P37E[dataapod$P37E==9]<-NA
 ```
 # Data proc
 ```{r}

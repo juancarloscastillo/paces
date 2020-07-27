@@ -1283,7 +1283,6 @@ ggsave(Conocimiento_civico_factual_edpadres, file = "../output/graphs/Conocimien
 #### El respeto y la amabilidad en las relaciones con los demás
 ```{r}
 # Estudiantes
-
 data_p52A=data %>% select(P52A,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p52A <- na.omit(data_p52A)
 data_p52A$P52A <- factor(data_p52A$P52A, levels = c(1,2,3,4), labels = c("
@@ -1320,8 +1319,9 @@ plot_p52A <- ggplot(p52A, aes(WeightFunction(data_p52A$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52A
 
 # Docentes
@@ -1361,8 +1361,9 @@ plot_prof_p27A <- ggplot(p27A, aes(WeightFunction(dataprof_p27A$pond_prof_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_prof_p27A
 
 # Apoderados
@@ -1402,8 +1403,9 @@ plot_prof_p34A <- ggplot(p34A, aes(WeightFunction(dataapod_p34A$pond_apoderado_r
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_prof_p34A
 ```
 #### Los valores democráticos de deliberación, tolerancia y compromiso con el bien común
@@ -1411,7 +1413,6 @@ plot_prof_p34A
 # Estudiantes
 data_p52B=data %>% select(P52B,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p52B <- na.omit(data_p52B)
-
 data_p52B$P52B <- factor(data_p52B$P52B, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1447,15 +1448,14 @@ plot_p52B <- ggplot(p52B, aes(WeightFunction(data_p52B$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
-
+y compromiso con el bien común", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52B
 
 # Docentes
 dataprof_p27B=dataprof %>% select(P27B,pond_prof_reg_dep_tens) %>% as.data.frame
 dataprof_p27B <- na.omit(dataprof_p27B)
-
 dataprof_p27B$P27B <- factor(dataprof_p27B$P27B, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1491,14 +1491,14 @@ plot_p27B <- ggplot(p27B, aes(WeightFunction(dataprof_p27B$pond_prof_reg_dep_ten
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+y compromiso con el bien común", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27B
 
 # Apoderados
 dataapod_p34B=dataapod %>% select(P34B,pond_apoderado_reg_dep_tens) %>% as.data.frame
 dataapod_p34B <- na.omit(dataapod_p34B)
-
 dataapod_p34B$P34B <- factor(dataapod_p34B$P34B, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1534,8 +1534,9 @@ plot_p34B <- ggplot(p34B, aes(WeightFunction(dataapod_p34B$pond_apoderado_reg_de
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+y compromiso con el bien común", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34B
 ```
 #### Valorar la participación electoral (votar)
@@ -1543,7 +1544,6 @@ plot_p34B
 # Estudiantes
 data_p52C=data %>% select(P52C,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p52C <- na.omit(data_p52C)
-
 data_p52C$P52C <- factor(data_p52C$P52C, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1578,14 +1578,14 @@ plot_p52C <- ggplot(p52C, aes(WeightFunction(data_p52C$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52C
 
 # Docentes
 dataprof_p27C=dataprof %>% select(P27C,pond_prof_reg_dep_tens) %>% as.data.frame
 dataprof_p27C <- na.omit(dataprof_p27C)
-
 dataprof_p27C$P27C <- factor(dataprof_p27C$P27C, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1620,14 +1620,14 @@ plot_p27C <- ggplot(p27C, aes(WeightFunction(dataprof_p27C$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27C
 
 # Apoderados
 dataapod_p34C=dataapod %>% select(P34C,pond_apoderado_reg_dep_tens) %>% as.data.frame
 dataapod_p34C <- na.omit(dataapod_p34C)
-
 dataapod_p34C$P34C <- factor(dataapod_p34C$P34C, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1662,8 +1662,9 @@ plot_p34C <- ggplot(p34C, aes(WeightFunction(dataapod_p34C$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34C
 ```
 #### Participar de movimientos sociales o manifestaciones
@@ -1671,7 +1672,6 @@ plot_p34C
 # Estudiantes
 data_p52D=data %>% select(P52D,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p52D <- na.omit(data_p52D)
-
 data_p52D$P52D <- factor(data_p52D$P52D, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1706,15 +1706,14 @@ plot_p52D <- ggplot(p52D, aes(WeightFunction(data_p52D$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
-
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52D
 
 # Docentes
 dataprof_p27D=dataprof %>% select(P27D,pond_prof_reg_dep_tens) %>% as.data.frame
 dataprof_p27D <- na.omit(dataprof_p27D)
-
 dataprof_p27D$P27D <- factor(dataprof_p27D$P27D, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1749,14 +1748,14 @@ plot_p27D <- ggplot(p27D, aes(WeightFunction(dataprof_p27D$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27D
 
 # Apoderados
 dataapod_p34D=dataapod %>% select(P34D,pond_apoderado_reg_dep_tens) %>% as.data.frame
 dataapod_p34D <- na.omit(dataapod_p34D)
-
 dataapod_p34D$P34D <- factor(dataapod_p34D$P34D, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1791,8 +1790,9 @@ plot_p34D <- ggplot(p34D, aes(WeightFunction(dataapod_p34D$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34D
 ```
 #### El respeto y cumplimiento de la ley
@@ -1800,7 +1800,6 @@ plot_p34D
 # Estudiantes
 data_p52E=data %>% select(P52E,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p52E <- na.omit(data_p52E)
-
 data_p52E$P52E <- factor(data_p52E$P52E, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1835,14 +1834,14 @@ plot_p52E <- ggplot(p52E, aes(WeightFunction(data_p52E$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52E
 
 # Docentes
 dataprof_p27E=dataprof %>% select(P27E,pond_prof_reg_dep_tens) %>% as.data.frame
 dataprof_p27E <- na.omit(dataprof_p27E)
-
 dataprof_p27E$P27E <- factor(dataprof_p27E$P27E, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1877,13 +1876,14 @@ plot_p27E <- ggplot(p27E, aes(WeightFunction(dataprof_p27E$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27E
+
 # Apoderados
 dataapod_p34E=dataapod %>% select(P34E,pond_apoderado_reg_dep_tens) %>% as.data.frame
 dataapod_p34E <- na.omit(dataapod_p34E)
-
 dataapod_p34E$P34E <- factor(dataapod_p34E$P34E, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -1918,7 +1918,727 @@ plot_p34E <- ggplot(p34E, aes(WeightFunction(dataapod_p34E$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34E
 ```
+### Aspecto más relevante de la formación ciudadana
+```{r}
+# Estudiantes
+data_p53=data %>% select(P53,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p53 <- na.omit(data_p53)
+data_p53$P53 <- factor(data_p53$P53, levels = c("A","B","C","D","E"), labels = c("
+  <br>
+  <strong>
+  El respeto y la amabilidad en las <br>
+  relaciones con los demás</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los valores democráticos de deliberación,<br>
+  tolerancia y compromiso con el bien común</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Valorar la participación electoral (votar)</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Participar de movimientos sociales o <br>
+  manifestaciones</strong></b> 
+  <br>
+  ","
+  <br>
+ <strong>
+  El respeto y cumplimiento de la ley</strong></b> 
+  <br>
+  "))
+p53 <- data_p53 %>%
+  group_by("Alternativas"=P53) %>%
+  summarise(counts = n())
+p53 <- p53 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p53 <- ggplot(p53, aes(WeightFunction(data_p53$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p53
+
+# Docentes
+dataprof_p28=dataprof %>% select(P28,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p28 <- na.omit(dataprof_p28)
+dataprof_p28$P28 <- factor(dataprof_p28$P28, levels = c("A","B","C","D","E"), labels = c("
+  <br>
+  <strong>
+  El respeto y la amabilidad en las <br>
+  relaciones con los demás</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los valores democráticos de deliberación,<br>
+  tolerancia y compromiso con el bien común</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Valorar la participación electoral (votar)</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Participar de movimientos sociales o <br>
+  manifestaciones</strong></b> 
+  <br>
+  ","
+  <br>
+ <strong>
+  El respeto y cumplimiento de la ley</strong></b> 
+  <br>
+  "))
+p28 <- dataprof_p28 %>%
+  group_by("Alternativas"=P28) %>%
+  summarise(counts = n())
+p28 <- p28 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p28 <- ggplot(p28, aes(WeightFunction(dataprof_p28$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p28
+
+# Apoderados
+dataapod_p35=dataapod %>% select(P35,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p35 <- na.omit(dataapod_p35)
+dataapod_p35$P35 <- factor(dataapod_p35$P35, levels = c("A","B","C","D","E"), labels = c("
+  <br>
+  <strong>
+  El respeto y la amabilidad en las <br>
+  relaciones con los demás</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los valores democráticos de deliberación,<br>
+  tolerancia y compromiso con el bien común</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Valorar la participación electoral (votar)</strong></b>
+  <br>","
+  <br>
+ <strong>
+  Participar de movimientos sociales o <br>
+  manifestaciones</strong></b> 
+  <br>
+  ","
+  <br>
+ <strong>
+  El respeto y cumplimiento de la ley</strong></b> 
+  <br>
+  "))
+p35 <- dataapod_p35 %>%
+  group_by("Alternativas"=P35) %>%
+  summarise(counts = n())
+p35 <- p35 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p35 <- ggplot(p35, aes(WeightFunction(dataapod_p35$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p35
+```
+### Y actualmente ¿Quién juega de hecho el rol más importante en cada uno de los aspectos de la formación ciudadana de los estudiantes?
+#### El respeto y la amabilidad en las relaciones con los demás
+```{r}
+# Estudiantes
+data_p55A=data %>% select(P55A,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p55A <- na.omit(data_p55A)
+data_p55A$P55A <- factor(data_p55A$P55A, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p55A <- data_p55A %>%
+  group_by("Alternativas"=P55A) %>%
+  summarise(counts = n())
+p55A <- p55A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p55A <- ggplot(p55A, aes(WeightFunction(data_p55A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p55A
+
+# Docentes
+dataprof_p30A=dataprof %>% select(P30A,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p30A <- na.omit(dataprof_p30A)
+dataprof_p30A$P30A <- factor(dataprof_p30A$P30A, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p30A <- dataprof_p30A %>%
+  group_by("Alternativas"=P30A) %>%
+  summarise(counts = n())
+p30A <- p30A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30A <- ggplot(p30A, aes(WeightFunction(dataprof_p30A$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30A
+
+# Apoderados
+dataapod_p37A=dataapod %>% select(P37A,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p37A <- na.omit(dataapod_p37A)
+dataapod_p37A$P37A <- factor(dataapod_p37A$P37A, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p37A <- dataapod_p37A %>%
+  group_by("Alternativas"=P37A) %>%
+  summarise(counts = n())
+p37A <- p37A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p37A <- ggplot(p37A, aes(WeightFunction(dataapod_p37A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p37A
+```
+#### Los valores democráticos de deliberación, tolerancia y compromiso con el bien común
+```{r}
+# Estudiantes
+data_p55B=data %>% select(P55B,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p55B <- na.omit(data_p55B)
+data_p55B$P55B <- factor(data_p55B$P55B, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p55B <- data_p55B %>%
+  group_by("Alternativas"=P55B) %>%
+  summarise(counts = n())
+p55B <- p55B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p55B <- ggplot(p55B, aes(WeightFunction(data_p55B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p55B
+
+# Docentes
+dataprof_p30B=dataprof %>% select(P30B,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p30B <- na.omit(dataprof_p30B)
+dataprof_p30B$P30B <- factor(dataprof_p30B$P30B, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p30B <- dataprof_p30B %>%
+  group_by("Alternativas"=P30B) %>%
+  summarise(counts = n())
+p30B <- p30B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30B <- ggplot(p30B, aes(WeightFunction(dataprof_p30B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30B
+
+# Apoderados
+dataapod_p37B=dataapod %>% select(P37B,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p37B <- na.omit(dataapod_p37B)
+dataapod_p37B$P37B <- factor(dataapod_p37B$P37B, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p37B <- dataapod_p37B %>%
+  group_by("Alternativas"=P37B) %>%
+  summarise(counts = n())
+p37B <- p37B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p37B <- ggplot(p37B, aes(WeightFunction(dataapod_p37B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p37B
+```
+#### Valorar la participación electoral (votar)
+```{r}
+# Estudiantes
+data_p55C=data %>% select(P55C,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p55C <- na.omit(data_p55C)
+data_p55C$P55C <- factor(data_p55C$P55C, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p55C <- data_p55C %>%
+  group_by("Alternativas"=P55C) %>%
+  summarise(counts = n())
+p55C <- p55C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p55C <- ggplot(p55C, aes(WeightFunction(data_p55C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p55C
+
+# Docentes
+dataprof_p30C=dataprof %>% select(P30C,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p30C <- na.omit(dataprof_p30C)
+dataprof_p30C$P30C <- factor(dataprof_p30C$P30C, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p30C <- dataprof_p30C %>%
+  group_by("Alternativas"=P30C) %>%
+  summarise(counts = n())
+p30C <- p30C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30C <- ggplot(p30C, aes(WeightFunction(dataprof_p30C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30C
+
+# Apoderados
+dataapod_p37C=dataapod %>% select(P37C,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p37C <- na.omit(dataapod_p37C)
+dataapod_p37C$P37C <- factor(dataapod_p37C$P37C, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p37C <- dataapod_p37C %>%
+  group_by("Alternativas"=P37C) %>%
+  summarise(counts = n())
+p37C <- p37C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p37C <- ggplot(p37C, aes(WeightFunction(dataapod_p37C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p37C
+```
+#### Participar de movimientos sociales o manifestaciones
+```{r}
+# Estudiantes
+data_p55D=data %>% select(P55D,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p55D <- na.omit(data_p55D)
+data_p55D$P55D <- factor(data_p55D$P55D, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p55D <- data_p55D %>%
+  group_by("Alternativas"=P55D) %>%
+  summarise(counts = n())
+p55D <- p55D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p55D <- ggplot(p55D, aes(WeightFunction(data_p55D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p55D
+
+# Docentes
+dataprof_p30D=dataprof %>% select(P30D,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p30D <- na.omit(dataprof_p30D)
+dataprof_p30D$P30D <- factor(dataprof_p30D$P30D, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p30D <- dataprof_p30D %>%
+  group_by("Alternativas"=P30D) %>%
+  summarise(counts = n())
+p30D <- p30D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30D <- ggplot(p30D, aes(WeightFunction(dataprof_p30D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30D
+
+# Apoderados
+dataapod_p37D=dataapod %>% select(P37D,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p37D <- na.omit(dataapod_p37D)
+dataapod_p37D$P37D <- factor(dataapod_p37D$P37D, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p37D <- dataapod_p37D %>%
+  group_by("Alternativas"=P37D) %>%
+  summarise(counts = n())
+p37D <- p37D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p37D <- ggplot(p37D, aes(WeightFunction(dataapod_p37D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p37D
+```
+#### El respeto y cumplimiento de la ley
+```{r}
+# Estudiantes
+data_p55E=data %>% select(P55E,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p55E <- na.omit(data_p55E)
+data_p55E$P55E <- factor(data_p55E$P55E, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p55E <- data_p55E %>%
+  group_by("Alternativas"=P55E) %>%
+  summarise(counts = n())
+p55E <- p55E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p55E <- ggplot(p55E, aes(WeightFunction(data_p55E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p55E
+
+# Docentes
+dataprof_p30E=dataprof %>% select(P30E,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p30E <- na.omit(dataprof_p30E)
+dataprof_p30E$P30E <- factor(dataprof_p30E$P30E, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p30E <- dataprof_p30E %>%
+  group_by("Alternativas"=P30E) %>%
+  summarise(counts = n())
+p30E <- p30E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30E <- ggplot(p30E, aes(WeightFunction(dataprof_p30E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30E
+
+# Apoderados
+dataapod_p37E=dataapod %>% select(P37E,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p37E <- na.omit(dataapod_p37E)
+dataapod_p37E$P37E <- factor(dataapod_p37E$P37E, levels = c(1,2,3), labels = c("
+  <br>
+  <strong>
+  La familia</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Los profesores</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Los pares</strong></b>
+  <br>"))
+p37E <- dataapod_p37E %>%
+  group_by("Alternativas"=P37E) %>%
+  summarise(counts = n())
+p37E <- p37E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p37E <- ggplot(p37E, aes(WeightFunction(dataapod_p37E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p37E
+```
+
