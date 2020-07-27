@@ -1198,7 +1198,7 @@ ggsave(Conocimiento_civico_factual_region, file = "../output/graphs/Conocimiento
 table_preposh1<- rbind(psych::describe(data_mun$Conocimiento_civico_factual),
                psych::describe(data_sub$Conocimiento_civico_factual),psych::describe(data_priv$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
-table_preposh1$dep <- c("Municipales","Subvencionados","Particulares")
+table_preposh1$dep <- c("Municipal","Particular Subvencionado","Particular Privado")
 Conocimiento_civico_factual_colegio <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=dep, y=mean, fill=dep)) +
      geom_bar(position = 'dodge', stat='identity')+#,width=0.8) 
      scale_fill_brewer(palette="Purples") +
@@ -1215,7 +1215,7 @@ factual (escala de 0 a 6)') + xlab(' ') +
           text = element_text(size = 14, face = "bold"),
           plot.title = element_text(hjust=0.5),
           legend.position = "none") + 
-     ggtitle("Conocimiento civico factual por dependencia 
+     ggtitle("Conocimiento civico factual por tipo dependencia 
 administrativa de la escuela")
 Conocimiento_civico_factual_colegio
 ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimiento_civico_factual_colegio.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
@@ -1319,7 +1319,7 @@ plot_p52A <- ggplot(p52A, aes(WeightFunction(data_p52A$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Estudiantes") +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52A
@@ -1361,7 +1361,7 @@ plot_prof_p27A <- ggplot(p27A, aes(WeightFunction(dataprof_p27A$pond_prof_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Docentes") +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_prof_p27A
@@ -1403,7 +1403,7 @@ plot_prof_p34A <- ggplot(p34A, aes(WeightFunction(dataapod_p34A$pond_apoderado_r
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Apoderados") +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_prof_p34A
@@ -1448,7 +1448,7 @@ plot_p52B <- ggplot(p52B, aes(WeightFunction(data_p52B$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común", subtitle="Estudiantes") +
+y compromiso con el bien común", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52B
@@ -1491,7 +1491,7 @@ plot_p27B <- ggplot(p27B, aes(WeightFunction(dataprof_p27B$pond_prof_reg_dep_ten
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común", subtitle="Docentes") +
+y compromiso con el bien común", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27B
@@ -1534,7 +1534,7 @@ plot_p34B <- ggplot(p34B, aes(WeightFunction(dataapod_p34B$pond_apoderado_reg_de
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común", subtitle="Apoderados") +
+y compromiso con el bien común", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34B
@@ -1578,7 +1578,7 @@ plot_p52C <- ggplot(p52C, aes(WeightFunction(data_p52C$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Estudiantes") +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52C
@@ -1620,7 +1620,7 @@ plot_p27C <- ggplot(p27C, aes(WeightFunction(dataprof_p27C$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Docentes") +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27C
@@ -1662,7 +1662,7 @@ plot_p34C <- ggplot(p34C, aes(WeightFunction(dataapod_p34C$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Apoderados") +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34C
@@ -1706,7 +1706,7 @@ plot_p52D <- ggplot(p52D, aes(WeightFunction(data_p52D$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Estudiantes") +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52D
@@ -1748,7 +1748,7 @@ plot_p27D <- ggplot(p27D, aes(WeightFunction(dataprof_p27D$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Docentes") +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27D
@@ -1790,7 +1790,7 @@ plot_p34D <- ggplot(p34D, aes(WeightFunction(dataapod_p34D$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Apoderados") +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34D
@@ -1834,7 +1834,7 @@ plot_p52E <- ggplot(p52E, aes(WeightFunction(data_p52E$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Estudiantes") +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p52E
@@ -1876,7 +1876,7 @@ plot_p27E <- ggplot(p27E, aes(WeightFunction(dataprof_p27E$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Docentes") +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p27E
@@ -1918,7 +1918,7 @@ plot_p34E <- ggplot(p34E, aes(WeightFunction(dataapod_p34E$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Apoderados") +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p34E
@@ -1970,7 +1970,7 @@ plot_p53 <- ggplot(p53, aes(WeightFunction(data_p53$pond_estudiante_reg_dep_tens
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Estudiantes") +
+  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p53
@@ -2020,7 +2020,7 @@ plot_p28 <- ggplot(p28, aes(WeightFunction(dataprof_p28$pond_prof_reg_dep_tens),
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Docentes") +
+  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p28
@@ -2070,7 +2070,7 @@ plot_p35 <- ggplot(p35, aes(WeightFunction(dataapod_p35$pond_apoderado_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Apoderados") +
+  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p35
@@ -2110,7 +2110,7 @@ plot_p55A <- ggplot(p55A, aes(WeightFunction(data_p55A$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Estudiantes") +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p55A
@@ -2147,7 +2147,7 @@ plot_p30A <- ggplot(p30A, aes(WeightFunction(dataprof_p30A$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Docentes") +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p30A
@@ -2184,7 +2184,7 @@ plot_p37A <- ggplot(p37A, aes(WeightFunction(dataapod_p37A$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Apoderados") +
+  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p37A
@@ -2223,7 +2223,7 @@ plot_p55B <- ggplot(p55B, aes(WeightFunction(data_p55B$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Estudiantes") +
+  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p55B
@@ -2260,7 +2260,7 @@ plot_p30B <- ggplot(p30B, aes(WeightFunction(dataprof_p30B$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Docentes") +
+  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p30B
@@ -2297,7 +2297,7 @@ plot_p37B <- ggplot(p37B, aes(WeightFunction(dataapod_p37B$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Apoderados") +
+  ggtitle("Los valores democráticos de deliberación, tolerancia y compromiso con el bien común", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p37B
@@ -2336,7 +2336,7 @@ plot_p55C <- ggplot(p55C, aes(WeightFunction(data_p55C$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Estudiantes") +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p55C
@@ -2373,7 +2373,7 @@ plot_p30C <- ggplot(p30C, aes(WeightFunction(dataprof_p30C$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Docentes") +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p30C
@@ -2410,7 +2410,7 @@ plot_p37C <- ggplot(p37C, aes(WeightFunction(dataapod_p37C$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Apoderados") +
+  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p37C
@@ -2449,7 +2449,7 @@ plot_p55D <- ggplot(p55D, aes(WeightFunction(data_p55D$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Estudiantes") +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p55D
@@ -2486,7 +2486,7 @@ plot_p30D <- ggplot(p30D, aes(WeightFunction(dataprof_p30D$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Docentes") +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p30D
@@ -2523,7 +2523,7 @@ plot_p37D <- ggplot(p37D, aes(WeightFunction(dataapod_p37D$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Apoderados") +
+  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p37D
@@ -2562,7 +2562,7 @@ plot_p55E <- ggplot(p55E, aes(WeightFunction(data_p55E$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Estudiantes") +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p55E
@@ -2599,7 +2599,7 @@ plot_p30E <- ggplot(p30E, aes(WeightFunction(dataprof_p30E$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Docentes") +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los docentes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p30E
@@ -2636,9 +2636,1911 @@ plot_p37E <- ggplot(p37E, aes(WeightFunction(dataapod_p37E$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Apoderados") +
+  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p37E
 ```
+# Actitudes políticas
+## Interés en la política
+```{r}
+# Estudiantes
+data_p43D=data %>% select(P43D,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p43D <- na.omit(data_p43D)
+data_p43D$P43D <- factor(data_p43D$P43D, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p43D <- data_p43D %>%
+  group_by("Alternativas"=P43D) %>%
+  summarise(counts = n())
+p43D <- p43D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p43D <- ggplot(p43D, aes(WeightFunction(data_p43D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado estas en política?", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p43D
 
+# Docentes
+dataprof_p11=dataprof %>% select(P11,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p11 <- na.omit(dataprof_p11)
+dataprof_p11$P11 <- factor(dataprof_p11$P11, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p11 <- dataprof_p11 %>%
+  group_by("Alternativas"=P11) %>%
+  summarise(counts = n())
+p11 <- p11 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p11 <- ggplot(p11, aes(WeightFunction(dataprof_p11$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Qué tan interesado(a) está usted en política?", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p11
+
+# Apoderados
+dataapod_p38D=dataapod %>% select(P38D,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p38D <- na.omit(dataapod_p38D)
+dataapod_p38D$P38D <- factor(dataapod_p38D$P38D, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p38D <- dataapod_p38D %>%
+  group_by("Alternativas"=P38D) %>%
+  summarise(counts = n())
+p38D <- p38D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p38D <- ggplot(p38D, aes(WeightFunction(dataapod_p38D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado(a) está usted en la política?", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p38D
+```
+## Interés en la desigualdad social
+```{r}
+# Estudiantes
+data_p43A=data %>% select(P43A,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p43A <- na.omit(data_p43A)
+data_p43A$P43A <- factor(data_p43A$P43A, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p43A <- data_p43A %>%
+  group_by("Alternativas"=P43A) %>%
+  summarise(counts = n())
+p43A <- p43A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p43A <- ggplot(p43A, aes(WeightFunction(data_p43A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado estas en la desigualdad social?", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p43A
+
+# Apoderados
+dataapod_p38A=dataapod %>% select(P38A,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p38A <- na.omit(dataapod_p38A)
+dataapod_p38A$P38A <- factor(dataapod_p38A$P38A, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p38A <- dataapod_p38A %>%
+  group_by("Alternativas"=P38A) %>%
+  summarise(counts = n())
+p38A <- p38A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p38A <- ggplot(p38A, aes(WeightFunction(dataapod_p38A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado(a) está usted en la desigualdad social?", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p38A
+```
+## Interés en el medioambiente
+```{r}
+# Estudiantes
+data_p43B=data %>% select(P43B,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p43B <- na.omit(data_p43B)
+data_p43B$P43B <- factor(data_p43B$P43B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p43B <- data_p43B %>%
+  group_by("Alternativas"=P43B) %>%
+  summarise(counts = n())
+p43B <- p43B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p43B <- ggplot(p43B, aes(WeightFunction(data_p43B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado estas en el medioambiente?", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p43B
+
+# Apoderados
+dataapod_p38B=dataapod %>% select(P38B,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p38B <- na.omit(dataapod_p38B)
+dataapod_p38B$P38B <- factor(dataapod_p38B$P38B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p38B <- dataapod_p38B %>%
+  group_by("Alternativas"=P38B) %>%
+  summarise(counts = n())
+p38B <- p38B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p38B <- ggplot(p38B, aes(WeightFunction(dataapod_p38B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado(a) está usted en el medioambiente?", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p38B
+```
+## Interés en la igualdad de género
+```{r}
+# Estudiantes
+data_p43C=data %>% select(P43C,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p43C <- na.omit(data_p43C)
+data_p43C$P43C <- factor(data_p43C$P43C, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p43C <- data_p43C %>%
+  group_by("Alternativas"=P43C) %>%
+  summarise(counts = n())
+p43C <- p43C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p43C <- ggplot(p43C, aes(WeightFunction(data_p43C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado estas en la igualdad de género?", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p43C
+
+# Apoderados
+dataapod_p38C=dataapod %>% select(P38C,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p38C <- na.omit(dataapod_p38C)
+dataapod_p38C$P38C <- factor(dataapod_p38C$P38C, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Totalmente desinteresado(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No muy interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Algo interesado(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy interesado(a)</strong></b>
+  <br>"))
+p38C <- dataapod_p38C %>%
+  group_by("Alternativas"=P38C) %>%
+  summarise(counts = n())
+p38C <- p38C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p38C <- ggplot(p38C, aes(WeightFunction(dataapod_p38C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuán interesado(a) está usted en la igualdad de género?", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p38C
+```
+## Actitudes hacia la democracia
+```{r}
+# Estudiantes
+data_p15=data %>% select(P15,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p15 <- na.omit(data_p15)
+data_p15$P15 <- factor(data_p15$P15, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada satisfecho(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Algo satisfecho(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Satisfecho(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy satisfecho(a)</strong></b>
+  <br>"))
+p15 <- data_p15 %>%
+  group_by("Alternativas"=P15) %>%
+  summarise(counts = n())
+p15 <- p15 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p15 <- ggplot(p15, aes(WeightFunction(data_p15$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Considerando todo, ¿cuán satisfecho estas tu con la 
+manera en que funciona la democracia en Chile?", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p15
+
+# Apoderados
+dataapod_p3=dataapod %>% select(P3,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p3 <- na.omit(dataapod_p3)
+dataapod_p3$P3 <- factor(dataapod_p3$P3, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada satisfecho(a)</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Algo satisfecho(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Satisfecho(a)</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy satisfecho(a)</strong></b>
+  <br>"))
+p3 <- dataapod_p3 %>%
+  group_by("Alternativas"=P3) %>%
+  summarise(counts = n())
+p3 <- p3 %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p3 <- ggplot(p3, aes(WeightFunction(dataapod_p3$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("En general, ¿cuán satisfecho(a) está usted con la manera
+en que funciona la democracia en Chile?", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p3
+```
+## Creencias y actitudes autoritarias
+### Los jóvenes deben aprender a obedecer y respetar a las autoridades
+```{r}
+# Estudiantes
+data_p21A=data %>% select(P21A,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21A <- na.omit(data_p21A)
+data_p21A$P21A <- factor(data_p21A$P21A, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21A <- data_p21A %>%
+  group_by("Alternativas"=P21A) %>%
+  summarise(counts = n())
+p21A <- p21A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21A <- ggplot(p21A, aes(WeightFunction(data_p21A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los jóvenes
+deben aprender a obedecer y respetar a las autoridades", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21A
+
+# Docentes
+dataprof_p18B=dataprof %>% select(P18B,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18B <- na.omit(dataprof_p18B)
+dataprof_p18B$P18B <- factor(dataprof_p18B$P18B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18B <- dataprof_p18B %>%
+  group_by("Alternativas"=P18B) %>%
+  summarise(counts = n())
+p18B <- p18B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18B <- ggplot(p18B, aes(WeightFunction(dataprof_p18B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los jóvenes
+deben aprender a obedecer y respetar a las autoridades", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18B
+
+# Apoderados
+dataapod_p5A=dataapod %>% select(P5A,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5A <- na.omit(dataapod_p5A)
+dataapod_p5A$P5A <- factor(dataapod_p5A$P5A, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5A <- dataapod_p5A %>%
+  group_by("Alternativas"=P5A) %>%
+  summarise(counts = n())
+p5A <- p5A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5A <- ggplot(p5A, aes(WeightFunction(dataapod_p5A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los jóvenes
+deben aprender a obedecer y respetar a las autoridades", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5A
+```
+### Mientras más personas estén dispuestas a criticar y desafiar a las autoridades es mejor para la sociedad
+```{r}
+# Estudiantes
+data_p21B=data %>% select(P21B,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21B <- na.omit(data_p21B)
+data_p21B$P21B <- factor(data_p21B$P21B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21B <- data_p21B %>%
+  group_by("Alternativas"=P21B) %>%
+  summarise(counts = n())
+p21B <- p21B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21B <- ggplot(p21B, aes(WeightFunction(data_p21B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Mientras más personas estén
+dispuestas a criticar y desafiar a las autoridades es mejor para la sociedad", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21B
+
+# Docentes
+dataprof_p18B=dataprof %>% select(P18B,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18B <- na.omit(dataprof_p18B)
+dataprof_p18B$P18B <- factor(dataprof_p18B$P18B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18B <- dataprof_p18B %>%
+  group_by("Alternativas"=P18B) %>%
+  summarise(counts = n())
+p18B <- p18B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18B <- ggplot(p18B, aes(WeightFunction(dataprof_p18B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Mientras más personas estén
+dispuestas a criticar y desafiar a las autoridades es mejor para la sociedad", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18B
+
+# Apoderados
+dataapod_p5B=dataapod %>% select(P5B,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5B <- na.omit(dataapod_p5B)
+dataapod_p5B$P5B <- factor(dataapod_p5B$P5B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5B <- dataapod_p5B %>%
+  group_by("Alternativas"=P5B) %>%
+  summarise(counts = n())
+p5B <- p5B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5B <- ggplot(p5B, aes(WeightFunction(dataapod_p5B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Mientras más personas estén
+dispuestas a criticar y desafiar a las autoridades es mejor para la sociedad", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5B
+```
+### La tolerancia con ideas distintas es el valor más importante que los jóvenes debieran aprender
+```{r}
+# Estudiantes
+data_p21C=data %>% select(P21C,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21C <- na.omit(data_p21C)
+data_p21C$P21C <- factor(data_p21C$P21C, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21C <- data_p21C %>%
+  group_by("Alternativas"=P21C) %>%
+  summarise(counts = n())
+p21C <- p21C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21C <- ggplot(p21C, aes(WeightFunction(data_p21C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? La tolerancia con ideas
+distintas es el valor más importante que los jóvenes debieran aprender", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21C
+
+# Docentes
+dataprof_p18C=dataprof %>% select(P18C,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18C <- na.omit(dataprof_p18C)
+dataprof_p18C$P18C <- factor(dataprof_p18C$P18C, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18C <- dataprof_p18C %>%
+  group_by("Alternativas"=P18C) %>%
+  summarise(counts = n())
+p18C <- p18C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18C <- ggplot(p18C, aes(WeightFunction(dataprof_p18C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? La tolerancia con ideas 
+distintas es el valor más importante que los jóvenes debieran aprender", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18C
+
+# Apoderados
+dataapod_p5C=dataapod %>% select(P5C,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5C <- na.omit(dataapod_p5C)
+dataapod_p5C$P5C <- factor(dataapod_p5C$P5C, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5C <- dataapod_p5C %>%
+  group_by("Alternativas"=P5C) %>%
+  summarise(counts = n())
+p5C <- p5C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5C <- ggplot(p5C, aes(WeightFunction(dataapod_p5C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? La tolerancia con ideas
+distintas es el valor más importante que los jóvenes debieran aprender", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5C
+```
+### A veces es mejor que los gobernantes tomen decisiones sin consultar a las mayorías
+```{r}
+# Estudiantes
+data_p21D=data %>% select(P21D,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21D <- na.omit(data_p21D)
+data_p21D$P21D <- factor(data_p21D$P21D, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21D <- data_p21D %>%
+  group_by("Alternativas"=P21D) %>%
+  summarise(counts = n())
+p21D <- p21D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21D <- ggplot(p21D, aes(WeightFunction(data_p21D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? A veces es mejor que 
+los gobernantes tomen decisiones sin consultar a las mayorías", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21D
+
+# Docentes
+dataprof_p18D=dataprof %>% select(P18D,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18D <- na.omit(dataprof_p18D)
+dataprof_p18D$P18D <- factor(dataprof_p18D$P18D, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18D <- dataprof_p18D %>%
+  group_by("Alternativas"=P18D) %>%
+  summarise(counts = n())
+p18D <- p18D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18D <- ggplot(p18D, aes(WeightFunction(dataprof_p18D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? A veces es mejor que
+los gobernantes tomen decisiones sin consultar a las mayorías", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18D
+
+# Apoderados
+dataapod_p5D=dataapod %>% select(P5D,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5D <- na.omit(dataapod_p5D)
+dataapod_p5D$P5D <- factor(dataapod_p5D$P5D, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5D <- dataapod_p5D %>%
+  group_by("Alternativas"=P5D) %>%
+  summarise(counts = n())
+p5D <- p5D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5D <- ggplot(p5D, aes(WeightFunction(dataapod_p5D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? A veces es mejor que 
+los gobernantes tomen decisiones sin consultar a las mayorías", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5D
+```
+### Los gobernantes deben hacer valer su autoridad
+```{r}
+# Estudiantes
+data_p21E=data %>% select(P21E,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21E <- na.omit(data_p21E)
+data_p21E$P21E <- factor(data_p21E$P21E, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21E <- data_p21E %>%
+  group_by("Alternativas"=P21E) %>%
+  summarise(counts = n())
+p21E <- p21E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21E <- ggplot(p21E, aes(WeightFunction(data_p21E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los 
+gobernantes deben hacer valer su autoridad", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21E
+
+# Docentes
+dataprof_p18E=dataprof %>% select(P18E,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18E <- na.omit(dataprof_p18E)
+dataprof_p18E$P18E <- factor(dataprof_p18E$P18E, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18E <- dataprof_p18E %>%
+  group_by("Alternativas"=P18E) %>%
+  summarise(counts = n())
+p18E <- p18E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18E <- ggplot(p18E, aes(WeightFunction(dataprof_p18E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los
+gobernantes deben hacer valer su autoridad", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18E
+
+# Apoderados
+dataapod_p5E=dataapod %>% select(P5E,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5E <- na.omit(dataapod_p5E)
+dataapod_p5E$P5E <- factor(dataapod_p5E$P5E, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5E <- dataapod_p5E %>%
+  group_by("Alternativas"=P5E) %>%
+  summarise(counts = n())
+p5E <- p5E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5E <- ggplot(p5E, aes(WeightFunction(dataapod_p5E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los 
+gobernantes deben hacer valer su autoridad", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5E
+```
+### Los gobernantes pierden autoridad cuando reconocen sus errores
+```{r}
+# Estudiantes
+data_p21F=data %>% select(P21F,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21F <- na.omit(data_p21F)
+data_p21F$P21F <- factor(data_p21F$P21F, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21F <- data_p21F %>%
+  group_by("Alternativas"=P21F) %>%
+  summarise(counts = n())
+p21F <- p21F %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21F <- ggplot(p21F, aes(WeightFunction(data_p21F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los gobernantes
+pierden autoridad cuando reconocen sus errores", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21F
+
+# Docentes
+dataprof_p18F=dataprof %>% select(P18F,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18F <- na.omit(dataprof_p18F)
+dataprof_p18F$P18F <- factor(dataprof_p18F$P18F, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18F <- dataprof_p18F %>%
+  group_by("Alternativas"=P18F) %>%
+  summarise(counts = n())
+p18F <- p18F %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18F <- ggplot(p18F, aes(WeightFunction(dataprof_p18F$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los gobernantes 
+pierden autoridad cuando reconocen sus errores", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18F
+
+# Apoderados
+dataapod_p5F=dataapod %>% select(P5F,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5F <- na.omit(dataapod_p5F)
+dataapod_p5F$P5F <- factor(dataapod_p5F$P5F, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5F <- dataapod_p5F %>%
+  group_by("Alternativas"=P5F) %>%
+  summarise(counts = n())
+p5F <- p5F %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5F <- ggplot(p5F, aes(WeightFunction(dataapod_p5F$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los gobernantes
+pierden autoridad cuando reconocen sus errores", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5F
+```
+### La concentración del poder ayuda a mantener el orden
+```{r}
+# Estudiantes
+data_p21G=data %>% select(P21G,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21G <- na.omit(data_p21G)
+data_p21G$P21G <- factor(data_p21G$P21G, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21G <- data_p21G %>%
+  group_by("Alternativas"=P21G) %>%
+  summarise(counts = n())
+p21G <- p21G %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21G <- ggplot(p21G, aes(WeightFunction(data_p21G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres?  La concentración 
+del poder ayuda a mantener el orden", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21G
+
+# Docentes
+dataprof_p18G=dataprof %>% select(P18G,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18G <- na.omit(dataprof_p18G)
+dataprof_p18G$P18G <- factor(dataprof_p18G$P18G, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18G <- dataprof_p18G %>%
+  group_by("Alternativas"=P18G) %>%
+  summarise(counts = n())
+p18G <- p18G %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18G <- ggplot(p18G, aes(WeightFunction(dataprof_p18G$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres?  La concentración
+del poder ayuda a mantener el orden", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18G
+
+# Apoderados
+dataapod_p5G=dataapod %>% select(P5G,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5G <- na.omit(dataapod_p5G)
+dataapod_p5G$P5G <- factor(dataapod_p5G$P5G, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5G <- dataapod_p5G %>%
+  group_by("Alternativas"=P5G) %>%
+  summarise(counts = n())
+p5G <- p5G %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5G <- ggplot(p5G, aes(WeightFunction(dataapod_p5G$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres?  La concentración
+del poder ayuda a mantener el orden", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5G
+```
+### Los gobiernos autoritarios se justifican cuando traen orden y seguridad
+```{r}
+# Estudiantes
+data_p21H=data %>% select(P21H,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21H <- na.omit(data_p21H)
+data_p21H$P21H <- factor(data_p21H$P21H, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21H <- data_p21H %>%
+  group_by("Alternativas"=P21H) %>%
+  summarise(counts = n())
+p21H <- p21H %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21H <- ggplot(p21H, aes(WeightFunction(data_p21H$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres?  Los gobiernos 
+autoritarios se justifican cuando traen orden y seguridad", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21H
+
+# Docentes
+dataprof_p18H=dataprof %>% select(P18H,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18H <- na.omit(dataprof_p18H)
+dataprof_p18H$P18H <- factor(dataprof_p18H$P18H, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18H <- dataprof_p18H %>%
+  group_by("Alternativas"=P18H) %>%
+  summarise(counts = n())
+p18H <- p18H %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18H <- ggplot(p18H, aes(WeightFunction(dataprof_p18H$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres?  Los gobiernos 
+autoritarios se justifican cuando traen orden y seguridad", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18H
+
+# Apoderados
+dataapod_p5H=dataapod %>% select(P5H,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5H <- na.omit(dataapod_p5H)
+dataapod_p5H$P5H <- factor(dataapod_p5H$P5H, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5H <- dataapod_p5H %>%
+  group_by("Alternativas"=P5H) %>%
+  summarise(counts = n())
+p5H <- p5H %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5H <- ggplot(p5H, aes(WeightFunction(dataapod_p5H$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres?  Los gobiernos
+autoritarios se justifican cuando traen orden y seguridad", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5H
+```
+### Los gobiernos autoritarios se justifican cuando traen beneficios económicos
+```{r}
+# Estudiantes
+data_p21I=data %>% select(P21I,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p21I <- na.omit(data_p21I)
+data_p21I$P21I <- factor(data_p21I$P21I, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p21I <- data_p21I %>%
+  group_by("Alternativas"=P21I) %>%
+  summarise(counts = n())
+p21I <- p21I %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p21I <- ggplot(p21I, aes(WeightFunction(data_p21I$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los gobiernos 
+autoritarios se justifican cuando traen beneficios económicos", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p21I
+
+# Docentes
+dataprof_p18I=dataprof %>% select(P18I,pond_prof_reg_dep_tens) %>% as.data.frame
+dataprof_p18I <- na.omit(dataprof_p18I)
+dataprof_p18I$P18I <- factor(dataprof_p18I$P18I, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p18I <- dataprof_p18I %>%
+  group_by("Alternativas"=P18I) %>%
+  summarise(counts = n())
+p18I <- p18I %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p18I <- ggplot(p18I, aes(WeightFunction(dataprof_p18I$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los gobiernos 
+autoritarios se justifican cuando traen beneficios económicos", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p18I
+
+# Apoderados
+dataapod_p5I=dataapod %>% select(P5I,pond_apoderado_reg_dep_tens) %>% as.data.frame
+dataapod_p5I <- na.omit(dataapod_p5I)
+dataapod_p5I$P5I <- factor(dataapod_p5I$P5I, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Muy en desacuerdo</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  En desacuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  De acuerdo</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Muy de acuerdo</strong></b>
+  <br>"))
+p5I <- dataapod_p5I %>%
+  group_by("Alternativas"=P5I) %>%
+  summarise(counts = n())
+p5I <- p5I %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p5I <- ggplot(p5I, aes(WeightFunction(dataapod_p5I$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
+afirmación sobre los gobiernos y sus lideres? Los gobiernos 
+autoritarios se justifican cuando traen beneficios económicos", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p5I
+```
+## Confianza en instituciones
+### El gobierno de Chile
+```{r}
+data_p22A=data %>% select(P22A,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p22A <- na.omit(data_p22A)
+data_p22A$P22A <- factor(data_p22A$P22A, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Un poco</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Bastante</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Completamente</strong></b>
+  <br>"))
+p22A <- data_p22A %>%
+  group_by("Alternativas"=P22A) %>%
+  summarise(counts = n())
+p22A <- p22A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p22A <- ggplot(p22A, aes(WeightFunction(data_p22A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
+El gobierno de Chile", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p22A
+```
+### Los Tribunales de Justicia
+```{r}
+data_p22B=data %>% select(P22B,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p22B <- na.omit(data_p22B)
+data_p22B$P22B <- factor(data_p22B$P22B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Un poco</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Bastante</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Completamente</strong></b>
+  <br>"))
+p22B <- data_p22B %>%
+  group_by("Alternativas"=P22B) %>%
+  summarise(counts = n())
+p22B <- p22B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p22B <- ggplot(p22B, aes(WeightFunction(data_p22B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
+Los Tribunales de Justicia", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p22B
+```
+### Los partidos políticos
+```{r}
+data_p22C=data %>% select(P22C,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p22C <- na.omit(data_p22C)
+data_p22C$P22C <- factor(data_p22C$P22C, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Un poco</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Bastante</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Completamente</strong></b>
+  <br>"))
+p22C <- data_p22C %>%
+  group_by("Alternativas"=P22C) %>%
+  summarise(counts = n())
+p22C <- p22C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p22C <- ggplot(p22C, aes(WeightFunction(data_p22C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
+Los partidos políticos", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p22C
+```
+### El Congreso Nacional
+```{r}
+data_p22D=data %>% select(P22D,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p22D <- na.omit(data_p22D)
+data_p22D$P22D <- factor(data_p22D$P22D, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Un poco</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Bastante</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Completamente</strong></b>
+  <br>"))
+p22D <- data_p22D %>%
+  group_by("Alternativas"=P22D) %>%
+  summarise(counts = n())
+p22D <- p22D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p22D <- ggplot(p22D, aes(WeightFunction(data_p22D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
+El Congreso Nacional", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p22D
+```
+### Los medios de comunicación (televisión, diario, radio) 
+```{r}
+data_p22E=data %>% select(P22E,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p22E <- na.omit(data_p22E)
+data_p22E$P22E <- factor(data_p22E$P22E, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Un poco</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Bastante</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Completamente</strong></b>
+  <br>"))
+p22E <- data_p22E %>%
+  group_by("Alternativas"=P22E) %>%
+  summarise(counts = n())
+p22E <- p22E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p22E <- ggplot(p22E, aes(WeightFunction(data_p22E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
+Los medios de comunicación (televisión, diario, radio)", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p22E
+```
+### Las personas en general
+```{r}
+data_p22F=data %>% select(P22F,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p22F <- na.omit(data_p22F)
+data_p22F$P22F <- factor(data_p22F$P22F, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Nada</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Un poco</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Bastante</strong></b>
+  <br>", "
+  <br>
+  <strong>
+  Completamente</strong></b>
+  <br>"))
+p22F <- data_p22F %>%
+  group_by("Alternativas"=P22F) %>%
+  summarise(counts = n())
+p22F <- p22F %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p22F <- ggplot(p22F, aes(WeightFunction(data_p22F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
+Las personas en general", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p22F
+```

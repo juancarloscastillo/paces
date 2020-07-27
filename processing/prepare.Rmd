@@ -219,11 +219,63 @@ data$P55D[data$P55D==9]<-NA
 data$P55E[data$P55E==4]<-NA
 data$P55E[data$P55E==9]<-NA
 
+## Interés en la política
+data$P43D[data$P43D==5]<-NA
+data$P43D[data$P43D==9]<-NA
+## Interés en la desigualdad social
+data$P43A[data$P43A==5]<-NA
+data$P43A[data$P43A==9]<-NA
+## Interés en el medioambiente
+data$P43B[data$P43B==5]<-NA
+data$P43B[data$P43B==9]<-NA
+## Interés en la igualdad de género
+data$P43C[data$P43C==5]<-NA
+data$P43C[data$P43C==9]<-NA
+
+## Satisfacción con la democracia
+data$P15[data$P15==5]<-NA
+data$P15[data$P15==9]<-NA
+
+## Actitudes y creencias autoritarias
+data$P21A[data$P21A==5]<-NA
+data$P21A[data$P21A==9]<-NA
+data$P21B[data$P21B==5]<-NA
+data$P21B[data$P21B==9]<-NA
+data$P21C[data$P21C==5]<-NA
+data$P21C[data$P21C==9]<-NA
+data$P21D[data$P21D==5]<-NA
+data$P21D[data$P21D==9]<-NA
+data$P21E[data$P21E==5]<-NA
+data$P21E[data$P21E==9]<-NA
+data$P21F[data$P21F==5]<-NA
+data$P21F[data$P21F==9]<-NA
+data$P21G[data$P21G==5]<-NA
+data$P21G[data$P21G==9]<-NA
+data$P21H[data$P21H==5]<-NA
+data$P21H[data$P21H==9]<-NA
+data$P21I[data$P21I==5]<-NA
+data$P21I[data$P21I==9]<-NA
+
+## Confianza en instituciones
+data$P22A[data$P22A==5]<-NA
+data$P22A[data$P22A==9]<-NA
+data$P22B[data$P22B==5]<-NA
+data$P22B[data$P22B==9]<-NA
+data$P22C[data$P22C==5]<-NA
+data$P22C[data$P22C==9]<-NA
+data$P22D[data$P22D==5]<-NA
+data$P22D[data$P22D==9]<-NA
+data$P22E[data$P22E==5]<-NA
+data$P22E[data$P22E==9]<-NA
+data$P22F[data$P22F==5]<-NA
+data$P22F[data$P22F==9]<-NA
+
 ## Sexo
 data$P58[data$P58==4]<-NA
 data$P58[data$P58==9]<-NA
 data_muj = data %>%  filter(P58 == 2) %>% as.data.frame()
 data_hom = data %>%  filter(P58 == 1) %>% as.data.frame()
+
 ## Nivel educativo más alto de los padres
 data$P66[data$P66==8]<-NA #ed. madre
 data$P66[data$P66==9]<-NA
@@ -235,10 +287,12 @@ data_bas = data %>%  filter(edpadres == 2) %>% as.data.frame()
 data_media = data %>%  filter(edpadres == 3) %>% as.data.frame()
 data_tec = data %>%  filter(edpadres == 4) %>% as.data.frame()
 data_univ = data %>%  filter(edpadres == 5) %>% as.data.frame()
+
 ## Separación entre regiones
 data_antofa = data %>%  filter(REGION == 2) %>% as.data.frame()
 data_maule = data %>%  filter(REGION == 7) %>% as.data.frame()
 data_metro = data %>%  filter(REGION == 13) %>% as.data.frame()
+
 ## Dependencia escolar
 data_mun = data %>%  filter(Dependencia == 1) %>% as.data.frame()
 data_sub = data %>%  filter(Dependencia == 2) %>% as.data.frame()
@@ -253,14 +307,30 @@ dataprof$P27B[dataprof$P27B==9]<-NA
 dataprof$P27C[dataprof$P27C==9]<-NA
 dataprof$P27D[dataprof$P27D==9]<-NA
 dataprof$P27E[dataprof$P27E==9]<-NA
+
 # Aspecto más relevante en la formación ciudadana
 dataprof$P28[dataprof$P28=="NR"]<-NA
+
 # Quién juega el rol más importante en los distintos aspectos de la formación ciudadana
 dataprof$P30A[dataprof$P30A==9]<-NA
 dataprof$P30B[dataprof$P30B==9]<-NA
 dataprof$P30C[dataprof$P30C==9]<-NA
 dataprof$P30D[dataprof$P30D==9]<-NA
 dataprof$P30E[dataprof$P30E==9]<-NA
+
+# Interés en la política
+dataprof$P11[dataprof$P11==9]<-NA
+
+# Actitudes y creencias autoritarias
+dataprof$P18A[dataprof$P18A==9]<-NA
+dataprof$P18B[dataprof$P18B==9]<-NA
+dataprof$P18C[dataprof$P18C==9]<-NA
+dataprof$P18D[dataprof$P18D==9]<-NA
+dataprof$P18E[dataprof$P18E==9]<-NA
+dataprof$P18F[dataprof$P18F==9]<-NA
+dataprof$P18G[dataprof$P18G==9]<-NA
+dataprof$P18H[dataprof$P18H==9]<-NA
+dataprof$P18I[dataprof$P18I==9]<-NA
 ```
 ## Data apoderados
 ```{r}
@@ -271,16 +341,41 @@ dataapod$P34B[dataapod$P34B==9]<-NA
 dataapod$P34C[dataapod$P34C==9]<-NA
 dataapod$P34D[dataapod$P34D==9]<-NA
 dataapod$P34E[dataapod$P34E==9]<-NA
+
 # Aspecto más relevante en la formación ciudadana
 dataapod$P35[dataapod$P35=="AB"]<-NA
 dataapod$P35[dataapod$P35=="AE"]<-NA
 dataapod$P35[dataapod$P35=="NR"]<-NA
+
 # Quién juega el rol más importante en los distintos aspectos de la formación ciudadana
 dataapod$P37A[dataapod$P37A==9]<-NA
 dataapod$P37B[dataapod$P37B==9]<-NA
 dataapod$P37C[dataapod$P37C==9]<-NA
 dataapod$P37D[dataapod$P37D==9]<-NA
 dataapod$P37E[dataapod$P37E==9]<-NA
+
+# Interés en la política
+dataapod$P38D[dataapod$P38D==9]<-NA
+# Interés en la desigualdad social
+dataapod$P38A[dataapod$P38A==9]<-NA
+# Interés en el medioambiente
+dataapod$P38B[dataapod$P38B==9]<-NA
+# Interés en la igualdad de género
+dataapod$P38C[dataapod$P38C==9]<-NA
+
+# Satisfacción con la democracia
+dataapod$P3[dataapod$P3==9]<-NA
+
+# Actitudes y creencias autoritarias
+dataapod$P5A[dataapod$P5A==9]<-NA
+dataapod$P5B[dataapod$P5B==9]<-NA
+dataapod$P5C[dataapod$P5C==9]<-NA
+dataapod$P5D[dataapod$P5D==9]<-NA
+dataapod$P5E[dataapod$P5E==9]<-NA
+dataapod$P5F[dataapod$P5F==9]<-NA
+dataapod$P5G[dataapod$P5G==9]<-NA
+dataapod$P5H[dataapod$P5H==9]<-NA
+dataapod$P5I[dataapod$P5I==9]<-NA
 ```
 # Data proc
 ```{r}
