@@ -37,6 +37,7 @@ for (package_name in sort(loadedNamespaces())) {
 # Preparación
 ## Data estudiantes
 ```{r}
+sjPlot::view_df(data)
 # Conocimiento cívico: análisis descriptivo
 ## P1
 data$P1[data$P1==5]<-NA
@@ -269,6 +270,44 @@ data$P22E[data$P22E==5]<-NA
 data$P22E[data$P22E==9]<-NA
 data$P22F[data$P22F==5]<-NA
 data$P22F[data$P22F==9]<-NA
+
+## Participación formal
+data$P30A[data$P30A==3]<-NA
+data$P30A[data$P30A==9]<-NA
+data$P30B[data$P30B==9]<-NA
+data$P30C[data$P30C==3]<-NA
+data$P30C[data$P30C==9]<-NA
+data$P31A[data$P31A==9]<-NA
+data$P31B[data$P31B==9]<-NA
+data$P31C[data$P31C==9]<-NA
+## Participación activista
+data$P30D[data$P30D==3]<-NA
+data$P30D[data$P30D==9]<-NA
+data$P30E[data$P30E==3]<-NA
+data$P30E[data$P30E==9]<-NA
+data$P30F[data$P30F==3]<-NA
+data$P30F[data$P30F==9]<-NA
+data$P33A[data$P33A==3]<-NA
+data$P33A[data$P33A==9]<-NA
+data$P33B[data$P33B==3]<-NA
+data$P33B[data$P33B==9]<-NA
+data$P33C[data$P33C==3]<-NA
+data$P33C[data$P33C==9]<-NA
+data$P33D[data$P33D==3]<-NA
+data$P33D[data$P33D==9]<-NA
+## Participación comunitaria
+data$P30G[data$P30G==3]<-NA
+data$P30G[data$P30G==9]<-NA
+data$P30H[data$P30H==3]<-NA
+data$P30H[data$P30H==9]<-NA
+data$P30I[data$P30I==3]<-NA
+data$P30I[data$P30I==9]<-NA
+data$P33E[data$P33E==3]<-NA
+data$P33E[data$P33E==9]<-NA
+data$P33F[data$P33F==3]<-NA
+data$P33F[data$P33F==9]<-NA
+data$P33G[data$P33G==3]<-NA
+data$P33G[data$P33G==9]<-NA
 
 ## Sexo
 data$P58[data$P58==4]<-NA

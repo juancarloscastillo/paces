@@ -4324,7 +4324,7 @@ plot_p22A <- ggplot(p22A, aes(WeightFunction(data_p22A$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
-El gobierno de Chile", subtitle="Respuestas de los estudiantes") +
+El gobierno de Chile") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p22A
@@ -4367,7 +4367,7 @@ plot_p22B <- ggplot(p22B, aes(WeightFunction(data_p22B$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
-Los Tribunales de Justicia", subtitle="Respuestas de los estudiantes") +
+Los Tribunales de Justicia") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p22B
@@ -4410,7 +4410,7 @@ plot_p22C <- ggplot(p22C, aes(WeightFunction(data_p22C$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
-Los partidos políticos", subtitle="Respuestas de los estudiantes") +
+Los partidos políticos") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p22C
@@ -4453,7 +4453,7 @@ plot_p22D <- ggplot(p22D, aes(WeightFunction(data_p22D$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
-El Congreso Nacional", subtitle="Respuestas de los estudiantes") +
+El Congreso Nacional") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p22D
@@ -4496,7 +4496,7 @@ plot_p22E <- ggplot(p22E, aes(WeightFunction(data_p22E$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
-Los medios de comunicación (televisión, diario, radio)", subtitle="Respuestas de los estudiantes") +
+Los medios de comunicación (televisión, diario, radio)") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p22E
@@ -4539,8 +4539,712 @@ plot_p22F <- ggplot(p22F, aes(WeightFunction(data_p22F$pond_estudiante_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Cuánto confías en el siguiente grupo o institución? 
-Las personas en general", subtitle="Respuestas de los estudiantes") +
+Las personas en general") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p22F
+```
+# Participación 
+## Participación formal
+### Votar en una elección en la escuela
+```{r}
+data_p30A=data %>% select(P30A,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30A <- na.omit(data_p30A)
+data_p30A$P30A <- factor(data_p30A$P30A, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30A <- data_p30A %>%
+  group_by("Alternativas"=P30A) %>%
+  summarise(counts = n())
+p30A <- p30A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30A <- ggplot(p30A, aes(WeightFunction(data_p30A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Votar en una elección") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30A
+```
+### Ser candidato para repesentar a la clase o parte del centro de alumnos
+```{r}
+data_p30B=data %>% select(P30B,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30B <- na.omit(data_p30B)
+data_p30B$P30B <- factor(data_p30B$P30B, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30B <- data_p30B %>%
+  group_by("Alternativas"=P30B) %>%
+  summarise(counts = n())
+p30B <- p30B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30B <- ggplot(p30B, aes(WeightFunction(data_p30B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Ser candidato para representar a la clase o parte del centro de alumnos") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30B
+```
+### Ser parte del centro de alumnos
+```{r}
+data_p30C=data %>% select(P30C,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30C <- na.omit(data_p30C)
+data_p30C$P30C <- factor(data_p30C$P30C, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30C <- data_p30C %>%
+  group_by("Alternativas"=P30C) %>%
+  summarise(counts = n())
+p30C <- p30C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30C <- ggplot(p30C, aes(WeightFunction(data_p30C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Ser parte del centro de alumnos") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30C
+```
+### Cuando seas adulto, ¿crees que vayas a votar en elecciones municipales?
+```{r}
+data_p31A=data %>% select(P31A,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p31A <- na.omit(data_p31A)
+data_p31A$P31A <- factor(data_p31A$P31A, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Seguro no haré esto</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Tal vez haré esto</strong></b>
+  <br>","
+  <br>
+  <strong>
+  Probablemente haré<br>
+  esto</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Seguro haré esto</strong></b>
+  <br>"))
+p31A <- data_p31A %>%
+  group_by("Alternativas"=P31A) %>%
+  summarise(counts = n())
+p31A <- p31A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p31A <- ggplot(p31A, aes(WeightFunction(data_p31A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Cuando seas adulto, ¿crees que vayas a votar en las elecciones municipales?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p31A
+```
+### Cuando seas adulto, ¿crees que vayas a votar en elecciones presidenciales?
+```{r}
+data_p31B=data %>% select(P31B,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p31B <- na.omit(data_p31B)
+data_p31B$P31B <- factor(data_p31B$P31B, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Seguro no haré esto</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Tal vez haré esto</strong></b>
+  <br>","
+  <br>
+  <strong>
+  Probablemente haré<br>
+  esto</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Seguro haré esto</strong></b>
+  <br>"))
+p31B <- data_p31B %>%
+  group_by("Alternativas"=P31B) %>%
+  summarise(counts = n())
+p31B <- p31B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p31B <- ggplot(p31B, aes(WeightFunction(data_p31B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Cuando seas adulto, ¿crees que vayas a votar en las elecciones presidenciales?") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p31B
+```
+### Cuando seas adulto, ¿crees que vayas a informarte sobre los candidatos antes de votar en una elección?
+```{r}
+data_p31C=data %>% select(P31C,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p31C <- na.omit(data_p31C)
+data_p31C$P31C <- factor(data_p31C$P31C, levels = c(1,2,3,4), labels = c("
+  <br>
+  <strong>
+  Seguro no haré esto</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Tal vez haré esto</strong></b>
+  <br>","
+  <br>
+  <strong>
+  Probablemente haré<br>
+  esto</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  Seguro haré esto</strong></b>
+  <br>"))
+p31C <- data_p31C %>%
+  group_by("Alternativas"=P31C) %>%
+  summarise(counts = n())
+p31C <- p31C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p31C <- ggplot(p31C, aes(WeightFunction(data_p31C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("Cuando seas adulto, ¿crees que vayas a informarte sobre
+los candidatos antes de votar en una elección") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p31C
+```
+## Participación activista
+### Participar en una protesta en la escuela
+```{r}
+data_p30D=data %>% select(P30D,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30D <- na.omit(data_p30D)
+data_p30D$P30D <- factor(data_p30D$P30D, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30D <- data_p30D %>%
+  group_by("Alternativas"=P30D) %>%
+  summarise(counts = n())
+p30D <- p30D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30D <- ggplot(p30D, aes(WeightFunction(data_p30D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Participar en una protesta en la escuela") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30D
+```
+### Tomar un rol activo en una reunión o asamblea  de estudiantes
+```{r}
+data_p30E=data %>% select(P30E,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30E <- na.omit(data_p30E)
+data_p30E$P30E <- factor(data_p30E$P30E, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30E <- data_p30E %>%
+  group_by("Alternativas"=P30E) %>%
+  summarise(counts = n())
+p30E <- p30E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30E <- ggplot(p30E, aes(WeightFunction(data_p30E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Tomar un rol activo en una reunión o asamblea  de estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30E
+```
+### Usar una polera o simbolo con un mensaje político
+```{r}
+data_p30F=data %>% select(P30F,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30F <- na.omit(data_p30F)
+data_p30F$P30F <- factor(data_p30F$P30F, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30F <- data_p30F %>%
+  group_by("Alternativas"=P30F) %>%
+  summarise(counts = n())
+p30F <- p30F %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30F <- ggplot(p30F, aes(WeightFunction(data_p30F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Usar una polera o simbolo con un mensaje político") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30F
+```
+### Firmar una petición
+```{r}
+data_p33A=data %>% select(P33A,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p33A <- na.omit(data_p33A)
+data_p33A$P33A <- factor(data_p33A$P33A, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p33A <- data_p33A %>%
+  group_by("Alternativas"=P33A) %>%
+  summarise(counts = n())
+p33A <- p33A %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p33A <- ggplot(p33A, aes(WeightFunction(data_p33A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
+Firmar una petición") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p33A
+```
+### Participar en una marcha o manifestación pacífica
+```{r}
+data_p33B=data %>% select(P33B,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p33B <- na.omit(data_p33B)
+data_p33B$P33B <- factor(data_p33B$P33B, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p33B <- data_p33B %>%
+  group_by("Alternativas"=P33B) %>%
+  summarise(counts = n())
+p33B <- p33B %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p33B <- ggplot(p33B, aes(WeightFunction(data_p33B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
+Participar en una marcha o manifestación pacífica") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p33B
+```
+### Participar en una marcha o manifestación que resultó en destrucción de propiedad
+```{r}
+data_p33C=data %>% select(P33C,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p33C <- na.omit(data_p33C)
+data_p33C$P33C <- factor(data_p33C$P33C, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p33C <- data_p33C %>%
+  group_by("Alternativas"=P33C) %>%
+  summarise(counts = n())
+p33C <- p33C %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p33C <- ggplot(p33C, aes(WeightFunction(data_p33C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
+Participar en una marcha o manifestación que resultó
+en destrucción de propiedad") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p33C
+```
+### Participar en una toma
+```{r}
+data_p33D=data %>% select(P33D,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p33D <- na.omit(data_p33D)
+data_p33D$P33D <- factor(data_p33D$P33D, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p33D <- data_p33D %>%
+  group_by("Alternativas"=P33D) %>%
+  summarise(counts = n())
+p33D <- p33D %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p33D <- ggplot(p33D, aes(WeightFunction(data_p33D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
+Participar en una toma") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p33D
+```
+## Participación comunitaria
+### Trabajos voluntarios de ayuda 
+```{r}
+data_p30G=data %>% select(P30G,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30G <- na.omit(data_p30G)
+data_p30G$P30G <- factor(data_p30G$P30G, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30G <- data_p30G %>%
+  group_by("Alternativas"=P30G) %>%
+  summarise(counts = n())
+p30G <- p30G %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30G <- ggplot(p30G, aes(WeightFunction(data_p30G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Trabajos voluntarios de ayuda") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30G
+```
+### Colectas de dineros o bienes para ayudar a otros
+```{r}
+data_p30H=data %>% select(P30H,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30H <- na.omit(data_p30H)
+data_p30H$P30H <- factor(data_p30H$P30H, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30H <- data_p30H %>%
+  group_by("Alternativas"=P30H) %>%
+  summarise(counts = n())
+p30H <- p30H %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30H <- ggplot(p30H, aes(WeightFunction(data_p30H$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Colectas de dineros o bienes para ayudar a otros") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30H
+```
+### Actividades de ayuda a la comunidad
+```{r}
+data_p30I=data %>% select(P30I,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p30I <- na.omit(data_p30I)
+data_p30I$P30I <- factor(data_p30I$P30I, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p30I <- data_p30I %>%
+  group_by("Alternativas"=P30I) %>%
+  summarise(counts = n())
+p30I <- p30I %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p30I <- ggplot(p30I, aes(WeightFunction(data_p30I$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad al interior de la 
+escuela durante los últimos dos semestres? 
+Actividades de ayuda a la comunidad") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p30I
+```
+### Donar dinero por una buena causa
+```{r}
+data_p33E=data %>% select(P33E,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p33E <- na.omit(data_p33E)
+data_p33E$P33E <- factor(data_p33E$P33E, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p33E <- data_p33E %>%
+  group_by("Alternativas"=P33E) %>%
+  summarise(counts = n())
+p33E <- p33E %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p33E <- ggplot(p33E, aes(WeightFunction(data_p33E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
+Donar dinero por una buena causa") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p33E
+```
+### Trabajar como voluntario por ayudar personas de tu comunidad
+```{r}
+data_p33F=data %>% select(P33F,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p33F <- na.omit(data_p33F)
+data_p33F$P33F <- factor(data_p33F$P33F, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p33F <- data_p33F %>%
+  group_by("Alternativas"=P33F) %>%
+  summarise(counts = n())
+p33F <- p33F %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p33F <- ggplot(p33F, aes(WeightFunction(data_p33F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
+Trabajar como voluntario por ayudar personas de tu comunidad") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p33F
+```
+### Participar de una actividad social en la comunidad en que vives
+```{r}
+data_p33G=data %>% select(P33G,pond_estudiante_reg_dep_tens) %>% as.data.frame
+data_p33G <- na.omit(data_p33G)
+data_p33G$P33G <- factor(data_p33G$P33G, levels = c(1,2), labels = c("
+  <br>
+  <strong>
+  Sí</strong></b>
+  <br>", "
+  <br> 
+  <strong>
+  No</strong></b>
+  <br>"))
+p33G <- data_p33G %>%
+  group_by("Alternativas"=P33G) %>%
+  summarise(counts = n())
+p33G <- p33G %>%
+  arrange(desc(Alternativas)) %>%
+  mutate(prop = round(counts*100/sum(counts), 2),
+         lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p33G <- ggplot(p33G, aes(WeightFunction(data_p33G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  geom_bar(stat = "identity", color = "white") +
+  coord_polar(theta = "y", start = 1.5)+
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  scale_fill_brewer(palette = "Purples") +
+  theme_void()+
+  xlim(0.5, 2.5) +
+  theme(legend.title = element_text(size=16, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
+  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
+Participar de una actividad social en la comunidad en que vives") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+plot_p33G
 ```
