@@ -1,9 +1,11 @@
 # Librerías
 ```{r}
 library(ggplot2)
+library(cowplot)
 library(tidyverse)
 library(ggtext)
 library(dplyr)
+library(RColorBrewer)
 ```
 
 # Data
@@ -42,25 +44,29 @@ data_p1 <- na.omit(data_p1)
 data_p1$P1 <- factor(data_p1$P1, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
-  Permite  a  muchas  personas  hacer <br> 
+  Permite  a  muchas <br>
+  personas  hacer <br> 
   cambios a las leyes</strong></b>
   <br>", "
   <br> 
   <strong>
-  Hace que el sistema legal sea fácil <br> 
-  de entender para los ciudadanos <br>
-  comunes y corrientes</strong></b>
+  Hace que el sistema legal <br>
+  sea fácil de entender para <br>
+  los ciudadanos comunes <br>
+  y corrientes</strong></b>
   <br>", "
   <br>
   <strong>
-  Significa  que  las  leyes   pueden <br> 
-  mantenerse secretas hasta que se <br> 
+  Significa  que  las  leyes <br> 
+  pueden mantenerse <br>
+  secretas hasta que se <br>
   aplican en las cortes</strong></b>
   <br>","
   <br>
  <strong><span style='color:#FF2D00'>
-  Significa que ningún grupo tiene <br> 
-  todo el poder sobre las leyes <br>
+  Significa que ningún <br>
+  grupo tiene todo el <br>
+  poder sobre las leyes <br>
   (alternativa correcta) </span></strong></b> 
   <br>
   "))
@@ -78,10 +84,13 @@ plot_p1 <- ggplot(p1, aes(WeightFunction(data_p1$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle(" En la mayoría de los países, un grupo de personas crea las leyes en el Congreso. Otro grupo de 
-personas aplica las leyes en las cortes de justicia ¿Cuál es la MEJOR razón para tener este sistema?") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("En  la  mayoría  de  los  países,  un  grupo
+de  personas crea  las  leyes en el Congreso. 
+Otro grupo de personas aplica las leyes en 
+las cortes de justicia ¿Cuál es la MEJOR 
+razón para tener este sistema?") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p1
@@ -94,24 +103,29 @@ data_p2 <- na.omit(data_p2)
 data_p2$P2 <- factor(data_p2$P2, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
-  Declaraciones sobre las relaciones<br> 
-  con los países vecinos</strong></b>
+  Declaraciones sobre<br> 
+  las relaciones con<br> 
+  los países vecinos</strong></b>
   <br>", "
   <br> 
   <strong>
-  Declaraciones del Presidente de la <br> 
-  República al Congreso Nacional</strong></b>
+  Declaraciones del <br>
+  Presidente de la <br> 
+  República al <br>
+  Congreso Nacional</strong></b>
   <br>", "
   <br>
   <strong>
-  Declaraciones de los partidos<br> 
-  políticos a sus seguidores</strong></b>
+  Declaraciones de los <br>
+  partidos políticos a <br>
+  sus seguidores</strong></b>
   <br>","
   <br>
  <strong><span style='color:#FF2D00'>
-  Declaraciones  de  principio  que <br>
-  establecen el sistema de gobierno <br>
-  y las leyes (alternativa correcta) </span></strong></b> 
+  Declaraciones de principio <br>
+  que establecen el sistema de <br>
+  gobierno y las leyes <br>
+  (alternativa correcta) </span></strong></b> 
   <br>
   "))
 p2 <- data_p2 %>%
@@ -128,9 +142,10 @@ plot_p2 <- ggplot(p2, aes(WeightFunction(data_p2$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("La constitución de un país se refiere a") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("La constitución de un país se 
+refiere a") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p2
@@ -143,23 +158,27 @@ data_p3 <- na.omit(data_p3)
 data_p3$P3 <- factor(data_p3$P3, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
-  Solicitar un debate público sobre <br> 
-  asuntos políticos con los países <br> 
-  vecinos</strong></b>
+  Solicitar un debate <br>
+  público sobre asuntos <br> 
+  políticos con los <br> 
+  países vecinos</strong></b>
   <br>", "
   <br> 
   <strong>
-  Hacer una demostración pacifica en <br> 
-  contra de una ley a la que se opone</strong></b>
+  Hacer una demostración <br> 
+  pacifica en contra de una <br> 
+  ley a la que se opone</strong></b>
   <br>", "
   <br>
   <strong>
-  Enviar declaraciones políticas por <br> 
-  correo a los ciudadanos</strong></b>
+  Enviar declaraciones <br> 
+  políticas por correo <br>
+  a los ciudadanos</strong></b>
   <br>","
   <br>
  <strong><span style='color:#FF2D00'>
-  Dañar las oficinas de una organización <br>
+  Dañar las oficinas <br>
+  de una organización <br>
   (alternativa correcta) </span></strong></b> 
   <br>
   "))
@@ -177,9 +196,10 @@ plot_p3 <- ggplot(p3, aes(WeightFunction(data_p3$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuál de las siguientes acciones sería considerada ilegal en un país democrático?") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("¿Cuál de las siguientes acciones sería
+considerada ilegal en un país democrático?") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p3
@@ -191,24 +211,26 @@ data_p4 <- na.omit(data_p4)
 data_p4$P4 <- factor(data_p4$P4, levels = c(1,4,3,2), labels = c("
   <br>
   <strong>
-  Hacer que las leyes se cumplan, <br> 
-  tomando presos a los criminales <br> 
+  Hacer que las leyes <br>
+  se cumplan, tomando <br>
+  presos a los criminales <br> 
   vecinos</strong></b>
   <br>", "
   <br>
   <strong>
-  Supervisar a las cortes de <br> 
-  justicia</strong></b>
+  Supervisar a las <br> 
+  cortes de justicia</strong></b>
   <br>","
   <br>
  <strong>
-  Evitar cambios en el sistema <br>
-  legislativo</strong></b> 
+  Evitar cambios en el <br>
+  sistema legislativo</strong></b> 
   <br>", "
   <br> 
   <strong><span style='color:#FF2D00'>
-  Discutir y votar las leyes <br>
-  (alternativa correcta)</span></strong></b>
+  Discutir y votar las <br>
+  leyes (alternativa <br> 
+  correcta)</span></strong></b>
   <br>"))
 p4 <- data_p4 %>%
   group_by("Alternativas"=P4) %>%
@@ -224,9 +246,10 @@ plot_p4 <- ggplot(p4, aes(WeightFunction(data_p4$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("En países democráticos, una tarea importante del Congreso es…") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("En países democráticos, una tarea 
+importante del Congreso es…") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p4
@@ -239,24 +262,27 @@ data_p5 <- na.omit(data_p5)
 data_p5$P5 <- factor(data_p5$P5, levels = c(1,2,4,3), labels = c("
   <br>
   <strong>
-  Hacer declaraciones apoyando a otros<br> 
-  líderes de su partido <br> 
-  vecino</strong></b>
+  Hacer declaraciones <br> 
+  apoyando a otros líderes <br> 
+  de su partido vecino</strong></b>
   <br>", "
   <br>
   <strong>
-  Realiza una marcha por la democracia <br> 
-  en la ciudad más grande</strong></b>
+  Realiza una marcha por <br>
+  la democracia en la <br>
+  ciudad más grande</strong></b>
   <br>","
   <br>
  <strong>
-  Hace declaraciones en la prensa sobre <br>
-  la necesidad de la democracia</strong></b> 
+  Hace declaraciones en la <br>
+  prensa sobre la necesidad <br>
+  de la democracia</strong></b> 
   <br>", "
   <br> 
   <strong><span style='color:#FF2D00'>
-  Fija una fecha de elecciones con varios <br>
-  candidatos de distintos partidos <br>
+  Fija una fecha de elecciones <br>
+  con varios candidatos de <br>
+  distintos partidos <br>
   (alternativa correcta)</span></strong></b>
   <br>"))
 p5 <- data_p5 %>%
@@ -273,10 +299,12 @@ plot_p5 <- ggplot(p5, aes(WeightFunction(data_p5$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Un dictador acuerda restablecer la democracia de su país ¿cuál de las siguientes acciones  
-                  sería la evidencia más convincente de que realmente lo hará?") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("Un dictador acuerda restablecer la democracia
+ de su país ¿Cuál de las siguientes acciones 
+ sería la evidencia más convincente de que 
+ realmente lo hará?") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p5
@@ -289,23 +317,28 @@ data_p6 <- na.omit(data_p6)
 data_p6$P6 <- factor(data_p6$P6, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
-  Es dañino para las familias que las<br> 
+  Es dañino para las <br> 
+  familias que las <br> 
   mujeres trabajen</strong></b>
   <br>", "
   <br>
   <strong>
-  Los hombres son mejores dirigentes <br> 
-  políticos que las mujeres</strong></b>
+  Los hombres son <br>
+  mejores dirigentes <br>
+  políticos que las <br>
+  mujeres</strong></b>
   <br>","
   <br>
  <strong>
-  Las mujeres deberían involucrarse <br>
-  más en la política</strong></b> 
+  Las mujeres deberían <br>
+  involucrarse más en <br>
+  la política</strong></b> 
   <br>", "
   <br> 
   <strong><span style='color:#FF2D00'>
-  La mayoría de los líderes de los <br>
-  países del mundo son hombres <br>
+  La mayoría de los <br>
+  líderes de los países <br>
+  del mundo son hombres <br>
   (alternativa correcta)</span></strong></b>
   <br>"))
 p6 <- data_p6 %>%
@@ -322,9 +355,11 @@ plot_p6 <- ggplot(p6, aes(WeightFunction(data_p6$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Tres de estas afirmaciones son opiniones y una es un hecho. ¿Cuál de las siguientes es un HECHO?") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("Tres de estas afirmaciones son opiniones
+y una es un hecho.¿Cuál de las siguientes
+es un HECHO?") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p6
@@ -375,10 +410,10 @@ plot_p7 <- ggplot(p7, aes(WeightFunction(data_p7$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("A continuación, se muestra un listado de impuestos. ¿Cuál de ellos es
-                  pagado habitualmente por todos los chilenos?") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("¿Cuál de los siguientes impuestos es pagado
+habitualmente por todos los chilenos?") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p7
@@ -391,23 +426,26 @@ data_p8 <- na.omit(data_p8)
 data_p8$P8 <- factor(data_p8$P8, levels = c(1,3,4,2), labels = c("
   <br>
   <strong>
-  Para comprar productos de primera<br> 
-  necesidad de las personas</strong></b>
+  Para comprar productos <br>
+  de primera necesidad <br>
+  de las personas</strong></b>
   <br>", "
   <br>
   <strong>
-  Para pagar nuestros sueldos</strong></b>
+  Para pagar nuestros <br>
+  sueldos</strong></b>
   <br>","
   <br>
  <strong>
-  Para financiar empresas y <br>
-  fundaciones</strong></b> 
+  Para financiar empresas <br>
+  y fundaciones</strong></b> 
   <br>", "
   <br> 
   <strong><span style='color:#FF2D00'>
-  Para financiar al estado y los <br> 
-  bienes y servicios públicos <br>
-  (alternativa correcta)</span></strong></b>
+  Para financiar al estado <br> 
+  y los bienes y servicios <br>
+  públicos (alternativa <br>
+  correcta)</span></strong></b>
   <br>"))
 p8 <- data_p8 %>%
   group_by("Alternativas"=P8) %>%
@@ -423,12 +461,18 @@ plot_p8 <- ggplot(p8, aes(WeightFunction(data_p8$pond_estudiante_reg_dep_tens), 
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Para qué se usan los impuestos que pagamos los chilenos?") +
+  theme(legend.title = element_text(size=16.5, face="bold")) +
+  theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
+  ggtitle("¿Para qué se usan los impuestos que pagamos
+los chilenos?") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
 
 plot_p8
+```
+#### Plot preguntas conocimiento civico conceptual
+```{r}
+ccc_1 <- cowplot::plot_grid(plot_p2,plot_p1,plot_p3,plot_p5,plot_p4,plot_p6, plot_p7, plot_p8, ncol=4)
+ggsave(ccc_1, file = "../output/graphs/graph_ccc.png",device = "png",width = 80,height = 35,dpi = "retina",units = "cm")
 ```
 #### P9: ¿Cuál el nombre del presidente del senado de Chile?
 ```{r}
@@ -439,15 +483,15 @@ data_p9$P9 <- factor(data_p9$P9, levels = c(2,3,4,1), labels = c("
   <br>
   <strong>
   Carlos Ominami</strong></b>
-  <br>","
+  <br> <br>","
   <br>
  <strong>
   Evelyn Mathei</strong></b> 
-  <br>", "
+  <br> <br>", "
   <br> 
   <strong>
   Camila Vallejos</strong></b>
-  <br>","
+  <br> <br>","
   <br>
   <strong><span style='color:#FF2D00'>
   Jaime Quintana<br>
@@ -531,20 +575,20 @@ data_p11$P11 <- factor(data_p11$P11, levels = c(2,3,4,1), labels = c("
   <br>
   <strong>
   Rodrigo Hinzpeter</strong></b>
-  <br>","
+  <br> <br>","
   <br>
  <strong>
   Rodrigo Peñailillo</strong></b> 
-  <br>", "
+  <br> <br>", "
   <br> 
   <strong>
   Cecilia Pérez</strong></b>
-  <br>","
+  <br> <br>","
   <br>
   <strong><span style='color:#FF2D00'>
   Andrés Chadwick<br>
   (alternativa correcta)</span></strong></b>
-  <br>"))
+  <br> <br>"))
 p11 <- data_p11 %>%
   group_by("Alternativas"=P11) %>%
   summarise(counts = n())
@@ -575,16 +619,16 @@ data_p12$P12 <- factor(data_p12$P12, levels = c(1,2,4,3), labels = c("
   <br>
   <strong>
   Lula da Silva</strong></b>
-  <br>","
+  <br> <br>","
   <br>
  <strong>
   Dilma Roussef</strong></b> 
-  <br>", "
+  <br> <br>", "
   <br> 
   <strong>
   Edson Arantes <br>
   do Nascimiento </strong></b>
-  <br>","
+  <br> <br>","
   <br>
   <strong><span style='color:#FF2D00'>
   Jair Bolsonaro<br>
@@ -606,7 +650,7 @@ plot_p12 <- ggplot(p12, aes(WeightFunction(data_p12$pond_estudiante_reg_dep_tens
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Quién es el Ministro del Interior?") +
+  ggtitle("¿Quién es el Presidente de Brasil?") +
   theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
 
 plot_p12
@@ -668,19 +712,19 @@ data_p14$P14 <- factor(data_p14$P14, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
   Concepción</strong></b>
-  <br>","
+  <br> <br>","
   <br>
  <strong>
   Santiago</strong></b> 
-  <br>", "
+  <br> <br>", "
   <br> 
   <strong>
   Rancagua </strong></b>
-  <br>","
+  <br> <br>","
   <br>
   <strong><span style='color:#FF2D00'>
-  Valparaiso<br>
-  (alternativa<br> correcta)</span></strong></b>
+  Valparaiso <br>
+  (alternativa correcta)</span></strong></b>
   <br>"))
 p14 <- data_p14 %>%
   group_by("Alternativas"=P14) %>%
@@ -702,6 +746,11 @@ plot_p14 <- ggplot(p14, aes(WeightFunction(data_p14$pond_estudiante_reg_dep_tens
   theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
 
 plot_p14
+```
+#### Plot preguntas conocimiento civico factual
+```{r}
+ccf_1 <- cowplot::plot_grid(plot_p13,plot_p10,plot_p11,plot_p12,plot_p9,plot_p14, ncol=3)
+ggsave(ccf_1, file = "../output/graphs/graph_ccf.png",device = "png",width = 50,height = 25,dpi = "retina",units = "cm")
 ```
 ### Análisis comparativo
 #### P1: ¿Cuál es la mejor razón para tener una república?
@@ -1317,11 +1366,14 @@ plot_p52A <- ggplot(p52A, aes(WeightFunction(data_p52A$pond_estudiante_reg_dep_t
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:25px'>¿Qué tan importante cree usted que debería ser el siguiente aspecto <br> en la formación ciudadana de los estudiantes?</span></strong></b> <br> <br>
+<strong><span style='font-size:28px'>El respeto y la amabilidad en las relaciones con los demás</span></strong> <br>", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        legend.title = element_blank())
+  
 plot_p52A
 
 # Docentes
@@ -1352,19 +1404,25 @@ p27A <- p27A %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
+colours= brewer.pal(name="Purples", n=nlevels(dataprof_p27A$P27A))
 plot_prof_p27A <- ggplot(p27A, aes(WeightFunction(dataprof_p27A$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
+  scale_fill_manual(values = c("#9E9AC8", "#6A51A3","#6A51A3","#6A51A3")) +
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
-  scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ", subtitle="
+Respuestas de los docentes") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
 plot_prof_p27A
+
+cols <- brewer.pal (4, "Purples") # Para resolver lo de los colores, ya que en el caso de los profesores sólo marcaron dos opciones de respuesta y se les asignaban los dos colores más claros, asociando un color distinto al que se le asocia a la etiqueta en los otros dos gráficos.
+cols
 
 # Apoderados
 dataapod_p34A=dataapod %>% select(P34A,pond_apoderado_reg_dep_tens) %>% as.data.frame
@@ -1394,19 +1452,25 @@ p34A <- p34A %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p34A <- ggplot(p34A, aes(WeightFunction(dataapod_p34A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34A <- ggplot(p34A, aes(WeightFunction(dataapod_p34A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
+  scale_fill_manual(values = c("#CBC9E2","#9E9AC8", "#6A51A3","#6A51A3")) +
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
-  scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y la amabilidad en las relaciones con los demás", subtitle="Respuestas de los apoderados") +
+  ggtitle(" ", subtitle="
+Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_prof_p34A
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_apod_p34A
+
+## Gráfico
+for_ciud1 <- cowplot::plot_grid(plot_prof_p27A,plot_p52A,plot_apod_p34A, ncol=3)
+ggsave(for_ciud1, file = "../output/graphs/graph_for_ciud1.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### Los valores democráticos de deliberación, tolerancia y compromiso con el bien común
 ```{r}
@@ -1447,10 +1511,12 @@ plot_p52B <- ggplot(p52B, aes(WeightFunction(data_p52B$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:25px'>¿Qué tan importante cree usted que debería ser el siguiente aspecto <br> en la formación ciudadana de los estudiantes?</span></strong></b> <br>
+<strong><span style='font-size:28px'>Los valores democráticos de deliberación, tolerancia y compromiso <br> con el bien común</span></strong>", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        legend.title = element_blank())
 plot_p52B
 
 # Docentes
@@ -1481,20 +1547,22 @@ p27B <- p27B %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p27B <- ggplot(p27B, aes(WeightFunction(dataprof_p27B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27B <- ggplot(p27B, aes(WeightFunction(dataprof_p27B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
-  scale_fill_brewer(palette = "Purples") +
+  #scale_fill_brewer(palette = "Purples") +
+  scale_fill_manual(values = c("#9E9AC8", "#6A51A3","#6A51A3","#6A51A3")) +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p27B
+  ggtitle(" ", subtitle="
+Respuestas de los docentes") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_prof_p27B
 
 # Apoderados
 dataapod_p34B=dataapod %>% select(P34B,pond_apoderado_reg_dep_tens) %>% as.data.frame
@@ -1524,7 +1592,7 @@ p34B <- p34B %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p34B <- ggplot(p34B, aes(WeightFunction(dataapod_p34B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34B <- ggplot(p34B, aes(WeightFunction(dataapod_p34B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
@@ -1533,11 +1601,16 @@ plot_p34B <- ggplot(p34B, aes(WeightFunction(dataapod_p34B$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Los valores democráticos de deliberación, tolerancia 
-y compromiso con el bien común", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p34B
+  ggtitle(" ", subtitle="
+Respuestas de los apoderados") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_apod_p34B
+
+## Gráfico
+for_ciud2 <- cowplot::plot_grid(plot_prof_p27B,plot_p52B,plot_apod_p34B, ncol=3)
+ggsave(for_ciud2, file = "../output/graphs/graph_for_ciud2.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### Valorar la participación electoral (votar)
 ```{r}
@@ -1576,11 +1649,13 @@ plot_p52C <- ggplot(p52C, aes(WeightFunction(data_p52C$pond_estudiante_reg_dep_t
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:25px'>¿Qué tan importante cree usted que debería ser el siguiente aspecto <br> en la formación ciudadana de los estudiantes?</span></strong></b> <br> <br>
+<strong><span style='font-size:28px'>Valorar la participación electoral (votar)</span></strong> <br>", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        legend.title = element_blank())
 plot_p52C
 
 # Docentes
@@ -1611,19 +1686,21 @@ p27C <- p27C %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p27C <- ggplot(p27C, aes(WeightFunction(dataprof_p27C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27C <- ggplot(p27C, aes(WeightFunction(dataprof_p27C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
-  scale_fill_brewer(palette = "Purples") +
+  #scale_fill_brewer(palette = "Purples") +
+  scale_fill_manual(values = c("#9E9AC8", "#6A51A3","#6A51A3","#6A51A3")) +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p27C
+  ggtitle(" ", subtitle="
+Respuestas de los docentes") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_prof_p27C
 
 # Apoderados
 dataapod_p34C=dataapod %>% select(P34C,pond_apoderado_reg_dep_tens) %>% as.data.frame
@@ -1653,19 +1730,24 @@ p34C <- p34C %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p34C <- ggplot(p34C, aes(WeightFunction(dataapod_p34C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34C <- ggplot(p34C, aes(WeightFunction(dataapod_p34C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Valorar la participación electoral (votar)", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p34C
+  ggtitle(" ", subtitle="
+Respuestas de los apoderados") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_apod_p34C
+
+## Gráfico
+for_ciud3 <- cowplot::plot_grid(plot_prof_p27C,plot_p52C,plot_apod_p34C, ncol=3)
+ggsave(for_ciud3, file = "../output/graphs/graph_for_ciud3.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### Participar de movimientos sociales o manifestaciones
 ```{r}
@@ -1704,11 +1786,13 @@ plot_p52D <- ggplot(p52D, aes(WeightFunction(data_p52D$pond_estudiante_reg_dep_t
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:25px'>¿Qué tan importante cree usted que debería ser el siguiente aspecto <br> en la formación ciudadana de los estudiantes?</span></strong></b> <br> <br>
+<strong><span style='font-size:28px'>Participar de movimientos sociales o manifestaciones</span></strong> <br>", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        legend.title = element_blank())
 plot_p52D
 
 # Docentes
@@ -1739,7 +1823,7 @@ p27D <- p27D %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p27D <- ggplot(p27D, aes(WeightFunction(dataprof_p27D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27D <- ggplot(p27D, aes(WeightFunction(dataprof_p27D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
@@ -1748,10 +1832,12 @@ plot_p27D <- ggplot(p27D, aes(WeightFunction(dataprof_p27D$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p27D
+  ggtitle(" ", subtitle="
+Respuestas de los docentes") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_prof_p27D
 
 # Apoderados
 dataapod_p34D=dataapod %>% select(P34D,pond_apoderado_reg_dep_tens) %>% as.data.frame
@@ -1781,7 +1867,7 @@ p34D <- p34D %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p34D <- ggplot(p34D, aes(WeightFunction(dataapod_p34D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34D <- ggplot(p34D, aes(WeightFunction(dataapod_p34D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
@@ -1790,10 +1876,16 @@ plot_p34D <- ggplot(p34D, aes(WeightFunction(dataapod_p34D$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Participar de movimientos sociales o manifestaciones", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p34D
+  ggtitle(" ", subtitle="
+Respuestas de los apoderados") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_apod_p34D
+
+## Gráfico
+for_ciud4 <- cowplot::plot_grid(plot_prof_p27D,plot_p52D,plot_apod_p34D, ncol=3)
+ggsave(for_ciud4, file = "../output/graphs/graph_for_ciud4.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### El respeto y cumplimiento de la ley
 ```{r}
@@ -1834,9 +1926,12 @@ plot_p52E <- ggplot(p52E, aes(WeightFunction(data_p52E$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:25px'>¿Qué tan importante cree usted que debería ser el siguiente aspecto <br> en la formación ciudadana de los estudiantes?</span></strong></b> <br> <br>
+<strong><span style='font-size:28px'>El respeto y cumplimiento de la ley</span></strong> <br>", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        legend.title = element_blank())
 plot_p52E
 
 # Docentes
@@ -1867,7 +1962,7 @@ p27E <- p27E %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p27E <- ggplot(p27E, aes(WeightFunction(dataprof_p27E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27E <- ggplot(p27E, aes(WeightFunction(dataprof_p27E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
@@ -1876,10 +1971,12 @@ plot_p27E <- ggplot(p27E, aes(WeightFunction(dataprof_p27E$pond_prof_reg_dep_ten
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p27E
+  ggtitle(" ", subtitle="
+Respuestas de los docentes") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_prof_p27E
 
 # Apoderados
 dataapod_p34E=dataapod %>% select(P34E,pond_apoderado_reg_dep_tens) %>% as.data.frame
@@ -1909,7 +2006,7 @@ p34E <- p34E %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p34E <- ggplot(p34E, aes(WeightFunction(dataapod_p34E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34E <- ggplot(p34E, aes(WeightFunction(dataapod_p34E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
@@ -1918,10 +2015,16 @@ plot_p34E <- ggplot(p34E, aes(WeightFunction(dataapod_p34E$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("El respeto y cumplimiento de la ley", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p34E
+  ggtitle(" ", subtitle="
+Respuestas de los apoderados") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_apod_p34E
+
+## Gráfico
+for_ciud5 <- cowplot::plot_grid(plot_prof_p27E,plot_p52E,plot_apod_p34E, ncol=3)
+ggsave(for_ciud5, file = "../output/graphs/graph_for_ciud5.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ### Aspecto más relevante de la formación ciudadana
 ```{r}
@@ -1931,27 +2034,39 @@ data_p53 <- na.omit(data_p53)
 data_p53$P53 <- factor(data_p53$P53, levels = c("A","B","C","D","E"), labels = c("
   <br>
   <strong>
-  El respeto y la amabilidad en las <br>
-  relaciones con los demás</strong></b>
+  El respeto y la <br>
+  amabilidad en las <br>
+  relaciones con los <br> 
+  demás</strong></b>
   <br>", "
   <br> 
   <strong>
-  Los valores democráticos de deliberación,<br>
-  tolerancia y compromiso con el bien común</strong></b>
+  Los valores <br>
+  democráticos de <br> 
+  deliberación, <br>
+  tolerancia y <br>
+  compromiso con <br>
+  el bien común</strong></b>
   <br>", "
   <br>
   <strong>
-  Valorar la participación electoral (votar)</strong></b>
+  Valorar la <br> 
+  participación <br> 
+  electoral (votar)</strong></b>
   <br>","
   <br>
  <strong>
-  Participar de movimientos sociales o <br>
+  Participar de <br>
+  movimientos <br>
+  sociales o <br>
   manifestaciones</strong></b> 
   <br>
   ","
   <br>
  <strong>
-  El respeto y cumplimiento de la ley</strong></b> 
+  El respeto y <br>
+  cumplimiento <br>
+  de la ley</strong></b> 
   <br>
   "))
 p53 <- data_p53 %>%
@@ -1964,15 +2079,18 @@ p53 <- p53 %>%
 plot_p53 <- ggplot(p53, aes(WeightFunction(data_p53$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<br> <br> <br> <strong><span style='font-size:28px'>Y de los aspectos mencionados, ¿cuál cree usted que debería ser <br> el más importante en la formación ciudadana?</span></strong> <br>", subtitle="
+
+Respuestas de los estudiantes") +
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        legend.title = element_blank())
 plot_p53
 
 # Docentes
@@ -2011,19 +2129,20 @@ p28 <- p28 %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p28 <- ggplot(p28, aes(WeightFunction(dataprof_p28$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p28 <- ggplot(p28, aes(WeightFunction(dataprof_p28$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p28
+  ggtitle(" ", subtitle="Respuestas de los docentes") +  
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_prof_p28
 
 # Apoderados
 dataapod_p35=dataapod %>% select(P35,pond_apoderado_reg_dep_tens) %>% as.data.frame
@@ -2061,19 +2180,23 @@ p35 <- p35 %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p35 <- ggplot(p35, aes(WeightFunction(dataapod_p35$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p35 <- ggplot(p35, aes(WeightFunction(dataapod_p35$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("De los aspectos mencionados, ¿cuál cree usted que es el más importante?", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p35
+  ggtitle(" ", subtitle="Respuestas de los apoderados") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
+plot_apod_p35
+
+## Gráfico
+for_ciud6 <- cowplot::plot_grid(plot_prof_p28,plot_p53,plot_apod_p35, ncol=3)
+ggsave(for_ciud6, file = "../output/graphs/graph_for_ciud6.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ### Y actualmente ¿Quién juega de hecho el rol más importante en cada uno de los aspectos de la formación ciudadana de los estudiantes?
 #### El respeto y la amabilidad en las relaciones con los demás
@@ -2680,9 +2803,10 @@ plot_p43D <- ggplot(p43D, aes(WeightFunction(data_p43D$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado estas en política?", subtitle="Respuestas de los estudiantes") +
+  ggtitle(" ", subtitle="Respuestas de los estudiantes") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
 plot_p43D
 
 # Docentes
@@ -2712,19 +2836,22 @@ p11 <- p11 %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p11 <- ggplot(p11, aes(WeightFunction(dataprof_p11$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p11 <- ggplot(p11, aes(WeightFunction(dataprof_p11$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Qué tan interesado(a) está usted en política?", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p11
+  ggtitle("<strong><span style='font-size:28px'>¿Cuán interesado(a) está usted en la política?</span></strong>", subtitle="
+          
+Respuestas de los docentes") +
+  theme(plot.title = element_markdown(face = "bold",hjust=0.5),
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        legend.title = element_blank())
+plot_prof_p11
 
 # Apoderados
 dataapod_p38D=dataapod %>% select(P38D,pond_apoderado_reg_dep_tens) %>% as.data.frame
@@ -2762,10 +2889,15 @@ plot_p38D <- ggplot(p38D, aes(WeightFunction(dataapod_p38D$pond_apoderado_reg_de
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado(a) está usted en la política?", subtitle="Respuestas de los apoderados") +
+  ggtitle(" ", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.position = "none")
 plot_p38D
+
+# Gráfico conjunto
+intpol_1 <- cowplot::plot_grid(plot_p43D,plot_prof_p11,plot_p38D, ncol=3)
+ggsave(intpol_1, file = "../output/graphs/graph_intpol.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ## Interés en la desigualdad social
 ```{r}
@@ -3090,7 +3222,7 @@ p3 <- p3 %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p3 <- ggplot(p3, aes(WeightFunction(dataapod_p3$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p3 <- ggplot(p3, aes(WeightFunction(dataapod_p3$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
@@ -3103,7 +3235,7 @@ plot_p3 <- ggplot(p3, aes(WeightFunction(dataapod_p3$pond_apoderado_reg_dep_tens
 en que funciona la democracia en Chile?", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p3
+plot_apod_p3
 ```
 ## Creencias y actitudes autoritarias
 ### Los jóvenes deben aprender a obedecer y respetar a las autoridades
@@ -3138,16 +3270,14 @@ p21A <- p21A %>%
 plot_p21A <- ggplot(p21A, aes(WeightFunction(data_p21A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
-afirmación sobre los gobiernos y sus lideres? Los jóvenes
-deben aprender a obedecer y respetar a las autoridades", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+  ggtitle("", subtitle="Respuestas de los estudiantes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5), 
+        legend.position = "none",
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p21A
 
@@ -3181,17 +3311,18 @@ p18B <- p18B %>%
 plot_p18B <- ggplot(p18B, aes(WeightFunction(dataprof_p18B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
-afirmación sobre los gobiernos y sus lideres? Los jóvenes
-deben aprender a obedecer y respetar a las autoridades", subtitle="Respuestas de los docentes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:25px'>¿En qué medida estás de acuerdo o en desacuerdo con la siguiente <br>
+afirmación sobre los gobiernos y sus lideres?</span></strong> <br> 
+<strong><span style='font-size:28px'>Los jóvenes deben aprender a obedecer y respetar a las autoridades</span></strong>", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_markdown(face = "bold",hjust=0.5), 
+        legend.position = "bottom",
+        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
+        legend.title = element_blank())
 plot_p18B
 
 # Apoderados
@@ -3224,18 +3355,21 @@ p5A <- p5A %>%
 plot_p5A <- ggplot(p5A, aes(WeightFunction(dataapod_p5A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿En qué medida estás de acuerdo o en desacuerdo con la siguiente
-afirmación sobre los gobiernos y sus lideres? Los jóvenes
-deben aprender a obedecer y respetar a las autoridades", subtitle="Respuestas de los apoderados") +
+  ggtitle("", subtitle="Respuestas de los apoderados") +
   theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+        legend.position = "none",
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
 plot_p5A
+
+# Gráfico conjunto
+aut_1 <- cowplot::plot_grid(plot_p21A, plot_p18B, plot_p5A, ncol=3)
+ggsave(aut_1, file = "../output/graphs/graph_aut1.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ### Mientras más personas estén dispuestas a criticar y desafiar a las autoridades es mejor para la sociedad
 ```{r}
