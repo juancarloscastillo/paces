@@ -4829,11 +4829,10 @@ plot_p30A <- ggplot(p30A, aes(WeightFunction(data_p30A$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Votar en una elección") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("",subtitle="<br><br><br><br><strong><span style='font-size:28px'>Votar en una elección </span></strong><br><br>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+        legend.position = "none",
+        plot.subtitle = element_markdown(hjust = 0.5))
 plot_p30A
 ```
 ### Ser candidato para repesentar a la clase o parte del centro de alumnos
@@ -4863,13 +4862,14 @@ plot_p30B <- ggplot(p30B, aes(WeightFunction(data_p30B$pond_estudiante_reg_dep_t
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Ser candidato para representar a la clase o parte del centro de alumnos") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  theme(legend.title = element_blank()) +
+  theme(legend.text = element_markdown(colour = "grey20", size =18)) +
+  ggtitle("<br><br><br><strong><span style='font-size:25px'>¿Has realizado la siguiente actividad al interior de la escuela durante <br> los últimos dos semestres?</span></strong><br>",subtitle="<strong><span style='font-size:28px'>Ser candidato para representar <br>
+  a la clase o parte del centro <br>
+  de alumnos</span></strong>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+       legend.position = "bottom",
+       plot.subtitle = element_markdown(hjust = 0.5))
 plot_p30B
 ```
 ### Ser parte del centro de alumnos
@@ -4901,13 +4901,18 @@ plot_p30C <- ggplot(p30C, aes(WeightFunction(data_p30C$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Ser parte del centro de alumnos") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'>Ser parte del centro <br> de alumnos</span></strong><br>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p30C
 ```
+#### Gráfico participación formal actual
+```{r}
+partform <- cowplot::plot_grid(plot_p30A,plot_p30B,plot_p30C, ncol=3)
+ggsave(partform, file = "../output/graphs/graph_partform_act.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
+
 ### Cuando seas adulto, ¿crees que vayas a votar en elecciones municipales?
 ```{r}
 data_p31A=data %>% select(P31A,pond_estudiante_reg_dep_tens) %>% as.data.frame
@@ -4946,9 +4951,10 @@ plot_p31A <- ggplot(p31A, aes(WeightFunction(data_p31A$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Cuando seas adulto, ¿crees que vayas a votar en las elecciones municipales?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("",subtitle="<br><br><br><br><br><br><strong><span style='font-size:28px'>Votar en las elecciones <br> municipales</span></strong>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+        legend.position = "none",
+        plot.subtitle = element_markdown(hjust = 0.5))
 plot_p31A
 ```
 ### Cuando seas adulto, ¿crees que vayas a votar en elecciones presidenciales?
@@ -4989,9 +4995,11 @@ plot_p31B <- ggplot(p31B, aes(WeightFunction(data_p31B$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Cuando seas adulto, ¿crees que vayas a votar en las elecciones presidenciales?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<br><br><br><strong><span style='font-size:25px'>A continuación, encontrarás una lista con distintas maneras en que los <br> adultos pueden participar activamente de la vida política. <br> Cuando seas adulto(a), ¿qué crees que vas a hacer?</span></strong><br>",subtitle="<strong><span style='font-size:28px'><br>Votar en las elecciones <br> presidenciales </span></strong>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+       legend.position = "bottom",
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank())
 plot_p31B
 ```
 ### Cuando seas adulto, ¿crees que vayas a informarte sobre los candidatos antes de votar en una elección?
@@ -5032,12 +5040,21 @@ plot_p31C <- ggplot(p31C, aes(WeightFunction(data_p31C$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Cuando seas adulto, ¿crees que vayas a informarte sobre
-los candidatos antes de votar en una elección") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("",subtitle="<br><br><br><br><br><strong><span style='font-size:28px'>Informarme sobre los <br>
+          candidatos antes de <br>
+          votar en una elección</span></strong>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+        legend.position = "none",
+        plot.subtitle = element_markdown(hjust = 0.5))
+
 plot_p31C
 ```
+#### Gráfico participación formal actual
+```{r}
+partform2 <- cowplot::plot_grid(plot_p31A,plot_p31B,plot_p31C, ncol=3)
+ggsave(partform2, file = "../output/graphs/graph_partform_fut.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+```
+
 ## Participación activista
 ### Participar en una protesta en la escuela
 ```{r}
@@ -5068,11 +5085,10 @@ plot_p30D <- ggplot(p30D, aes(WeightFunction(data_p30D$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Participar en una protesta en la escuela") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'>Participar en una protesta <br>en la escuela</span></strong><br>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p30D
 ```
 ### Tomar un rol activo en una reunión o asamblea  de estudiantes
@@ -5102,13 +5118,16 @@ plot_p30E <- ggplot(p30E, aes(WeightFunction(data_p30E$pond_estudiante_reg_dep_t
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
-  theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Tomar un rol activo en una reunión o asamblea  de estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  theme(legend.title = element_blank()) +
+  theme(legend.text = element_markdown(colour = "grey20", size =18)) +
+  ggtitle("<br><br><br><strong><span style='font-size:25px'>¿Has realizado la siguiente actividad al interior de la escuela durante <br> los últimos dos semestres?</span></strong><br>",subtitle="<strong><span style='font-size:28px'>
+  Tomar un rol activo en una <br>
+  reunión o asamblea  de <br>
+  estudiantes</span></strong>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+       legend.position = "bottom",
+       plot.subtitle = element_markdown(hjust = 0.5))
+
 plot_p30E
 ```
 ### Usar una polera o simbolo con un mensaje político
@@ -5140,12 +5159,16 @@ plot_p30F <- ggplot(p30F, aes(WeightFunction(data_p30F$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Usar una polera o simbolo con un mensaje político") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'>Usar una polera o símbolo <br> con un mensaje político</span></strong><br>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p30F
+```
+#### Gráfico participación activista en la escuela
+```{r}
+partact1 <- cowplot::plot_grid(plot_p30D,plot_p30E,plot_p30F, ncol=3)
+ggsave(partact1, file = "../output/graphs/graph_partact_esc.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ### Firmar una petición
 ```{r}
@@ -5176,10 +5199,10 @@ plot_p33A <- ggplot(p33A, aes(WeightFunction(data_p33A$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
-Firmar una petición") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'>Firmar una petición</span></strong><br>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p33A
 ```
 ### Participar en una marcha o manifestación pacífica
