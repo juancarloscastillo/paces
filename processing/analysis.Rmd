@@ -5341,11 +5341,10 @@ plot_p30G <- ggplot(p30G, aes(WeightFunction(data_p30G$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Trabajos voluntarios de ayuda") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'>Trabajos voluntarios <br> de ayuda</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p30G
 ```
 ### Colectas de dineros o bienes para ayudar a otros
@@ -5377,11 +5376,13 @@ plot_p30H <- ggplot(p30H, aes(WeightFunction(data_p30H$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Colectas de dineros o bienes para ayudar a otros") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<br><br><br><strong><span style='font-size:25px'>¿Has realizado la siguiente actividad al interior de la escuela durante <br> los últimos dos semestres?</span></strong><br>",subtitle="<strong><span style='font-size:28px'>
+  Colectas de dineros o bienes <br> para ayudar a otros</span></strong>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+       legend.position = "bottom",
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank())
+
 plot_p30H
 ```
 ### Actividades de ayuda a la comunidad
@@ -5413,12 +5414,16 @@ plot_p30I <- ggplot(p30I, aes(WeightFunction(data_p30I$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad al interior de la 
-escuela durante los últimos dos semestres? 
-Actividades de ayuda a la comunidad") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'>Actividades de ayuda <br> a la comunidad</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p30I
+```
+#### Gráfico participación comunitaria en la escuela
+```{r}
+partcom1 <- cowplot::plot_grid(plot_p30G,plot_p30H,plot_p30I, ncol=3)
+ggsave(partcom1, file = "../output/graphs/graph_partcom_esc.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ### Donar dinero por una buena causa
 ```{r}
@@ -5449,10 +5454,10 @@ plot_p33E <- ggplot(p33E, aes(WeightFunction(data_p33E$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
-Donar dinero por una buena causa") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><br><strong><span style='font-size:28px'>Donar dinero por <br> una buena causa</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p33E
 ```
 ### Trabajar como voluntario por ayudar personas de tu comunidad
@@ -5484,10 +5489,14 @@ plot_p33F <- ggplot(p33F, aes(WeightFunction(data_p33F$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
-Trabajar como voluntario por ayudar personas de tu comunidad") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<br><br><br><strong><span style='font-size:25px'>¿Has realizado la siguiente actividad durante los últimos 12 meses?</span></strong><br>",subtitle="<strong><span style='font-size:28px'> <br> 
+  Trabajar como <br>
+  voluntario por ayudar <br>
+  personas de tu comunidad</span></strong>") +  
+ theme(plot.title = element_markdown(hjust=0.5),
+       legend.position = "bottom",
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank())
 plot_p33F
 ```
 ### Participar de una actividad social en la comunidad en que vives
@@ -5519,9 +5528,16 @@ plot_p33G <- ggplot(p33G, aes(WeightFunction(data_p33G$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
-Participar de una actividad social en la comunidad en que vives") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'> Participar de una <br>
+  actividad social en la <br>
+  comunidad en que vives</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
 plot_p33G
+```
+#### Gráfico participación comunitaria fuera de la escuela
+```{r}
+partcom2 <- cowplot::plot_grid(plot_p33E,plot_p33F,plot_p33G, ncol=3)
+ggsave(partcom2, file = "../output/graphs/graph_partcom.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
