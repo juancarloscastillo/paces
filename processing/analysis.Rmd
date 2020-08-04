@@ -1267,7 +1267,7 @@ factual (escala de 0 a 6)') + xlab(' ') +
      ggtitle("Conocimiento civico factual por tipo dependencia 
 administrativa de la escuela")
 Conocimiento_civico_factual_colegio
-ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimiento_civico_factual_colegio.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
+ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimiento_civico_factual_colegio.png",device = "png",width = 21,height = 13,dpi = "retina",units = "cm")
 ```
 #### Sexo
 ```{r}
@@ -2085,7 +2085,7 @@ plot_p53 <- ggplot(p53, aes(WeightFunction(data_p53$pond_estudiante_reg_dep_tens
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("<br> <br> <br> <strong><span style='font-size:28px'>Y de los aspectos mencionados, ¿cuál cree usted que debería ser <br> el más importante en la formación ciudadana?</span></strong> <br>", subtitle="
+  ggtitle("<br> <br> <br> <strong><span style='font-size:28px'>Y de los aspectos mencionados, ¿cuál cree usted que debería ser <br> el más importante en la formación ciudadana?</span></strong>", subtitle="
 
 Respuestas de los estudiantes") +
   theme(plot.title = element_markdown(hjust=0.5),
@@ -2140,7 +2140,7 @@ plot_prof_p28 <- ggplot(p28, aes(WeightFunction(dataprof_p28$pond_prof_reg_dep_t
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle(" ", subtitle="Respuestas de los docentes") +  
-  theme(plot.title = element_text(hjust=0.5),
+  theme(plot.title = element_markdown(hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
         legend.position = "none")
 plot_prof_p28
@@ -2190,7 +2190,7 @@ plot_apod_p35 <- ggplot(p35, aes(WeightFunction(dataapod_p35$pond_apoderado_reg_
   xlim(0.5, 2.5) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle(" ", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(hjust=0.5),
+  theme(plot.title = element_markdown(hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
         legend.position = "none")
 plot_apod_p35
@@ -2860,10 +2860,13 @@ plot_p43D <- ggplot(p43D, aes(WeightFunction(data_p43D$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle(" ", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
+  ggtitle("<strong><span style='font-size:28px'>¿Cuán interesado(a) está usted en la política?</span></strong>", subtitle="
+          
+Respuestas de los estudiantes") +
+  theme(plot.title = element_markdown(face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
-        legend.position = "none")
+        legend.position = "bottom",
+        legend.title = element_blank())
 plot_p43D
 
 # Docentes
@@ -2901,13 +2904,10 @@ plot_prof_p11 <- ggplot(p11, aes(WeightFunction(dataprof_p11$pond_prof_reg_dep_t
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("<strong><span style='font-size:28px'>¿Cuán interesado(a) está usted en la política?</span></strong>", subtitle="
-          
-Respuestas de los docentes") +
-  theme(plot.title = element_markdown(face = "bold",hjust=0.5),
+  ggtitle(" ", subtitle="Respuestas de los docentes") +
+  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
         plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"),
-        legend.position = "bottom",
-        legend.title = element_blank())
+        legend.position = "none")
 plot_prof_p11
 
 # Apoderados
@@ -2953,7 +2953,7 @@ plot_p38D <- ggplot(p38D, aes(WeightFunction(dataapod_p38D$pond_apoderado_reg_de
 plot_p38D
 
 # Gráfico conjunto
-intpol_1 <- cowplot::plot_grid(plot_p43D,plot_prof_p11,plot_p38D, ncol=3)
+intpol_1 <- cowplot::plot_grid(plot_prof_p11,plot_p43D,plot_p38D, ncol=3)
 ggsave(intpol_1, file = "../output/graphs/graph_intpol.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ## Interés en la desigualdad social
@@ -5198,11 +5198,13 @@ plot_p33A <- ggplot(p33A, aes(WeightFunction(data_p33A$pond_estudiante_reg_dep_t
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle(" ",subtitle = "<br><br><br><br><strong><span style='font-size:28px'>Firmar una petición</span></strong><br>") +  
-  theme(plot.title = element_markdown(hjust=0.5),
-        plot.subtitle = element_markdown(hjust=0.5),
-        legend.position = "none")
+  theme(legend.text = element_markdown(colour = "grey20", size =16)) +
+  ggtitle(" ",subtitle="<strong><span style='font-size:28px'>Firmar una petición</span></strong>") +  
+theme(plot.title = element_markdown(hjust=0),
+       legend.position = "bottom",
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank(),
+       legend.justification = c(-0.15, 1))
 plot_p33A
 ```
 ### Participar en una marcha o manifestación pacífica
@@ -5234,10 +5236,10 @@ plot_p33B <- ggplot(p33B, aes(WeightFunction(data_p33B$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
-Participar en una marcha o manifestación pacífica") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<br><br><br><strong><span style='font-size:25px'>¿Has realizado la siguiente actividad durante los últimos 12 meses?</span></strong><br>",subtitle = "<strong><span style='font-size:28px'>Participar en una marcha <br> o manifestación pacífica</span></strong><br>") +  
+  theme(plot.title = element_markdown(hjust=-0.35),
+        legend.position = "none",
+        plot.subtitle = element_markdown(hjust = 0.5))
 plot_p33B
 ```
 ### Participar en una marcha o manifestación que resultó en destrucción de propiedad
@@ -5268,12 +5270,15 @@ plot_p33C <- ggplot(p33C, aes(WeightFunction(data_p33C$pond_estudiante_reg_dep_t
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
-  theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
-Participar en una marcha o manifestación que resultó
-en destrucción de propiedad") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  theme(legend.text = element_markdown(colour = "grey20", size =16)) +
+  ggtitle(" ",subtitle="<br><br><br><br><br><strong><span style='font-size:28px'>
+  Participar en una marcha <br> 
+  o manifestación que resultó<br> 
+ en destrucción de propiedad</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=0),
+        legend.position = "none",
+        plot.subtitle = element_markdown(hjust = 0.5))
+
 plot_p33C
 ```
 ### Participar en una toma
@@ -5305,12 +5310,22 @@ plot_p33D <- ggplot(p33D, aes(WeightFunction(data_p33D$pond_estudiante_reg_dep_t
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Has realizado la siguiente actividad durante los últimos 12 meses? 
-Participar en una toma") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle = "<strong><span style='font-size:28px'>Participar en una toma</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=0.5),
+        plot.subtitle = element_markdown(hjust=0.5),
+        legend.position = "none")
+
 plot_p33D
 ```
+#### Gráfico de participación activista fuera de la escuela
+```{r}
+partact2a <- cowplot::plot_grid(plot_p33B,plot_p33C, ncol=2)
+partact2b <- cowplot::plot_grid(plot_p33D,plot_p33A, ncol=2)
+partact2 <- cowplot::plot_grid(partact2a,partact2b, ncol=1)
+ggsave(partact2, file = "../output/graphs/graph_partact.png",device = "png",width = 30,height = 35,dpi = "retina",units = "cm")
+#ggsave(partact2, file = "../output/graphs/graph_partact.png",device = "png",width = 25,height = 18,dpi = "retina",units = "cm")
+```
+
 ## Participación comunitaria
 ### Trabajos voluntarios de ayuda 
 ```{r}
