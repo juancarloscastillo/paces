@@ -4,8 +4,9 @@ library(ggplot2)
 library(cowplot)
 library(tidyverse)
 library(ggtext)
-library(dplyr)
 library(RColorBrewer)
+library(forcats)
+library(dplyr)
 ```
 
 # Data
@@ -80,7 +81,7 @@ p1 <- p1 %>%
 plot_p1 <- ggplot(p1, aes(WeightFunction(data_p1$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -138,7 +139,7 @@ p2 <- p2 %>%
 plot_p2 <- ggplot(p2, aes(WeightFunction(data_p2$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -192,7 +193,7 @@ p3 <- p3 %>%
 plot_p3 <- ggplot(p3, aes(WeightFunction(data_p3$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -242,7 +243,7 @@ p4 <- p4 %>%
 plot_p4 <- ggplot(p4, aes(WeightFunction(data_p4$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -295,7 +296,7 @@ p5 <- p5 %>%
 plot_p5 <- ggplot(p5, aes(WeightFunction(data_p5$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -351,7 +352,7 @@ p6 <- p6 %>%
 plot_p6 <- ggplot(p6, aes(WeightFunction(data_p6$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -457,7 +458,7 @@ p8 <- p8 %>%
 plot_p8 <- ggplot(p8, aes(WeightFunction(data_p8$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -469,7 +470,7 @@ los chilenos?") +
 
 plot_p8
 ```
-#### Plot preguntas conocimiento civico conceptual
+#### Plot preguntas conocimiento cívico conceptual
 ```{r}
 ccc_1 <- cowplot::plot_grid(plot_p2,plot_p1,plot_p3,plot_p5,plot_p4,plot_p6, plot_p7, plot_p8, ncol=4)
 ggsave(ccc_1, file = "../output/graphs/graph_ccc.png",device = "png",width = 80,height = 35,dpi = "retina",units = "cm")
@@ -507,7 +508,7 @@ p9 <- p9 %>%
 plot_p9 <- ggplot(p9, aes(WeightFunction(data_p9$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -555,7 +556,7 @@ p10 <- p10 %>%
 plot_p10 <- ggplot(p10, aes(WeightFunction(data_p10$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -599,7 +600,7 @@ p11 <- p11 %>%
 plot_p11 <- ggplot(p11, aes(WeightFunction(data_p11$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -644,7 +645,7 @@ p12 <- p12 %>%
 plot_p12 <- ggplot(p12, aes(WeightFunction(data_p12$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -692,7 +693,7 @@ p13 <- p13 %>%
 plot_p13 <- ggplot(p13, aes(WeightFunction(data_p13$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -736,7 +737,7 @@ p14 <- p14 %>%
 plot_p14 <- ggplot(p14, aes(WeightFunction(data_p14$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -747,7 +748,7 @@ plot_p14 <- ggplot(p14, aes(WeightFunction(data_p14$pond_estudiante_reg_dep_tens
 
 plot_p14
 ```
-#### Plot preguntas conocimiento civico factual
+#### Plot preguntas conocimiento cívico factual
 ```{r}
 ccf_1 <- cowplot::plot_grid(plot_p13,plot_p10,plot_p11,plot_p12,plot_p9,plot_p14, ncol=3)
 ggsave(ccf_1, file = "../output/graphs/graph_ccf.png",device = "png",width = 50,height = 25,dpi = "retina",units = "cm")
@@ -823,7 +824,7 @@ table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudi
 
 plot2_p1 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
-     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
      ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
@@ -911,7 +912,7 @@ table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudi
 
 plot2_p2 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens), x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
-     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
      ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
@@ -995,7 +996,7 @@ table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudi
 
 plot2_p3 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
-     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
      ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
@@ -1071,7 +1072,7 @@ table_pertot <-rbind(pregunta_2009,pregunta_2019)
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 plot2_p4 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
-     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
      ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
@@ -1147,7 +1148,7 @@ str(table_pertot)
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 plot2_p5 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
-     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
      ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
@@ -1197,7 +1198,7 @@ table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudi
 
 plot2_p6 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
-     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(paste(round(mean,1),"%"), big.mark = ",", scientific = FALSE), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
      ylab('Porcentaje de estudiantes que seleccionó la alternativa') + xlab(' ') +
@@ -1215,7 +1216,7 @@ hecho. ¿Cuál de las siguientes es un HECHO?")  +
 plot2_p6
 ggsave(plot2_p6, file = "../output/graphs/graph_p6.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
-### Cruces: conocimiento civico factual
+### Cruces: conocimiento cívico factual
 #### Región
 ```{r}
 table_preposh1<- rbind(psych::describe(data_antofa$Conocimiento_civico_factual),
@@ -1225,10 +1226,10 @@ table_preposh1$reg <- c("Antofagasta","Maule","Metropolitana")
 Conocimiento_civico_factual_region <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=reg, y=mean, fill=reg)) +
      geom_bar(position = 'dodge', stat='identity') +
      scale_fill_brewer(palette="Purples") +
-     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
-     ylab('Puntaje promedio en la prueba de conocimiento civico 
+     ylab('Puntaje promedio en la prueba de conocimiento cívico 
 factual (escala de 0 a 6)') + xlab(' ') + 
      theme(legend.position="top") +
      labs(fill = " ") +
@@ -1238,7 +1239,7 @@ factual (escala de 0 a 6)') + xlab(' ') +
           text = element_text(size = 14, face = "bold"),
           plot.title = element_text(hjust=0.5),
           legend.position = "none") + 
-     ggtitle("Conocimiento civico factual por región")
+     ggtitle("Conocimiento cívico factual por región")
 Conocimiento_civico_factual_region
 ggsave(Conocimiento_civico_factual_region, file = "../output/graphs/Conocimiento_civico_factual_region.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
 ```
@@ -1251,10 +1252,10 @@ table_preposh1$dep <- c("Municipal","Particular Subvencionado","Particular Priva
 Conocimiento_civico_factual_colegio <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=dep, y=mean, fill=dep)) +
      geom_bar(position = 'dodge', stat='identity')+#,width=0.8) 
      scale_fill_brewer(palette="Purples") +
-     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
-     ylab('Puntaje promedio en la prueba de conocimiento civico 
+     ylab('Puntaje promedio en la prueba de conocimiento cívico 
 factual (escala de 0 a 6)') + xlab(' ') + 
      theme(legend.position="top") +
      labs(fill = " ") +
@@ -1264,7 +1265,7 @@ factual (escala de 0 a 6)') + xlab(' ') +
           text = element_text(size = 14, face = "bold"),
           plot.title = element_text(hjust=0.5),
           legend.position = "none") + 
-     ggtitle("Conocimiento civico factual por tipo dependencia 
+     ggtitle("Conocimiento cívico factual por tipo dependencia 
 administrativa de la escuela")
 Conocimiento_civico_factual_colegio
 ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimiento_civico_factual_colegio.png",device = "png",width = 21,height = 13,dpi = "retina",units = "cm")
@@ -1278,10 +1279,10 @@ table_preposh1$sexo <- c("Mujeres","Hombres")
 Conocimiento_civico_factual_sexo <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=sexo, y=mean, fill=sexo)) +
      geom_bar(position = 'dodge', stat='identity')+ 
      scale_fill_brewer(palette="Purples") +
-     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
-     ylab('Puntaje promedio en la prueba de conocimiento civico 
+     ylab('Puntaje promedio en la prueba de conocimiento cívico 
 factual (escala de 0 a 6)') + xlab(' ') + 
      theme(legend.position="top") +
      labs(fill = " ") +
@@ -1291,7 +1292,7 @@ factual (escala de 0 a 6)') + xlab(' ') +
           text = element_text(size = 14, face = "bold"),
           plot.title = element_text(hjust=0.5),
           legend.position = "none") + 
-     ggtitle("Conocimiento civico factual por género")
+     ggtitle("Conocimiento cívico factual por género")
 Conocimiento_civico_factual_sexo
 ggsave(Conocimiento_civico_factual_sexo, file = "../output/graphs/Conocimiento_civico_factual_sexo.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
 ```
@@ -1306,13 +1307,20 @@ básica", "Completó la enseñanza
 media", "Completó estudios en
 un IP o CFT", "Completó una carrera 
 en la Universidad")
-Conocimiento_civico_factual_edpadres <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=edpad, y=mean, fill=edpad)) +
+
+Conocimiento_civico_factual_edpadres <- table_preposh1 %>%
+  mutate(edpad = fct_relevel(edpad, "No terminó la educación
+básica", "Completó la educación 
+básica", "Completó la enseñanza 
+media", "Completó estudios en
+un IP o CFT", "Completó una carrera 
+en la Universidad")) %>% ggplot(aes(weights(data$pond_estudiante_reg_dep_tens), x=edpad, y=mean, fill=edpad)) +
      geom_bar(position = 'dodge', stat='identity')+
      scale_fill_brewer(palette="Purples") +
-     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=7) +
+     geom_text(aes(label=format(round(mean,1)), x=edpad, y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
      theme_bw(base_size = 14) +
      scale_y_continuous(labels = scales::comma) +
-     ylab('Puntaje promedio en la prueba de conocimiento civico 
+     ylab('Puntaje promedio en la prueba de conocimiento cívico 
 factual (escala de 0 a 6)') + xlab(' ') + 
      theme(legend.position="top") +
      labs(fill = " ") +
@@ -1322,7 +1330,7 @@ factual (escala de 0 a 6)') + xlab(' ') +
           text = element_text(size = 14, face = "bold"),
           plot.title = element_text(hjust=0.5),
           legend.position = "none") + 
-     ggtitle("Conocimiento civico factual por nivel educativo
+     ggtitle("Conocimiento cívico factual por nivel educativo
 de los padres (el más alto entre los dos)")   
 Conocimiento_civico_factual_edpadres
 ggsave(Conocimiento_civico_factual_edpadres, file = "../output/graphs/Conocimiento_civico_factual_edpadres.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
@@ -1362,7 +1370,7 @@ p52A <- p52A %>%
 plot_p52A <- ggplot(p52A, aes(WeightFunction(data_p52A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1409,7 +1417,7 @@ plot_prof_p27A <- ggplot(p27A, aes(WeightFunction(dataprof_p27A$pond_prof_reg_de
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   scale_fill_manual(values = c("#9E9AC8", "#6A51A3","#6A51A3","#6A51A3")) +
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
@@ -1456,7 +1464,7 @@ plot_apod_p34A <- ggplot(p34A, aes(WeightFunction(dataapod_p34A$pond_apoderado_r
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   scale_fill_manual(values = c("#CBC9E2","#9E9AC8", "#6A51A3","#6A51A3")) +
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
@@ -1505,7 +1513,7 @@ p52B <- p52B %>%
 plot_p52B <- ggplot(p52B, aes(WeightFunction(data_p52B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1550,7 +1558,7 @@ p27B <- p27B %>%
 plot_prof_p27B <- ggplot(p27B, aes(WeightFunction(dataprof_p27B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   #scale_fill_brewer(palette = "Purples") +
   scale_fill_manual(values = c("#9E9AC8", "#6A51A3","#6A51A3","#6A51A3")) +
   theme_void()+
@@ -1596,7 +1604,7 @@ p34B <- p34B %>%
 plot_apod_p34B <- ggplot(p34B, aes(WeightFunction(dataapod_p34B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1647,7 +1655,7 @@ p52C <- p52C %>%
 plot_p52C <- ggplot(p52C, aes(WeightFunction(data_p52C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1691,7 +1699,7 @@ p27C <- p27C %>%
 plot_prof_p27C <- ggplot(p27C, aes(WeightFunction(dataprof_p27C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   #scale_fill_brewer(palette = "Purples") +
   scale_fill_manual(values = c("#9E9AC8", "#6A51A3","#6A51A3","#6A51A3")) +
   theme_void()+
@@ -1735,7 +1743,7 @@ p34C <- p34C %>%
 plot_apod_p34C <- ggplot(p34C, aes(WeightFunction(dataapod_p34C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1784,7 +1792,7 @@ p52D <- p52D %>%
 plot_p52D <- ggplot(p52D, aes(WeightFunction(data_p52D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1828,7 +1836,7 @@ p27D <- p27D %>%
 plot_prof_p27D <- ggplot(p27D, aes(WeightFunction(dataprof_p27D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1872,7 +1880,7 @@ p34D <- p34D %>%
 plot_apod_p34D <- ggplot(p34D, aes(WeightFunction(dataapod_p34D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1922,7 +1930,7 @@ p52E <- p52E %>%
 plot_p52E <- ggplot(p52E, aes(WeightFunction(data_p52E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -1966,7 +1974,7 @@ p27E <- p27E %>%
 plot_prof_p27E <- ggplot(p27E, aes(WeightFunction(dataprof_p27E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2010,7 +2018,7 @@ p34E <- p34E %>%
 plot_apod_p34E <- ggplot(p34E, aes(WeightFunction(dataapod_p34E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2228,7 +2236,7 @@ p55A <- p55A %>%
 plot_p55A <- ggplot(p55A, aes(WeightFunction(data_p55A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2268,7 +2276,7 @@ p30A <- p30A %>%
 plot_prof_p30A <- ggplot(p30A, aes(WeightFunction(dataprof_p30A$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2307,7 +2315,7 @@ p37A <- p37A %>%
 plot_apod_p37A <- ggplot(p37A, aes(WeightFunction(dataapod_p37A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2351,7 +2359,7 @@ p55B <- p55B %>%
 plot_p55B <- ggplot(p55B, aes(WeightFunction(data_p55B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2391,7 +2399,7 @@ p30B <- p30B %>%
 plot_prof_p30B <- ggplot(p30B, aes(WeightFunction(dataprof_p30B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2431,7 +2439,7 @@ p37B <- p37B %>%
 plot_apod_p37B <- ggplot(p37B, aes(WeightFunction(dataapod_p37B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2477,7 +2485,7 @@ p55C <- p55C %>%
 plot_p55C <- ggplot(p55C, aes(WeightFunction(data_p55C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2517,7 +2525,7 @@ p30C <- p30C %>%
 plot_prof_p30C <- ggplot(p30C, aes(WeightFunction(dataprof_p30C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2556,7 +2564,7 @@ p37C <- p37C %>%
 plot_apod_p37C <- ggplot(p37C, aes(WeightFunction(dataapod_p37C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2601,7 +2609,7 @@ p55D <- p55D %>%
 plot_p55D <- ggplot(p55D, aes(WeightFunction(data_p55D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2641,7 +2649,7 @@ p30D <- p30D %>%
 plot_prof_p30D <- ggplot(p30D, aes(WeightFunction(dataprof_p30D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2680,7 +2688,7 @@ p37D <- p37D %>%
 plot_apod_p37D <- ggplot(p37D, aes(WeightFunction(dataapod_p37D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2725,7 +2733,7 @@ p55E <- p55E %>%
 plot_p55E <- ggplot(p55E, aes(WeightFunction(data_p55E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2765,7 +2773,7 @@ p30E <- p30E %>%
 plot_prof_p30E <- ggplot(p30E, aes(WeightFunction(dataprof_p30E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2804,7 +2812,7 @@ p37E <- p37E %>%
 plot_apod_p37E <- ggplot(p37E, aes(WeightFunction(dataapod_p37E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2854,7 +2862,7 @@ p43D <- p43D %>%
 plot_p43D <- ggplot(p43D, aes(WeightFunction(data_p43D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2899,7 +2907,7 @@ p11 <- p11 %>%
 plot_prof_p11 <- ggplot(p11, aes(WeightFunction(dataprof_p11$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2940,7 +2948,7 @@ p38D <- p38D %>%
 plot_p38D <- ggplot(p38D, aes(WeightFunction(dataapod_p38D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -2988,15 +2996,18 @@ p43A <- p43A %>%
 plot_p43A <- ggplot(p43A, aes(WeightFunction(data_p43A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado estas en la desigualdad social?", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:28px'>¿Cuán interesado estas en la desigualdad social?</span></strong><br>",subtitle = "<strong><span style='font-size:23px'>Respuestas de los estudiantes</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=-2.5),
+       legend.direction = "horizontal",
+       legend.position=c(1,0),
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank())
 plot_p43A
 
 # Apoderados
@@ -3026,19 +3037,24 @@ p38A <- p38A %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p38A <- ggplot(p38A, aes(WeightFunction(dataapod_p38A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p38A <- ggplot(p38A, aes(WeightFunction(dataapod_p38A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado(a) está usted en la desigualdad social?", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p38A
+  ggtitle(" ",subtitle="<br><br><strong><span style='font-size:23px'>Respuestas de los apoderados</span></strong>") +  
+  theme(legend.position = "none",
+       plot.subtitle = element_markdown(hjust = 0.5))
+
+plot_apod_p38A
+
+# Gráfico conjunto
+intdes <- cowplot::plot_grid(plot_p43A,plot_apod_p38A, ncol=2)
+ggsave(intdes, file = "../output/graphs/graph_intdes.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ## Interés en el medioambiente
 ```{r}
@@ -3072,15 +3088,18 @@ p43B <- p43B %>%
 plot_p43B <- ggplot(p43B, aes(WeightFunction(data_p43B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado estas en el medioambiente?", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:28px'>¿Cuán interesado estas en el medioambiente?</span></strong><br>",subtitle = "<strong><span style='font-size:23px'>Respuestas de los estudiantes</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=-5),
+       legend.direction = "horizontal",
+       legend.position=c(1,0),
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank())
 plot_p43B
 
 # Apoderados
@@ -3110,19 +3129,23 @@ p38B <- p38B %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p38B <- ggplot(p38B, aes(WeightFunction(dataapod_p38B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p38B <- ggplot(p38B, aes(WeightFunction(dataapod_p38B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado(a) está usted en el medioambiente?", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p38B
+  ggtitle(" ",subtitle="<br><br><strong><span style='font-size:23px'>Respuestas de los apoderados</span></strong>") +  
+  theme(legend.position = "none",
+       plot.subtitle = element_markdown(hjust = 0.5))
+plot_apod_p38B
+
+# Gráfico conjunto
+intmed <- cowplot::plot_grid(plot_p43B,plot_apod_p38B, ncol=2)
+ggsave(intmed, file = "../output/graphs/graph_intmed.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ## Interés en la igualdad de género
 ```{r}
@@ -3156,15 +3179,18 @@ p43C <- p43C %>%
 plot_p43C <- ggplot(p43C, aes(WeightFunction(data_p43C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado estas en la igualdad de género?", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("<strong><span style='font-size:28px'>¿Cuán interesado estas en la igualdad de género?</span></strong><br>",subtitle = "<strong><span style='font-size:23px'>Respuestas de los estudiantes</span></strong>") +  
+  theme(plot.title = element_markdown(hjust=-2.5),
+       legend.direction = "horizontal",
+       legend.position=c(1,0),
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank())
 plot_p43C
 
 # Apoderados
@@ -3194,19 +3220,23 @@ p38C <- p38C %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p38C <- ggplot(p38C, aes(WeightFunction(dataapod_p38C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p38C <- ggplot(p38C, aes(WeightFunction(dataapod_p38C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("¿Cuán interesado(a) está usted en la igualdad de género?", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
-plot_p38C
+  ggtitle(" ",subtitle="<br><br><strong><span style='font-size:23px'>Respuestas de los apoderados</span></strong>") +  
+  theme(legend.position = "none",
+       plot.subtitle = element_markdown(hjust = 0.5))
+plot_apod_p38C
+
+# Gráfico conjunto
+intgen <- cowplot::plot_grid(plot_p43C,plot_apod_p38C, ncol=2)
+ggsave(intgen, file = "../output/graphs/graph_intgen.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ## Actitudes hacia la democracia
 ```{r}
@@ -3240,16 +3270,20 @@ p15 <- p15 %>%
 plot_p15 <- ggplot(p15, aes(WeightFunction(data_p15$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("Considerando todo, ¿cuán satisfecho estas tu con la 
-manera en que funciona la democracia en Chile?", subtitle="Respuestas de los estudiantes") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle("        En general, ¿cuán satisfecho(a) está usted con la manera 
+                           en que funciona la democracia en Chile?
+          ",subtitle = "<strong><span style='font-size:23px'>Respuestas de los estudiantes</span></strong>") +  
+  theme(plot.title = element_text(hjust=-0.3,size=22,face="bold"),
+       legend.direction = "horizontal",
+       legend.position=c(1,0),
+       plot.subtitle = element_markdown(hjust = 0.5),
+       legend.title = element_blank())
 plot_p15
 
 # Apoderados
@@ -3282,17 +3316,20 @@ p3 <- p3 %>%
 plot_apod_p3 <- ggplot(p3, aes(WeightFunction(dataapod_p3$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
-  ggtitle("En general, ¿cuán satisfecho(a) está usted con la manera
-en que funciona la democracia en Chile?", subtitle="Respuestas de los apoderados") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5),
-        plot.subtitle = element_text(size = 16,hjust = 0.5, face = "bold"))
+  ggtitle(" ",subtitle="<br><br><br><br><br><strong><span style='font-size:23px'>Respuestas de los apoderados</span></strong>") +  
+  theme(legend.position = "none",
+       plot.subtitle = element_markdown(hjust = 0.5))
 plot_apod_p3
+
+# Gráfico conjunto
+dem <- cowplot::plot_grid(plot_p15,plot_apod_p3, ncol=2)
+ggsave(dem, file = "../output/graphs/graph_dem.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ## Creencias y actitudes autoritarias
 ### Los jóvenes deben aprender a obedecer y respetar a las autoridades
@@ -3462,7 +3499,7 @@ p21B <- p21B %>%
 plot_p21B <- ggplot(p21B, aes(WeightFunction(data_p21B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3507,7 +3544,7 @@ p18B <- p18B %>%
 plot_prof_p18B <- ggplot(p18B, aes(WeightFunction(dataprof_p18B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3551,7 +3588,7 @@ p5B <- p5B %>%
 plot_apod_p5B <- ggplot(p5B, aes(WeightFunction(dataapod_p5B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3601,7 +3638,7 @@ p21C <- p21C %>%
 plot_p21C <- ggplot(p21C, aes(WeightFunction(data_p21C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3646,7 +3683,7 @@ p18C <- p18C %>%
 plot_prof_p18C <- ggplot(p18C, aes(WeightFunction(dataprof_p18C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3690,7 +3727,7 @@ p5C <- p5C %>%
 plot_apod_p5C <- ggplot(p5C, aes(WeightFunction(dataapod_p5C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3740,7 +3777,7 @@ p21D <- p21D %>%
 plot_p21D <- ggplot(p21D, aes(WeightFunction(data_p21D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3785,7 +3822,7 @@ p18D <- p18D %>%
 plot_prof_p18D <- ggplot(p18D, aes(WeightFunction(dataprof_p18D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3829,7 +3866,7 @@ p5D <- p5D %>%
 plot_apod_p5D <- ggplot(p5D, aes(WeightFunction(dataapod_p5D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3879,7 +3916,7 @@ p21E <- p21E %>%
 plot_p21E <- ggplot(p21E, aes(WeightFunction(data_p21E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3924,7 +3961,7 @@ p18E <- p18E %>%
 plot_prof_p18E <- ggplot(p18E, aes(WeightFunction(dataprof_p18E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -3967,7 +4004,7 @@ p5E <- p5E %>%
 plot_apod_p5E <- ggplot(p5E, aes(WeightFunction(dataapod_p5E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4016,7 +4053,7 @@ p21F <- p21F %>%
 plot_p21F <- ggplot(p21F, aes(WeightFunction(data_p21F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4061,7 +4098,7 @@ p18F <- p18F %>%
 plot_prof_p18F <- ggplot(p18F, aes(WeightFunction(dataprof_p18F$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4104,7 +4141,7 @@ p5F <- p5F %>%
 plot_apod_p5F <- ggplot(p5F, aes(WeightFunction(dataapod_p5F$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4153,7 +4190,7 @@ p21G <- p21G %>%
 plot_p21G <- ggplot(p21G, aes(WeightFunction(data_p21G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4198,7 +4235,7 @@ p18G <- p18G %>%
 plot_prof_p18G <- ggplot(p18G, aes(WeightFunction(dataprof_p18G$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4241,7 +4278,7 @@ p5G <- p5G %>%
 plot_apod_p5G <- ggplot(p5G, aes(WeightFunction(dataapod_p5G$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4290,7 +4327,7 @@ p21H <- p21H %>%
 plot_p21H <- ggplot(p21H, aes(WeightFunction(data_p21H$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4335,7 +4372,7 @@ p18H <- p18H %>%
 plot_prof_p18H <- ggplot(p18H, aes(WeightFunction(dataprof_p18H$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4378,7 +4415,7 @@ p5H <- p5H %>%
 plot_apod_p5H <- ggplot(p5H, aes(WeightFunction(dataapod_p5H$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4427,7 +4464,7 @@ p21I <- p21I %>%
 plot_p21I <- ggplot(p21I, aes(WeightFunction(data_p21I$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4472,7 +4509,7 @@ p18I <- p18I %>%
 plot_prof_p18I <- ggplot(p18I, aes(WeightFunction(dataprof_p18I$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4515,7 +4552,7 @@ p5I <- p5I %>%
 plot_apod_p5I <- ggplot(p5I, aes(WeightFunction(dataapod_p5I$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4564,7 +4601,7 @@ p22A <- p22A %>%
 plot_p22A <- ggplot(p22A, aes(WeightFunction(data_p22A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4607,7 +4644,7 @@ p22B <- p22B %>%
 plot_p22B <- ggplot(p22B, aes(WeightFunction(data_p22B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4649,7 +4686,7 @@ p22C <- p22C %>%
 plot_p22C <- ggplot(p22C, aes(WeightFunction(data_p22C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4691,7 +4728,7 @@ p22D <- p22D %>%
 plot_p22D <- ggplot(p22D, aes(WeightFunction(data_p22D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4734,7 +4771,7 @@ p22E <- p22E %>%
 plot_p22E <- ggplot(p22E, aes(WeightFunction(data_p22E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4778,7 +4815,7 @@ p22F <- p22F %>%
 plot_p22F <- ggplot(p22F, aes(WeightFunction(data_p22F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4823,7 +4860,7 @@ p30A <- p30A %>%
 plot_p30A <- ggplot(p30A, aes(WeightFunction(data_p30A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4858,7 +4895,7 @@ p30B <- p30B %>%
 plot_p30B <- ggplot(p30B, aes(WeightFunction(data_p30B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4895,7 +4932,7 @@ p30C <- p30C %>%
 plot_p30C <- ggplot(p30C, aes(WeightFunction(data_p30C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4945,7 +4982,7 @@ p31A <- p31A %>%
 plot_p31A <- ggplot(p31A, aes(WeightFunction(data_p31A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -4989,7 +5026,7 @@ p31B <- p31B %>%
 plot_p31B <- ggplot(p31B, aes(WeightFunction(data_p31B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5034,7 +5071,7 @@ p31C <- p31C %>%
 plot_p31C <- ggplot(p31C, aes(WeightFunction(data_p31C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5079,7 +5116,7 @@ p30D <- p30D %>%
 plot_p30D <- ggplot(p30D, aes(WeightFunction(data_p30D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5114,7 +5151,7 @@ p30E <- p30E %>%
 plot_p30E <- ggplot(p30E, aes(WeightFunction(data_p30E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5153,7 +5190,7 @@ p30F <- p30F %>%
 plot_p30F <- ggplot(p30F, aes(WeightFunction(data_p30F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5193,13 +5230,13 @@ p33A <- p33A %>%
 plot_p33A <- ggplot(p33A, aes(WeightFunction(data_p33A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =16)) +
-  ggtitle(" ",subtitle="<strong><span style='font-size:28px'>Firmar una petición</span></strong>") +  
+  ggtitle(" ",subtitle="<br><strong><span style='font-size:28px'>Firmar una petición</span></strong>") +  
 theme(plot.title = element_markdown(hjust=0),
        legend.position = "bottom",
        plot.subtitle = element_markdown(hjust = 0.5),
@@ -5230,7 +5267,7 @@ p33B <- p33B %>%
 plot_p33B <- ggplot(p33B, aes(WeightFunction(data_p33B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5265,7 +5302,7 @@ p33C <- p33C %>%
 plot_p33C <- ggplot(p33C, aes(WeightFunction(data_p33C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5304,7 +5341,7 @@ p33D <- p33D %>%
 plot_p33D <- ggplot(p33D, aes(WeightFunction(data_p33D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5323,7 +5360,6 @@ partact2a <- cowplot::plot_grid(plot_p33B,plot_p33C, ncol=2)
 partact2b <- cowplot::plot_grid(plot_p33D,plot_p33A, ncol=2)
 partact2 <- cowplot::plot_grid(partact2a,partact2b, ncol=1)
 ggsave(partact2, file = "../output/graphs/graph_partact.png",device = "png",width = 30,height = 35,dpi = "retina",units = "cm")
-#ggsave(partact2, file = "../output/graphs/graph_partact.png",device = "png",width = 25,height = 18,dpi = "retina",units = "cm")
 ```
 
 ## Participación comunitaria
@@ -5350,7 +5386,7 @@ p30G <- p30G %>%
 plot_p30G <- ggplot(p30G, aes(WeightFunction(data_p30G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5385,7 +5421,7 @@ p30H <- p30H %>%
 plot_p30H <- ggplot(p30H, aes(WeightFunction(data_p30H$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5423,7 +5459,7 @@ p30I <- p30I %>%
 plot_p30I <- ggplot(p30I, aes(WeightFunction(data_p30I$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5463,7 +5499,7 @@ p33E <- p33E %>%
 plot_p33E <- ggplot(p33E, aes(WeightFunction(data_p33E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5498,7 +5534,7 @@ p33F <- p33F %>%
 plot_p33F <- ggplot(p33F, aes(WeightFunction(data_p33F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -5537,7 +5573,7 @@ p33G <- p33G %>%
 plot_p33G <- ggplot(p33G, aes(WeightFunction(data_p33G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=7) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +

@@ -312,8 +312,6 @@ data$P33G[data$P33G==9]<-NA
 ## Sexo
 data$P58[data$P58==4]<-NA
 data$P58[data$P58==9]<-NA
-data_muj = data %>%  filter(P58 == 2) %>% as.data.frame()
-data_hom = data %>%  filter(P58 == 1) %>% as.data.frame()
 
 ## Nivel educativo más alto de los padres
 data$P66[data$P66==8]<-NA #ed. madre
@@ -321,6 +319,12 @@ data$P66[data$P66==9]<-NA
 data$P67[data$P67==8]<-NA #ed. padre
 data$P67[data$P67==9]<-NA
 data$edpadres <- ifelse(data$P66>data$P67,data$P66,data$P67)
+
+## Separación por sexo 
+data_muj = data %>%  filter(P58 == 2) %>% as.data.frame()
+data_hom = data %>%  filter(P58 == 1) %>% as.data.frame()
+
+## Separación según nivel educativo
 data_binc = data %>%  filter(edpadres == 1) %>% as.data.frame()
 data_bas = data %>%  filter(edpadres == 2) %>% as.data.frame()
 data_media = data %>%  filter(edpadres == 3) %>% as.data.frame()

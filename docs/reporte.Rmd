@@ -1,0 +1,104 @@
+# Conocimiento y formación en la escuela
+## Conocimiento cívico
+### Resultados generales
+#### Conocimiento civico conceptual
+![](../output/graphs/graph_ccc.png)
+
+#### Conocimiento civico factual
+![](../output/graphs/graph_ccf.png)
+
+### Comparación con el estudio ICCS 2009
+
+![](../output/graphs/graph_p1.png)
+
+![](../output/graphs/graph_p2.png)
+
+![](../output/graphs/graph_p3.png)
+
+![](../output/graphs/graph_p4.png)
+
+![](../output/graphs/graph_p5.png)
+
+![](../output/graphs/graph_p6.png)
+
+### Cruces
+![](../output/graphs/Conocimiento_civico_factual_region.png)
+
+![](../output/graphs/Conocimiento_civico_factual_colegio.png)
+
+![](../output/graphs/Conocimiento_civico_factual_sexo.png)
+
+![](../output/graphs/Conocimiento_civico_factual_edpadres.png)
+
+## Clima democrático en el aula
+![](../output/graphs/graph_for_ciud1.png)
+
+![](../output/graphs/graph_for_ciud2.png)
+
+![](../output/graphs/graph_for_ciud3.png)
+
+![](../output/graphs/graph_for_ciud4.png)
+
+![](../output/graphs/graph_for_ciud5.png)
+
+![](../output/graphs/graph_for_ciud6.png)
+
+![](../output/graphs/graph_for_ciud7.png)
+
+![](../output/graphs/graph_for_ciud8.png)
+
+![](../output/graphs/graph_for_ciud9.png)
+
+![](../output/graphs/graph_for_ciud10.png)
+
+![](../output/graphs/graph_for_ciud11.png)
+
+# Actitudes políticas
+![](../output/graphs/graph_intpol.png)
+
+![](../output/graphs/graph_intdes.png)
+
+![](../output/graphs/graph_intmed.png)
+
+![](../output/graphs/graph_intgen.png)
+
+## Actitudes hacia la democracia
+![](../output/graphs/graph_dem.png)
+
+## Creencias y actitudes autoritarias
+![](../output/graphs/graph_aut1.png)
+
+![](../output/graphs/graph_aut2.png)
+
+![](../output/graphs/graph_aut3.png)
+
+![](../output/graphs/graph_aut4.png)
+
+![](../output/graphs/graph_aut5.png)
+
+![](../output/graphs/graph_aut6.png)
+
+![](../output/graphs/graph_aut7.png)
+
+![](../output/graphs/graph_aut8.png)
+
+![](../output/graphs/graph_aut9.png)
+
+## Confianza en instituciones
+![](../output/graphs/graph_cgp.png)
+
+# Participación 
+## Participación formal
+![](../output/graphs/graph_partform_act.png)
+
+![](../output/graphs/graph_partform_fut.png)
+
+## Participación activista
+![](../output/graphs/graph_partact_esc.png)
+
+![](../output/graphs/graph_partact.png)
+
+## Participación comunitaria
+![](../output/graphs/graph_partcom_esc.png)
+
+![](../output/graphs/graph_partcom.png)
