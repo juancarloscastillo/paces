@@ -1,11 +1,20 @@
 # Conocimiento y formación en la escuela
 ## Conocimiento cívico
 ### Resultados generales
-#### Conocimiento civico conceptual
-![](../output/graphs/graph_ccc.png)
-
-#### Conocimiento civico factual
-![](../output/graphs/graph_ccf.png)
+![](../output/graphs/ccivico_1.png)
+![](../output/graphs/ccivico_2.png)
+![](../output/graphs/ccivico_3.png)
+![](../output/graphs/ccivico_4.png)
+![](../output/graphs/ccivico_5.png)
+![](../output/graphs/ccivico_6.png)
+![](../output/graphs/ccivico_7.png)
+![](../output/graphs/ccivico_8.png)
+![](../output/graphs/ccivico_9.png)
+![](../output/graphs/ccivico_10.png)
+![](../output/graphs/ccivico_11.png)
+![](../output/graphs/ccivico_12.png)
+![](../output/graphs/ccivico_13.png)
+![](../output/graphs/ccivico_14.png)
 
 ### Comparación con el estudio ICCS 2009
 

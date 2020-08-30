@@ -87,14 +87,13 @@ plot_p1 <- ggplot(p1, aes(WeightFunction(data_p1$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("En  la  mayoría  de  los  países,  un  grupo
-de  personas crea  las  leyes en el Congreso. 
-Otro grupo de personas aplica las leyes en 
-las cortes de justicia ¿Cuál es la MEJOR 
-razón para tener este sistema?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("En  la  mayoría  de  los  países,  un  grupo de  personas crea  las  leyes 
+en el Congreso. Otro grupo de personas aplica las leyes en las cortes 
+de justicia ¿Cuál es la MEJOR razón para tener este sistema?") +
+  theme(plot.title = element_text(size = 18.5, face = "bold",hjust=0.5))
 
 plot_p1
+ggsave(plot_p1, file = "../output/graphs/ccivico_1.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P2: La constitución de un país se refiere a 
 ```{r}
@@ -145,11 +144,11 @@ plot_p2 <- ggplot(p2, aes(WeightFunction(data_p2$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("La constitución de un país se 
-refiere a") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("La constitución de un país se refiere a") +
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p2
+ggsave(plot_p2, file = "../output/graphs/ccivico_2.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P3: ¿Cuál de las siguientes acciones sería considerada ilegal en un país democrático?
 ```{r}
@@ -199,11 +198,12 @@ plot_p3 <- ggplot(p3, aes(WeightFunction(data_p3$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("¿Cuál de las siguientes acciones sería
-considerada ilegal en un país democrático?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("¿Cuál de las siguientes acciones sería considerada 
+ilegal en un país democrático?") +
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p3
+ggsave(plot_p3, file = "../output/graphs/ccivico_3.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P4: En países democráticos, una tarea importante del Congreso es…
 ```{r}
@@ -249,11 +249,12 @@ plot_p4 <- ggplot(p4, aes(WeightFunction(data_p4$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("En países democráticos, una tarea 
-importante del Congreso es…") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("En países democráticos, una tarea importante 
+del Congreso es…") +
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p4
+ggsave(plot_p4, file = "../output/graphs/ccivico_4.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P5: Acción de un dictador que evidencia que reestablecerá la democracia en el país
 ```{r}
@@ -302,13 +303,13 @@ plot_p5 <- ggplot(p5, aes(WeightFunction(data_p5$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("Un dictador acuerda restablecer la democracia
- de su país ¿Cuál de las siguientes acciones 
- sería la evidencia más convincente de que 
- realmente lo hará?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("Un dictador acuerda restablecer la democracia de su país 
+¿Cuál de las siguientes acciones sería la evidencia 
+más convincente de que realmente lo hará?") +
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p5
+ggsave(plot_p5, file = "../output/graphs/ccivico_5.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P6: ¿cuál de las siguientes afirmaciones es un HECHO?
 ```{r}
@@ -358,12 +359,12 @@ plot_p6 <- ggplot(p6, aes(WeightFunction(data_p6$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("Tres de estas afirmaciones son opiniones
-y una es un hecho.¿Cuál de las siguientes
-es un HECHO?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("Tres de estas afirmaciones son opiniones y una es un hecho.
+¿Cuál de las siguientes es un HECHO?") +
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p6
+ggsave(plot_p6, file = "../output/graphs/ccivico_6.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P7: ¿Cuál de los impuestos es pagado habitualmente por todos los chilenos?
 ```{r}
@@ -413,11 +414,12 @@ plot_p7 <- ggplot(p7, aes(WeightFunction(data_p7$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("¿Cuál de los siguientes impuestos es pagado
+  ggtitle("¿Cuál de los siguientes impuestos es pagado 
 habitualmente por todos los chilenos?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p7
+ggsave(plot_p7, file = "../output/graphs/ccivico_7.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P8: ¿Para qué se usan los impuestos que pagamos los chilenos?
 ```{r}
@@ -464,16 +466,11 @@ plot_p8 <- ggplot(p8, aes(WeightFunction(data_p8$pond_estudiante_reg_dep_tens), 
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16.5, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =15.5)) +
-  ggtitle("¿Para qué se usan los impuestos que pagamos
-los chilenos?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  ggtitle("¿Para qué se usan los impuestos que pagamos los chilenos?") +
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p8
-```
-#### Plot preguntas conocimiento cívico conceptual
-```{r}
-ccc_1 <- cowplot::plot_grid(plot_p2,plot_p1,plot_p3,plot_p5,plot_p4,plot_p6, plot_p7, plot_p8, ncol=4)
-ggsave(ccc_1, file = "../output/graphs/graph_ccc.png",device = "png",width = 80,height = 35,dpi = "retina",units = "cm")
+ggsave(plot_p8, file = "../output/graphs/ccivico_8.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P9: ¿Cuál el nombre del presidente del senado de Chile?
 ```{r}
@@ -515,9 +512,10 @@ plot_p9 <- ggplot(p9, aes(WeightFunction(data_p9$pond_estudiante_reg_dep_tens), 
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Cuál el nombre del presidente del senado de Chile?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold",hjust=0.5))
+  theme(plot.title = element_text(size = 19.5, face = "bold",hjust=0.5))
 
 plot_p9
+ggsave(plot_p9, file = "../output/graphs/ccivico_9.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P10: ¿Alrededor de qué monto es el salario mínimo en Chile?
 ```{r}
@@ -563,9 +561,10 @@ plot_p10 <- ggplot(p10, aes(WeightFunction(data_p10$pond_estudiante_reg_dep_tens
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Alrededor de qué monto es el salario mínimo en Chile?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold", hjust=0.5))
+  theme(plot.title = element_text(size = 19.5, face = "bold", hjust=0.5))
 
 plot_p10
+ggsave(plot_p10, file = "../output/graphs/ccivico_10.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P11: ¿Quién es el Ministro del Interior?
 ```{r}
@@ -607,9 +606,10 @@ plot_p11 <- ggplot(p11, aes(WeightFunction(data_p11$pond_estudiante_reg_dep_tens
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Quién es el Ministro del Interior?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+  theme(plot.title = element_text(size = 19.5, face = "bold", hjust = 0.5))
 
 plot_p11
+ggsave(plot_p11, file = "../output/graphs/ccivico_11.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P12: ¿Quién es el Presidente de Brasil?
 ```{r}
@@ -652,9 +652,10 @@ plot_p12 <- ggplot(p12, aes(WeightFunction(data_p12$pond_estudiante_reg_dep_tens
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Quién es el Presidente de Brasil?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+  theme(plot.title = element_text(size = 19.5, face = "bold", hjust = 0.5))
 
 plot_p12
+ggsave(plot_p12, file = "../output/graphs/ccivico_12.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P13: ¿Qué significa la sigla "IPC"?
 ```{r}
@@ -700,9 +701,10 @@ plot_p13 <- ggplot(p13, aes(WeightFunction(data_p13$pond_estudiante_reg_dep_tens
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿Qué significa la sigla IPC?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+  theme(plot.title = element_text(size = 19.5, face = "bold", hjust = 0.5))
 
 plot_p13
+ggsave(plot_p13, file = "../output/graphs/ccivico_13.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 #### P14: ¿En que Ciudad está el Congreso Nacional?
 ```{r}
@@ -744,14 +746,10 @@ plot_p14 <- ggplot(p14, aes(WeightFunction(data_p14$pond_estudiante_reg_dep_tens
   theme(legend.title = element_text(size=16, face="bold")) +
   theme(legend.text = element_markdown(colour = "grey20", size =14)) +
   ggtitle("¿En que Ciudad está el Congreso Nacional?") +
-  theme(plot.title = element_text(size = 17.5, face = "bold", hjust = 0.5))
+  theme(plot.title = element_text(size = 19.5, face = "bold", hjust = 0.5))
 
 plot_p14
-```
-#### Plot preguntas conocimiento cívico factual
-```{r}
-ccf_1 <- cowplot::plot_grid(plot_p13,plot_p10,plot_p11,plot_p12,plot_p9,plot_p14, ncol=3)
-ggsave(ccf_1, file = "../output/graphs/graph_ccf.png",device = "png",width = 50,height = 25,dpi = "retina",units = "cm")
+ggsave(plot_p14, file = "../output/graphs/ccivico_14.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
 ### Análisis comparativo
 #### P1: ¿Cuál es la mejor razón para tener una república?
