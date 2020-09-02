@@ -1,124 +1,143 @@
-# Módulo 1: Conocimiento y formación en la escuela
-## Sección 1: Conocimiento cívico
-<div align="justify";><span style='font-size:18px'>
-En esta sección se presentarán los resultados de una serie de preguntas que evalúan el nivel de conocimiento sobre diversos temas cívicos, políticos y sociales de los estudiantes de segundo año de enseñanza media. Las primeras seis preguntas que se presentarán provienen del Estudio Internacional de Educación Cívica y Formación Ciudadana (ICCS). Las otras ocho preguntas han sido elaboradas por el equipo de investigación para evaluar esta dimensión. <br>
+# <span style="font-family:Times New Roman">Módulo 1: Conocimiento y formación en la escuela</span>
+## <span style="font-family:Times New Roman">Sección 1: Conocimiento cívico</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+En esta sección se presentarán los resultados de una serie de preguntas que evalúan el nivel de conocimiento de los estudiantes de segundo año de enseñanza media sobre diversos temas cívicos, políticos y sociales. Las primeras seis preguntas que se presentarán provienen del Estudio Internacional de Educación Cívica y Formación Ciudadana (ICCS). Las otras ocho preguntas han sido elaboradas por el equipo de investigación para evaluar esta dimensión. <br>
 El reporte de los resultados correspondientes a esta sección se organiza en dos subsecciones. En la primera subsección se expondrán los resultados generales de todas las preguntas sobre conocimiento cívico. En la segunda subsección se presentará un análisis de los resultados de las preguntas provenientes del estudio ICCS, comparando las respuestas de los estudiantes de 8°básico encuestados el año 2009 con las respuestas de los estudiantes de 2°medio encuestados el año 2019.
 </span></div>
 
-### Subsección 1: Resultados generales
-<div align="justify";><span style='font-size:18px'>
-Las primeras ocho interrogantes que se presentarán en esta sección son parte de un set de preguntas que evalúa distintas aristas del <strong><i>conocimiento cívico conceptual</i></strong>. Las seis preguntas restantes evalúan diferentes dimensiones del <strong><i>conocimiento cívico factual</i></strong>. <br>
-En relación con el patrón de respuestas, cabe destacar que en general la mayoría de los estudiantes respondió las preguntas de forma correcta (entre un 42% y un 78.4% de los encuestados) y que, en algunas preguntas, las respuestas incorrectas se concentraron en una alternativa en particular. <br>
+### <span style="font-family:Times New Roman">Subsección 1: Resultados generales</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+Las primeras ocho interrogantes que se presentarán en esta subsección son parte de un set de preguntas que evalúa distintas aristas del <strong><i>conocimiento cívico conceptual</i></strong>. Las seis preguntas restantes evalúan diferentes dimensiones del <strong><i>conocimiento cívico factual</i></strong>. <br>
+En relación con el patrón de respuestas cabe destacar que, en general, la mayoría de los estudiantes respondió las preguntas de forma correcta (entre un 42% y un 78.4% de los encuestados) y que, en algunas preguntas, las respuestas incorrectas se concentraron en una alternativa en particular. <br>
 </span></div>
 
-#### <span style='font-size:22px'>Pregunta n°1</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°1</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 Un 42% de los estudiantes respondió correctamente la pregunta. Entre las alternativas incorrectas, hubo una que distrajó a parte importante de los estudiantes, concentrando el 34% de las respuestas.
 </span></div> <br>
 ![](../output/graphs/ccivico_1.png)
 
-#### <span style='font-size:22px'>Pregunta n°2</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°2</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 68.4%) respondió de forma correcta. Las respuestas incorrectas se concentraron en una alternativa en particular, la cual fue seleccionada por el 16.8% de los encuestados.
 </span></div> <br>
 ![](../output/graphs/ccivico_2.png)
 
-#### <span style='font-size:22px'>Pregunta n°3</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°3</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 67.1%) seleccionó la alternativa correcta. Son pocos los estudiantes que se distrajeron con las alternativas incorrectas y la distribución de estas respuestas no se concentró en una alternativa en particular.
 </span></div> <br>
 ![](../output/graphs/ccivico_3.png)
 
-#### <span style='font-size:22px'>Pregunta n°4</span>
-<div align="justify";><span style='font-size:18px'>
-La mayoría de los estudiantes (un 59.6%) respondió correctamente. Entre las alternativas incorrectas, hubo una que distrajó a parte importante de los estudiantes, concentrando el 25.7% de las respuestas.
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°4</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes (un 59.6%) respondió correctamente. Entre las alternativas incorrectas, hubo una que concentró el 25.7% de las respuestas.
 </span></div> <br>
 ![](../output/graphs/ccivico_4.png)
 
-#### <span style='font-size:22px'>Pregunta n°5</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°5</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 Un 49.3% de los estudiantes seleccionó la alternativa correcta. Las respuestas incorrectas se concentraron en una alternativa en particular, la cual fue seleccionada por el 25.7% de los estudiantes.
 </span></div> <br>
 ![](../output/graphs/ccivico_5.png)
 
-#### <span style='font-size:22px'>Pregunta n°6</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°6</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 70.8%) respondió de forma correcta. Si bien son pocos los estudiantes que se distrajeron con las otras alternativas, hubo una alternativa que concentró parte importante de las respuestas incorrectas (un 15.8%).
 </span></div> <br>
 ![](../output/graphs/ccivico_6.png)
 
-#### <span style='font-size:22px'>Pregunta n°7</span>
-<div align="justify";><span style='font-size:18px'>
-La mayoría de los estudiantes (un 66.4%) seleccionó la alternativa correcta. En relación con las respuestas incorrectas, hubo una alternativa en particular que concentró la mayor parte de las respuestas restantes, siendo seleccionada por un 14.3% de los estudiantes.
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°7</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes (un 66.4%) seleccionó la alternativa correcta. En relación con las respuestas incorrectas, una alternativa en particular concentró la mayor parte de las respuestas restantes, siendo seleccionada por el 14.3% de los estudiantes.
 </span></div> <br>
 ![](../output/graphs/ccivico_7.png)
 
-#### <span style='font-size:22px'>Pregunta n°8</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°8</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 78.4%) respondió correctamente. Fueron pocos los que se distrajeron con las otras alternativas y las respuestas incorrectas no se concentraron en una alternativa en particular.
 </span></div> <br>
 ![](../output/graphs/ccivico_8.png)
 
-#### <span style='font-size:22px'>Pregunta n°9</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°9</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 Un 44.4% de los estudiantes seleccionó la alternativa correcta. Las respuestas incorrectas no se concentraron en una alternativa en particular. 
 </span></div> <br>
 ![](../output/graphs/ccivico_9.png)
 
-#### <span style='font-size:22px'>Pregunta n°10</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°10</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 50.5%) respondió de forma correcta. Las respuestas incorrectas se concentraron en una de las alternativas, la cual fue seleccionada por el 33.2% de los estudiantes.
 </span></div> <br>
 ![](../output/graphs/ccivico_10.png)
 
-#### <span style='font-size:22px'>Pregunta n°11</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°11</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 63.9%) respondió correctamente. Si bien fueron pocos los estudiantes que se distrajeron con las alternativas incorrectas, hubo una alternativa en particular que concentró parte importante de las respuestas restantes (un 17.1%).
 </span></div> <br>
 ![](../output/graphs/ccivico_11.png)
 
-#### <span style='font-size:22px'>Pregunta n°12</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°12</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 69.3%) seleccionó la alternativa correcta. Las respuestas incorrectas se distribuyeron de forma pareja entre las alternativas restantes.  
 </span></div> <br>
 ![](../output/graphs/ccivico_12.png)
 
-#### <span style='font-size:22px'>Pregunta n°13</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°13</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 La mayoría de los estudiantes (un 53.2%) respondió de forma correcta. Las respuestas incorrectas se concentraron principalmente en dos alternativas, que fueron seleccionadas por el 21% y el 18.6% de los estudiantes.
 </span></div> <br>
 ![](../output/graphs/ccivico_13.png)
 
-#### <span style='font-size:22px'>Pregunta n°14</span>
-<div align="justify";><span style='font-size:18px'>
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°14</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
 Un 49% de los estudiantes respondió correctamente. Casi la totalidad de respuestas restantes se concentró en una de las alternativas incorrectas (un 45.8%).
 </span></div> <br>
 ![](../output/graphs/ccivico_14.png)
 
-### Subsección 2: Comparación con el estudio ICCS 2009
+### <span style="font-family:Times New Roman">Subsección 2: Comparación con el estudio ICCS 2009</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+Como se enuncio anteriormente, las seis preguntas que se presentarán en esta subsección corresponden a indicadores provenientes del estudio ICCS que evalúan distintas aristas del <strong><i>conocimiento cívico conceptual</i></strong>. Se comparará el patrón de respuesta de los estudiantes de 8°básico, encuestados en el estudio ICCS el año 2009, con las respuestas de los estudiantes de 2°medio, encuestados por este equipo de investigación el año 2019. Cabe destacar que la comparación se realizará con las respuestas de estudiantes de 8°básico debido a que es la única población para la cual existen datos disponibles que permiten evaluar el conocimiento cívico de estudiantes en Chile. <br>
+En términos generales, al realizar la comparación se puede concluir que hay una tendencia al alza en la identificación de la respuesta correcta en los estudiantes de segundo medio (en 5 de las 6 preguntas) y que, en la mayoría de las preguntas, la alternativa incorrecta que concentraba más casos en las respuestas de los estudiantes de 8°básico es la misma alternativa incorrecta que concentra más casos en las respuestas de los estudiantes de 2°medio.
+</span></div>
 
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°1</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes de ambos cursos no respondió de forma correcta la pregunta. La proporción de estudiantes de 2°medio que seleccionó la alternativa correcta es mayor que la proporción de estudiantes de 8°básico que respondió correctamente (42% y 37.7%, respectivamente). Hubo una alternativa incorrecta en particular que fue un distractor importante para los estudiantes de ambos grupos, concentrando el 38.5% de las respuestas de los estudiantes de 8°básico y el 34% de las respuestas de los estudiantes de 2°medio.
+</span></div> <br>
 ![](../output/graphs/graph_p1.png)
 
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°2</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes, tanto de 8°básico como de 2°medio, respondió de forma correcta. Sin embargo, la proporción de estudiantes de 2°medio que seleccionó la alternativa correcta es mayor que la proporción de estudiantes de 8°básico que respondió de forma correcta (68.4% y 58%, respectivamente). Las respuestas incorrectas de ambos grupos de estudiantes se concentraron en una alternativa en particular. Más especificamente, una de las alternativas incorrectas concentró un 24.5% de las respuestas de los estudiantes de 8°básico y un 16.8% de las respuestas de los estudiantes de 2°medio.
+</span></div> <br>
 ![](../output/graphs/graph_p2.png)
 
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°3</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes de ambos grupos respondió de forma correcta, pero la proporción de estudiantes que respondió correctamente es mayor en el grupo de 2°medio que en el de 8°básico (67.1% y 54%, respectivamente). En relación con las respuestas incorrectas, cabe destacar que las respuestas de los estudiantes de 2°medio se distribuyeron de forma relativamente pareja entre las distintas alternativas, mientras que las respuestas de los estudiantes de 8°básico se concentraron en una alternativa en particular, la cual fue seleccionada por el 19.1% de los estudiantes.
+</span></div> <br>
 ![](../output/graphs/graph_p3.png)
 
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°4</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes de 2°medio (un 59.6%) respondió de forma correcta, mientras que la mayoría de los estudiantes de 8°básico respondió de forma incorrecta. La alternativa que fue seleccionada por una proporción mayor de estudiantes (en ambos grupos) corresponde a la alternativa correcta. Sin embargo, la proporción de estudiantes de 8°básico que identificó la respuesta correcta es mucho menor a la proporción de estudiantes de 2°medio que respondió correctamente (39.9% y 59.6%, respectivamente). Una de las alternativas incorrectas concentró parte importante de las respuestas restantes, siendo seleccionada por el 38.1% de los estudiantes de 8°básico y por el 25.7% de los estudiantes de 2°medio.
+</span></div> <br>
 ![](../output/graphs/graph_p4.png)
 
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°5</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes de ambos grupos respondió de forma incorrecta. Aunque cabe destacar que la alternativa correcta fue la que concentró una mayor proporción de respuestas (un 43.1% de los estudiantes de 8°básico y un 49.3% de los estudiantes de 2°medio seleccionaron la alternativa correcta). Las respuestas incorrectas de ambos grupos de estudiantes se concentraron en una alternativa en particular, la cual fue seleccionada por el 30.8% de los estudiantes de 8°básico y el 22.7% de los estudiantes de 2°medio. 
+</span></div> <br>
 ![](../output/graphs/graph_p5.png)
 
+#### <span style="font-size:22px; font-family:Times New Roman">Pregunta n°6</span>
+<div align="justify";><span style="font-size:18px; font-family:Times New Roman">
+La mayoría de los estudiantes seleccionó la alternativa correcta. A diferencia de las respuestas en las otras preguntas, la proporción de estudiantes de 8°básico que identificó la respuesta correcta fue mayor a la proporción de estudiantes de 2°medio que respondió correctamente. Más especificamente, un 77.3% de los estudiantes de 8°básico y un 70.8% de los estudiantes de 2°medio seleccionaron la alternativa correcta. Las respuestas incorrectas de los estudiantes de ambos grupos se concentraron en una alternativa en particular, que fue seleccionada por el 11.8% de los estudiantes de 8°básico y el 15.8% de los estudiantes de 2°medio.
+</span></div> <br>
 ![](../output/graphs/graph_p6.png)
 
-### Cruces
-![](../output/graphs/Conocimiento_civico_factual_region.png)
-
-![](../output/graphs/Conocimiento_civico_factual_colegio.png)
-
-![](../output/graphs/Conocimiento_civico_factual_sexo.png)
-
-![](../output/graphs/Conocimiento_civico_factual_edpadres.png)
-
-## Sección 2: Clima democrático en el aula
+## <span style="font-family:Times New Roman">Sección 2: Clima democrático en el aula</span>
 ![](../output/graphs/graph_for_ciud1.png)
 
 ![](../output/graphs/graph_for_ciud2.png)
@@ -141,7 +160,7 @@ Un 49% de los estudiantes respondió correctamente. Casi la totalidad de respues
 
 ![](../output/graphs/graph_for_ciud11.png)
 
-# Módulo 1: Actitudes políticas
+# <span style="font-family:Times New Roman">Módulo 1: Actitudes políticas</span>
 ![](../output/graphs/graph_intpol.png)
 
 ![](../output/graphs/graph_intdes.png)
@@ -150,10 +169,10 @@ Un 49% de los estudiantes respondió correctamente. Casi la totalidad de respues
 
 ![](../output/graphs/graph_intgen.png)
 
-## Sección 1: Actitudes hacia la democracia
+## <span style="font-family:Times New Roman">Sección 1: Actitudes hacia la democracia</span>
 ![](../output/graphs/graph_dem.png)
 
-## Sección 2: Creencias y actitudes autoritarias
+## <span style="font-family:Times New Roman">Sección 2: Creencias y actitudes autoritarias</span>
 ![](../output/graphs/graph_aut1.png)
 
 ![](../output/graphs/graph_aut2.png)
@@ -172,21 +191,21 @@ Un 49% de los estudiantes respondió correctamente. Casi la totalidad de respues
 
 ![](../output/graphs/graph_aut9.png)
 
-## Sección 3: Confianza en instituciones
+## <span style="font-family:Times New Roman">Sección 3: Confianza en instituciones</span>
 ![](../output/graphs/graph_cgp.png)
 
-# Módulo 3: Participación 
-## Sección 1: Participación formal
+# <span style="font-family:Times New Roman">Módulo 3: Participación </span>
+## <span style="font-family:Times New Roman">Sección 1: Participación formal</span>
 ![](../output/graphs/graph_partform_act.png)
 
 ![](../output/graphs/graph_partform_fut.png)
 
-## Sección 2: Participación activista
+## <span style="font-family:Times New Roman">Sección 2: Participación activista</span>
 ![](../output/graphs/graph_partact_esc.png)
 
 ![](../output/graphs/graph_partact.png)
 
-## Sección 3: Participación comunitaria
+## <span style="font-family:Times New Roman">Sección 3: Participación comunitaria</span>
 ![](../output/graphs/graph_partcom_esc.png)
 
 ![](../output/graphs/graph_partcom.png)
