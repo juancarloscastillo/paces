@@ -109,7 +109,7 @@ La mayoría de los estudiantes de ambos cursos no respondió de forma correcta l
 
 #### <span style="font-size:22px">Pregunta n°2</span>
 <div align="justify";><span style="font-size:18px">
-La mayoría de los estudiantes, tanto de 8°básico como de 2°medio, respondió de forma correcta. Sin embargo, la proporción de estudiantes de 2°medio que seleccionó la alternativa correcta es mayor que la proporción de estudiantes de 8°básico que respondió de forma correcta (68.4% y 58%, respectivamente). Las respuestas incorrectas de ambos grupos de estudiantes se concentraron en una alternativa en particular. Más especificamente, una de las alternativas incorrectas concentró un 24.5% de las respuestas de los estudiantes de 8°básico y un 16.8% de las respuestas de los estudiantes de 2°medio.
+La mayoría de los estudiantes, tanto de 8°básico como de 2°medio, respondió de forma correcta. Sin embargo, la proporción de estudiantes de 2°medio que seleccionó la alternativa correcta es mayor que la proporción de estudiantes de 8°básico que respondió de forma correcta (68.4% y 58%, respectivamente). Las respuestas incorrectas de ambos grupos de estudiantes se concentraron en una alternativa en particular. Más específicamente, una de las alternativas incorrectas concentró un 24.5% de las respuestas de los estudiantes de 8°básico y un 16.8% de las respuestas de los estudiantes de 2°medio.
 </span></div> <br>
 ![](../output/graphs/graph_p2.png)
 
@@ -133,7 +133,7 @@ La mayoría de los estudiantes de ambos grupos respondió de forma incorrecta. A
 
 #### <span style="font-size:22px">Pregunta n°6</span>
 <div align="justify";><span style="font-size:18px">
-La mayoría de los estudiantes seleccionó la alternativa correcta. A diferencia de las respuestas en las otras preguntas, la proporción de estudiantes de 8°básico que identificó la respuesta correcta fue mayor a la proporción de estudiantes de 2°medio que respondió correctamente. Más especificamente, un 77.3% de los estudiantes de 8°básico y un 70.8% de los estudiantes de 2°medio seleccionaron la alternativa correcta. Las respuestas incorrectas de los estudiantes de ambos grupos se concentraron en una alternativa en particular, que fue seleccionada por el 11.8% de los estudiantes de 8°básico y el 15.8% de los estudiantes de 2°medio.
+La mayoría de los estudiantes seleccionó la alternativa correcta. A diferencia de las respuestas en las otras preguntas, la proporción de estudiantes de 8°básico que identificó la respuesta correcta fue mayor a la proporción de estudiantes de 2°medio que respondió correctamente. Más específicamente, un 77.3% de los estudiantes de 8°básico y un 70.8% de los estudiantes de 2°medio seleccionaron la alternativa correcta. Las respuestas incorrectas de los estudiantes de ambos grupos se concentraron en una alternativa en particular, que fue seleccionada por el 11.8% de los estudiantes de 8°básico y el 15.8% de los estudiantes de 2°medio.
 </span></div> <br>
 ![](../output/graphs/graph_p6.png)
 
@@ -145,91 +145,137 @@ En esta sección se presentarán los resultados de una serie de preguntas referi
 ### Importancia de distintos aspectos en la formación ciudadana
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los docentes, estudiantes y apoderados cree que el respeto y la amabilidad en las relaciones con los demás son un aspecto <i>muy importante</i> en la formación ciudadana de los estudiantes. Más específicamente, el 96.1% de los docentes, el 57% de los estudiantes y el 85.6% de los apoderados creen que es <i>muy importante</i>. En relación a las alternativas <i>nada importante</i> y <i>algo importante</i> cabe destacar que ninguno de los docentes optó por esas respuestas y que ninguno de los apoderados declaró que es un aspecto <i>nada importante</i>.
+La mayoría de los docentes, estudiantes y apoderados cree que <i>el respeto y la amabilidad en las relaciones con los demás</i> son un aspecto muy importante en la formación ciudadana de los estudiantes. Más específicamente, el 96.1% de los docentes, el 57% de los estudiantes y el 85.6% de los apoderados creen que es muy importante. En relación a las alternativas nada importante y algo importante cabe destacar que ninguno de los docentes optó por esas respuestas y que ninguno de los apoderados declaró que es un aspecto nada importante.
 </span></div> 
 ![](../output/graphs/graph_for_ciud1.png)
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los docentes y apoderados considera que los valores democráticos son un aspecto <i>muy importante</i> en la formación ciudadana de los estudiantes. La opinión de los docentes es más homogénea que la de los estudiantes y la de los apoderados, ya que la totalidad de los profesores declaró que es un aspecto <i>importante</i> o <i>muy importante</i>. En cambio, si bien la mayor parte de los estudiantes y apoderados cree que es un aspecto <i>muy importante</i> (el 46.5% y el 71%, respectivamente), en ambos grupos algunas personas declararon que es <i>nada importante</i> o <i>algo importante</i>.
+La mayoría de los docentes y apoderados considera que <i>los valores democráticos de deliberación, tolerancia y compromiso con el bien común</i> son un aspecto muy importante en la formación ciudadana de los estudiantes. La opinión de los docentes es más homogénea que la de los estudiantes y la de los apoderados, ya que la totalidad de los profesores declaró que es un aspecto importante o muy importante. En cambio, si bien la mayor parte de los estudiantes y apoderados cree que es un aspecto muy importante (el 46.5% y el 71%, respectivamente), en ambos grupos algunas personas declararon que es nada importante o algo importante.
 </span></div>
 ![](../output/graphs/graph_for_ciud2.png)
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los docentes piensa que valorar la participación electoral es un aspecto <i>muy importante</i> en la formación ciudadana de los estudiantes. De hecho, todos los docentes declararon que es un aspecto <i>importante</i> o <i>muy importante</i>. Las opiniones de los estudiantes y apoderados fueron más variadas. Si bien la mayor parte de las respuestas de los estudiantes y de los apoderados se concentraron en las categorías <i>importante</i> (un 45.3% y un 34%, respectivamente) y <i>muy importante</i>, un 21.2% de los estudiantes y un 17.5% de los apoderados señaló que es un aspecto <i>nada importante</i> o <i>algo importante</i>.
+La mayoría de los docentes piensa que valorar <i>la participación electoral</i> es un aspecto muy importante en la formación ciudadana de los estudiantes. De hecho, todos los docentes declararon que es un aspecto importante o muy importante. Las opiniones de los estudiantes y apoderados fueron más variadas. Si bien la mayor parte de las respuestas de los estudiantes y de los apoderados se concentraron en las categorías importante (un 45.3% y un 34%, respectivamente) y muy importante, un 21.2% de los estudiantes y un 17.5% de los apoderados señaló que es un aspecto nada importante o algo importante.
 </span></div>
 ![](../output/graphs/graph_for_ciud3.png)
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los docentes, estudiantes y apoderados cree que participar de movimientos sociales no es un aspecto <i>muy importante</i> en la formación ciudadana de los estudiantes. Los docentes son quienes más valoran la importancia de este aspecto en la formación ciudadana, el 51% declaro que es <i>importante</i> y el 40.2% que es <i>muy importante</i>. La mayor parte de los estudiantes piensa que es un aspecto <i>importante</i> (un 40.6%) o <i>muy importante</i> (un 22.2%), pero hay un gran grupo de estudiantes que cree que es un aspecto <i>algo importante</i> (29.2%) o <i>nada importante</i> (un 8%). La mayor parte de los apoderados cree que es un aspecto <i>algo importante</i> (un 31.2%) o <i>nada importante</i> (un 29.8%), pero hay un gran grupo de apoderados que piensa que es <i>importante</i> (un 18.4%) o <i>muy importante</i> (un 20.7%).
+La mayoría de los docentes y estudiantes cree que <i>participar de movimientos sociales</i> es un aspecto importante o muy importante en la formación ciudadana de los estudiantes, mientras que la mayoría de los apoderados cree que es un aspecto nada importante o algo importante. Los docentes son quienes más valoran la importancia de este aspecto en la formación ciudadana, el 51% declaro que es importante y el 40.2% que es muy importante. La mayor parte de los estudiantes piensa que es un aspecto importante (un 40.6%) o muy importante (un 22.2%), pero hay un gran grupo de estudiantes que cree que es un aspecto algo importante (29.2%) o nada importante (un 8%). La mayor parte de los apoderados cree que es un aspecto algo importante (un 31.2%) o nada importante (un 29.8%), pero hay un gran grupo de apoderados que piensa que es importante (un 18.4%) o muy importante (un 20.7%).
 </span></div>
 ![](../output/graphs/graph_for_ciud4.png)
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los docentes y apoderados piensa que el cumplimiento de la ley es un aspecto <i>muy importante</i> en la formación ciudadana de los estudiantes (un 64.7% y un 67.2%, respectivamente). La mayor parte de las respuestas de los estudiantes se concentró en las alternativas <i>importante</i> (un 48.1%) y <i>muy importante</i> (un 38%). Las respuestas restantes de los docentes y apoderados se concentran en la alternativa <i>importante</i> (un 33.3% y un 25.7%, respectivamente). 
+La mayoría de los docentes y apoderados piensa que <i>el respeto y cumplimiento de la ley</i> es un aspecto muy importante en la formación ciudadana de los estudiantes (un 64.7% y un 67.2%, respectivamente). La mayor parte de los estudiantes declaro que es un aspecto importante (un 48.1%) o muy importante (un 38%).
 </span></div>
 ![](../output/graphs/graph_for_ciud5.png)
 
 <div align="justify";><span style="font-size:18px">
-Las respuestas de los estudiantes y apoderados son bastante similares. La mayoría de las personas de ambos grupos cree que el aspecto que debería ser más importante en la formación ciudadana es el respeto y la amabilidad en las relaciones con los demás (opción seleccionada por el 60.2% de los estudiantes y el 68.8% de los apoderados). Este aspecto también fue destacado por un gran grupo de docentes (un 33.7%), pero la mayoría de los docentes declaro que el aspecto que debería ser más importante en la formación ciudadana corresponde a los valores democráticos (el 53.7%). 
+Las respuestas de los estudiantes y apoderados son bastante similares. La mayoría de las personas de ambos grupos cree que el aspecto que debería ser más importante en la formación ciudadana es <i>el respeto y la amabilidad en las relaciones con los demás</i> (opción seleccionada por el 60.2% de los estudiantes y el 68.8% de los apoderados). Este aspecto también fue destacado por un gran grupo de docentes (un 33.7%), pero la mayoría de los docentes declaro que el aspecto que debería ser más importante en la formación ciudadana corresponde a <i>los valores democráticos de deliberación, tolerancia y compromiso con el bien común</i> (el 53.7%). 
 </span></div>
 ![](../output/graphs/graph_for_ciud6.png)
 
 ### Quién juega el rol más importante en distintos aspectos de la formación ciudadana
 <div align="justify";><span style="font-size:18px">
-La mayoría de los estudiantes y de los apoderados cree que la familia es quien juega de hecho el rol más importante en la enseñanza del respeto y la amabilidad en las relaciones con los demás (el 78.2% y el 92.1%, respectivamente). Mientras que la mayoría de los docentes piensa que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 51.5%). No obstante, hay una gran proporción de docentes que opina que es la familia quien juega el rol más importante en este aspecto (el 41.6%).
+La mayoría de los estudiantes y de los apoderados cree que la familia es quien juega de hecho el rol más importante en la enseñanza del <i>respeto y la amabilidad en las relaciones con los demás</i> (el 78.2% y el 92.1%, respectivamente). Mientras que la mayoría de los docentes piensa que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 51.5%). No obstante, hay una gran proporción de docentes que opina que es la familia quien juega el rol más importante en este aspecto (el 41.6%).
 </span></div>
 ![](../output/graphs/graph_for_ciud7.png)
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los estudiantes y de los apoderados piensa que es la familia quien juega de hecho el rol más importante en la enseñanza de los valores democráticos de deliberación, tolerancia y compromiso con el bien común (el 51.4% y el 69.9%, respectivamente). Mientras que la mayoría de los docentes cree que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 88.1%). Igualmente, cabe destacar que una gran proporción de estudiantes opina que son los profesores quienes juegan de hecho el rol más importante en este aspecto (el 41.3%).
+La mayoría de los estudiantes y de los apoderados piensa que es la familia quien juega de hecho el rol más importante en la enseñanza de <i>los valores democráticos de deliberación, tolerancia y compromiso con el bien común</i> (el 51.4% y el 69.9%, respectivamente). Mientras que la mayoría de los docentes cree que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 88.1%). Igualmente, cabe destacar que una gran proporción de estudiantes opina que son los profesores quienes juegan de hecho el rol más importante en este aspecto (el 41.3%).
 </span></div>
 ![](../output/graphs/graph_for_ciud8.png)
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los docentes opina que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de valorar la participación electoral (el 88%). Mientras que la mayoría de los apoderados piensa que es la familia quien juega de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 65.8%). La opinión de los estudiantes es más heterogénea. El 46.9% de los estudiantes cree que es la familia quien juega el rol más importante en la enseñanza de este aspecto y el 44.9% de los estudiantes cree que son los profesores.
+La mayoría de los docentes opina que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de <i>valorar la participación electoral</i> (el 88%). Mientras que la mayoría de los apoderados piensa que es la familia quien juega de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 65.8%). La opinión de los estudiantes es más heterogénea. El 46.9% de los estudiantes cree que es la familia quien juega el rol más importante en la enseñanza de este aspecto y el 44.9% de los estudiantes cree que son los profesores.
 </span></div>
 ![](../output/graphs/graph_for_ciud9.png)
 
 <div align="justify";><span style="font-size:18px">
-En ninguno de los tres grupos más de un 50% de las respuestas se concentra en una alternativa en particular. El 45% de los docentes cree que son los pares quienes juegan de hecho el rol más importante en la enseñanza de participar en movimientos sociales y el 39% de los docentes cree que son los profesores.
-La opinión de los estudiantes está distribuida de forma equitativa entre las tres alternativas. Un 33.4% de los estudiantes piensa que la familia es quien juega el rol más importante en este aspecto, el 33.4% piensa que son los pares y el 33.2% piensa que son los profesores. En relación a las respuestas de los apoderados, un 49.8% opina que es la familia quien juega de hecho el rol más importante en la enseñanza de este aspecto, un 23.6% opina que son los profesores y un 26.7% opina que son los pares.
+En ninguno de los tres grupos más de un 50% de las respuestas se concentra en una alternativa en particular. El 45% de los docentes cree que son los pares quienes juegan de hecho el rol más importante en la enseñanza de <i>participar en movimientos sociales</i> y el 39% de los docentes cree que son los profesores. La opinión de los estudiantes está distribuida de forma equitativa entre las tres alternativas. Un 33.4% de los estudiantes piensa que la familia es quien juega el rol más importante en este aspecto, el 33.4% piensa que son los pares y el 33.2% piensa que son los profesores. En relación a las respuestas de los apoderados, un 49.8% opina que es la familia quien juega de hecho el rol más importante en la enseñanza de este aspecto, un 23.6% opina que son los profesores y un 26.7% opina que son los pares.
 </span></div>
 ![](../output/graphs/graph_for_ciud10.png)
 
 <div align="justify";><span style="font-size:18px">
-La mayoría de los estudiantes y de los apoderados piensa que es la familia quien juega de hecho el rol más importante en la enseñanza de el respeto y cumplimiento de la ley (el 62.2% y el 78.2%, respectivamente). Mientras que la mayoría de los docentes cree que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 67%).
+La mayoría de los estudiantes y de los apoderados piensa que es la familia quien juega de hecho el rol más importante en la enseñanza del <i>respeto y cumplimiento de la ley</i> (el 62.2% y el 78.2%, respectivamente). Mientras que la mayoría de los docentes cree que son los profesores quienes juegan de hecho el rol más importante en la enseñanza de este aspecto de la formación ciudadana (el 67%).
 </span></div>
 ![](../output/graphs/graph_for_ciud11.png)
 
 # Módulo 2: Actitudes políticas
+<div align="justify";><span style="font-size:18px">
+En este módulo se presentan las respuestas de los docentes, estudiantes y apoderados a una serie de preguntas sobre temas políticos y sociales. El análisis se realizará comparando las respuestas de los grupos. Cabe precisar que algunas de las preguntas fueron realizadas solo a los estudiantes y apoderados.
+<br>
+El reporte de los resultados correspondientes a este módulo se organiza en tres secciones. En la primera sección se presentarán las respuestas a preguntas relativas al interés en la política y al interés en tres distintos problemas sociales. En la segunda sección se expondrán las respuestas a preguntas respecto a la satisfacción con la democracia y distintas actitudes autoritarias. En la tercera sección se mostrarán los resultados de una pregunta sobre la confianza en distintas instituciones, la cual fue presentada solo a los estudiantes. 
+</span></div>
+## Sección 1: interés en la política y en los problemas sociales
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes está algo interesado(a) o muy interesado(a) en <i>la política</i> (un 43.1% y un 41.2%, respectivamente). Mientras que la mayoría de los estudiantes y apoderados declara estar no muy interesado(a) (un 33.8% y un 31.6%, respectivamente) o totalmente desinteresado(a) (un 28.8% y un 29.5%, respectivamente).
+</span></div>
 ![](../output/graphs/graph_intpol.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los estudiantes y apoderados señala estar algo interesado(a) (un 37.4% y un 40.6%, respectivamente) o muy interesado(a) en <i>la desigualdad social</i> (un 27.5% y un 37%, respectivamente). 
+</span></div>
 ![](../output/graphs/graph_intdes.png)
 
+<div align="justify";><span style="font-size:18px">
+El 46.7% de los estudiantes y el 54.9% de los apoderados declara estar muy interesado(a) en <i>el medioambiente</i>. La mayor parte de las respuestas restantes se concentran en la opción algo interesado(a), seleccionada por el 35.5% de los estudiantes y el 34.8% de los apoderados.
+</span></div>
 ![](../output/graphs/graph_intmed.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los estudiantes y apoderados está algo interesado(a) (un 32.7% y un 37.5%, respectivamente) o muy interesado(a) en <i>la igualdad de género</i> (un 41.4% y un 35.7%, respectivamente). 
+</span></div>
 ![](../output/graphs/graph_intgen.png)
 
-## Sección 1: Actitudes hacia la democracia
+## Sección 2: Satisfacción con la democracia y actitudes autoritarias
+<div align="justify";><span style="font-size:18px">
+La mayoría de los estudiantes y apoderados se encuentra nada satisfecho(a) (un 28.2% y un 39.9%, respectivamente) o algo satisfecho(a) con <i>la manera en que funciona la democracia en Chile</i> (un 47.8% y un 44.4%, respectivamente). 
+</span></div>
 ![](../output/graphs/graph_dem.png)
 
-## Sección 2: Creencias y actitudes autoritarias
+<div align="justify";><span style="font-size:18px">
+La mayoría de los apoderados está muy de acuerdo con que <i>los jóvenes deben aprender a obedecer y respetar a las autoridades</i> (un 76.9%). Mientras que la mayoría de los docentes y de los estudiantes se encuentra de acuerdo con esta afirmación (un 51% y un 55.7%, respectivamente).
+</span></div>
 ![](../output/graphs/graph_aut1.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes, estudiantes y apoderados se encuentra muy en desacuerdo o en desacuerdo con que <i>mientras más personas estén dispuestas a criticar y desafiar a las autoridades es mejor para la sociedad</i>. Más específicamente, el 9.9% de los docentes, el 13.7% de los estudiantes y el 36.8% de los apoderados se encuentra muy en desacuerdo con esta afirmación, mientras que el 46.5% de los docentes, el 45.1% de los estudiantes y el 31.5% de los apoderados está en desacuerdo.
+</span></div>
 ![](../output/graphs/graph_aut2.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes está muy de acuerdo con que <i>la tolerancia con ideas distintas es el valor más importante que los jóvenes debieran aprender</i> (un 81.2) y la mayor parte de los estudiantes se encuentra de acuerdo (un 48%) o muy de acuerdo (41.6%). Mientras que la mayoría de los apoderados está muy en desacuerdo con esta afirmación (un 60.6%).
+</span></div>
 ![](../output/graphs/graph_aut3.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes, estudiantes y apoderados está muy en desacuerdo con que <i>a veces es mejor que los gobernantes tomen decisiones sin consultar a las mayorías</i> (un 65.3%, un 50.4% y un 64.7%, respectivamente). La mayor parte de las personas restantes declaro encontrarse en desacuerdo con la afirmación (un 22.8% de los profesores, un 28.9% de los estudiantes y un 28.4% de los apoderados).
+</span></div>
 ![](../output/graphs/graph_aut4.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los apoderados está muy de acuerdo con que <i>los gobernantes deben hacer valer su autoridad</i> (un 81.9%) y la mayoría de los estudiantes se encuentra de acuerdo con la afirmación (un 53.3%). Las respuestas de los docentes son más heterogéneas. Un 34.6% de los docentes está en desacuerdo con la afirmación  y un 37.6% está de acuerdo con esta.
+</span></div>
 ![](../output/graphs/graph_aut5.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes y apoderados está muy en desacuerdo con que <i>los gobernantes pierden autoridad cuando reconocen sus errores</i> (un 69.3% y un 63.5%, respectivamente). La mayor parte de los estudiantes se encuentra muy en desacuerdo (un 29.9%) o en desacuerdo con la afirmación (un 39.4%).
+</span></div>
 ![](../output/graphs/graph_aut6.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes está muy en desacuerdo con que <i>la concentración del poder ayuda a mantener el orden</i> (un 79.2%) y la mayoría de los apoderados se encuentra muy de acuerdo con esta afirmación (un 80.3%). La opinión de los estudiantes es más diversa. La mayor parte de los estudiantes se encuentra en desacuerdo (un 30.4%) o de acuerdo con la afirmación (un 38.1%).
+</span></div>
 ![](../output/graphs/graph_aut7.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes y apoderados está muy en desacuerdo con que <i>los gobiernos autoritarios se justifican cuando traen orden y seguridad</i> (un 77.2% y un 60.4%, respectivamente). Mientras que la mayor parte de los estudiantes se encuentra de acuerdo con esta afirmación (un 45.5%).
+</span></div>
 ![](../output/graphs/graph_aut8.png)
 
+<div align="justify";><span style="font-size:18px">
+La mayoría de los docentes y apoderados está muy en desacuerdo con que <i>los gobiernos autoritarios se justifican cuando traen beneficios económicos</i> (un 74.5% y un 71.6%, respectivamente). Mientras que la mayor parte de los estudiantes se encuentra de acuerdo con la afirmación (un 47%).
+</span></div>
 ![](../output/graphs/graph_aut9.png)
 
 ## Sección 3: Confianza en instituciones
