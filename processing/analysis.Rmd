@@ -7,6 +7,9 @@ library(ggtext)
 library(RColorBrewer)
 library(forcats)
 library(dplyr)
+#library(sjstats) #
+#library(survey) #
+library(srvyr) # codigo daniel
 ```
 
 # Data
@@ -41,7 +44,6 @@ load(file= "../input/data/proc/data_apod.Rdata")
 ```{r}
 data_p1=data %>% select(P1,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p1 <- na.omit(data_p1)
-
 data_p1$P1 <- factor(data_p1$P1, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -74,14 +76,19 @@ data_p1$P1 <- factor(data_p1$P1, levels = c(1,2,3,4), labels = c("
 p1 <- data_p1 %>%
   group_by("Alternativas"=P1) %>%
   summarise(counts = n())
+
+pondp1 <- freq(data_p1$P1, weights = data_p1$pond_estudiante_reg_dep_tens)
+p1$prop2 <- pondp1[1:4,4]
+
 p1 <- p1 %>%
   arrange(desc(Alternativas)) %>%
   mutate(prop = round(counts*100/sum(counts), 2),
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p1 <- ggplot(p1, aes(WeightFunction(data_p1$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+
+plot_p1 <- ggplot(p1, aes(x = 2, y = prop2, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
+  geom_text(aes(label = format(paste(round(prop2,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -93,7 +100,7 @@ de justicia ¿Cuál es la MEJOR razón para tener este sistema?") +
   theme(plot.title = element_text(size = 18.5, face = "bold",hjust=0.5))
 
 plot_p1
-ggsave(plot_p1, file = "../output/graphs/ccivico_1.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
+ggsave(plot_p1, file = "../output/graphs/ccivico_1.png",device = "png",width = 30.5,height = 20,dpi = "retina",units = "cm")
 ```
 #### P2: La constitución de un país se refiere a 
 ```{r}
