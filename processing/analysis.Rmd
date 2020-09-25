@@ -7,9 +7,7 @@ library(ggtext)
 library(RColorBrewer)
 library(forcats)
 library(dplyr)
-#library(sjstats) #
-#library(survey) #
-library(srvyr) # codigo daniel
+library(summarytools)
 ```
 
 # Data
@@ -44,6 +42,7 @@ load(file= "../input/data/proc/data_apod.Rdata")
 ```{r}
 data_p1=data %>% select(P1,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p1 <- na.omit(data_p1)
+
 data_p1$P1 <- factor(data_p1$P1, levels = c(1,2,3,4), labels = c("
   <br>
   <strong>
@@ -76,19 +75,15 @@ data_p1$P1 <- factor(data_p1$P1, levels = c(1,2,3,4), labels = c("
 p1 <- data_p1 %>%
   group_by("Alternativas"=P1) %>%
   summarise(counts = n())
-
 pondp1 <- freq(data_p1$P1, weights = data_p1$pond_estudiante_reg_dep_tens)
-p1$prop2 <- pondp1[1:4,4]
-
+p1$prop <- pondp1[1:4,4]
 p1 <- p1 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-
-plot_p1 <- ggplot(p1, aes(x = 2, y = prop2, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p1 <- ggplot(p1, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
-  geom_text(aes(label = format(paste(round(prop2,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
+  geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
   scale_fill_brewer(palette = "Purples") +
   theme_void()+
   xlim(0.5, 2.5) +
@@ -138,11 +133,12 @@ data_p2$P2 <- factor(data_p2$P2, levels = c(1,2,3,4), labels = c("
 p2 <- data_p2 %>%
   group_by("Alternativas"=P2) %>%
   summarise(counts = n())
+pondp2 <- freq(data_p2$P2, weights = data_p2$pond_estudiante_reg_dep_tens)
+p2$prop <- pondp2[1:4,4]
 p2 <- p2 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p2 <- ggplot(p2, aes(WeightFunction(data_p2$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p2 <- ggplot(p2, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -192,11 +188,12 @@ data_p3$P3 <- factor(data_p3$P3, levels = c(1,2,3,4), labels = c("
 p3 <- data_p3 %>%
   group_by("Alternativas"=P3) %>%
   summarise(counts = n())
+pondp3 <- freq(data_p3$P3, weights = data_p3$pond_estudiante_reg_dep_tens)
+p3$prop <- pondp3[1:4,4]
 p3 <- p3 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p3 <- ggplot(p3, aes(WeightFunction(data_p3$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p3 <- ggplot(p3, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -216,6 +213,7 @@ ggsave(plot_p3, file = "../output/graphs/ccivico_3.png",device = "png",width = 3
 ```{r}
 data_p4=data %>% select(P4,pond_estudiante_reg_dep_tens) %>% as.data.frame
 data_p4 <- na.omit(data_p4)
+
 data_p4$P4 <- factor(data_p4$P4, levels = c(1,4,3,2), labels = c("
   <br>
   <strong>
@@ -243,11 +241,12 @@ data_p4$P4 <- factor(data_p4$P4, levels = c(1,4,3,2), labels = c("
 p4 <- data_p4 %>%
   group_by("Alternativas"=P4) %>%
   summarise(counts = n())
+pondp4 <- freq(data_p4$P4, weights = data_p4$pond_estudiante_reg_dep_tens)
+p4$prop <- pondp4[1:4,4]
 p4 <- p4 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p4 <- ggplot(p4, aes(WeightFunction(data_p4$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p4 <- ggplot(p4, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -297,11 +296,12 @@ data_p5$P5 <- factor(data_p5$P5, levels = c(1,2,4,3), labels = c("
 p5 <- data_p5 %>%
   group_by("Alternativas"=P5) %>%
   summarise(counts = n())
+pondp5 <- freq(data_p5$P5, weights = data_p5$pond_estudiante_reg_dep_tens)
+p5$prop <- pondp5[1:4,4]
 p5 <- p5 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p5 <- ggplot(p5, aes(WeightFunction(data_p5$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop) # el valor que se ponga donde está el 0.5 determina la posición del valor del porcentaje en la imagen
+plot_p5 <- ggplot(p5, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -353,11 +353,12 @@ data_p6$P6 <- factor(data_p6$P6, levels = c(1,2,3,4), labels = c("
 p6 <- data_p6 %>%
   group_by("Alternativas"=P6) %>%
   summarise(counts = n())
+pondp6 <- freq(data_p6$P6, weights = data_p6$pond_estudiante_reg_dep_tens)
+p6$prop <- pondp6[1:4,4]
 p6 <- p6 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p6 <- ggplot(p6, aes(WeightFunction(data_p6$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p6 <- ggplot(p6, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -408,11 +409,12 @@ data_p7$P7 <- factor(data_p7$P7, levels = c(1,2,4,5,6,3), labels = c("
 p7 <- data_p7 %>%
   group_by("Alternativas"=P7) %>%
   summarise(counts = n())
+pondp7 <- freq(data_p7$P7, weights = data_p7$pond_estudiante_reg_dep_tens)
+p7$prop <- pondp7[1:6,4]
 p7 <- p7 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p7 <- ggplot(p7, aes(WeightFunction(data_p7$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p7 <- ggplot(p7, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
@@ -460,11 +462,12 @@ data_p8$P8 <- factor(data_p8$P8, levels = c(1,3,4,2), labels = c("
 p8 <- data_p8 %>%
   group_by("Alternativas"=P8) %>%
   summarise(counts = n())
+pondp8 <- freq(data_p8$P8, weights = data_p8$pond_estudiante_reg_dep_tens)
+p8$prop <- pondp8[1:4,4]
 p8 <- p8 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p8 <- ggplot(p8, aes(WeightFunction(data_p8$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p8 <- ggplot(p8, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -505,11 +508,12 @@ data_p9$P9 <- factor(data_p9$P9, levels = c(2,3,4,1), labels = c("
 p9 <- data_p9 %>%
   group_by("Alternativas"=P9) %>%
   summarise(counts = n())
+pondp9 <- freq(data_p9$P9, weights = data_p9$pond_estudiante_reg_dep_tens)
+p9$prop <- pondp9[1:4,4]
 p9 <- p9 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
-         lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p9 <- ggplot(p9, aes(WeightFunction(data_p9$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+plot_p9 <- ggplot(p9, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -554,11 +558,13 @@ data_p10$P10 <- factor(data_p10$P10, levels = c(1,2,4,5,3), labels = c("
 p10 <- data_p10 %>%
   group_by("Alternativas"=P10) %>%
   summarise(counts = n())
+pondp10 <- freq(data_p10$P10, weights = data_p10$pond_estudiante_reg_dep_tens)
+p10$prop <- pondp10[1:5,4]
 p10 <- p10 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p10 <- ggplot(p10, aes(WeightFunction(data_p10$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p10 <- ggplot(p10, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -599,11 +605,13 @@ data_p11$P11 <- factor(data_p11$P11, levels = c(2,3,4,1), labels = c("
 p11 <- data_p11 %>%
   group_by("Alternativas"=P11) %>%
   summarise(counts = n())
+pondp11 <- freq(data_p11$P11, weights = data_p11$pond_estudiante_reg_dep_tens)
+p11$prop <- pondp11[1:4,4]
 p11 <- p11 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p11 <- ggplot(p11, aes(WeightFunction(data_p11$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p11 <- ggplot(p11, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -645,11 +653,13 @@ data_p12$P12 <- factor(data_p12$P12, levels = c(1,2,4,3), labels = c("
 p12 <- data_p12 %>%
   group_by("Alternativas"=P12) %>%
   summarise(counts = n())
+pondp12 <- freq(data_p12$P12, weights = data_p12$pond_estudiante_reg_dep_tens)
+p12$prop <- pondp12[1:4,4]
 p12 <- p12 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p12 <- ggplot(p12, aes(WeightFunction(data_p12$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p12 <- ggplot(p12, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -694,11 +704,13 @@ data_p13$P13 <- factor(data_p13$P13, levels = c(1,2,4,3), labels = c("
 p13 <- data_p13 %>%
   group_by("Alternativas"=P13) %>%
   summarise(counts = n())
+pondp13 <- freq(data_p13$P13, weights = data_p13$pond_estudiante_reg_dep_tens)
+p13$prop <- pondp13[1:4,4]
 p13 <- p13 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p13 <- ggplot(p13, aes(WeightFunction(data_p13$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p13 <- ggplot(p13, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -739,11 +751,13 @@ data_p14$P14 <- factor(data_p14$P14, levels = c(1,2,3,4), labels = c("
 p14 <- data_p14 %>%
   group_by("Alternativas"=P14) %>%
   summarise(counts = n())
+pondp14 <- freq(data_p14$P14, weights = data_p14$pond_estudiante_reg_dep_tens)
+p14$prop <- pondp14[1:4,4]
 p14 <- p14 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p14 <- ggplot(p14, aes(WeightFunction(data_p14$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p14 <- ggplot(p14, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1368,11 +1382,13 @@ data_p52A$P52A <- factor(data_p52A$P52A, levels = c(1,2,3,4), labels = c("
 p52A <- data_p52A %>%
   group_by("Alternativas"=P52A) %>%
   summarise(counts = n())
+pondp52A <- freq(data_p52A$P52A, weights = data_p52A$pond_estudiante_reg_dep_tens)
+p52A$prop <- pondp52A[1:4,4]
 p52A <- p52A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p52A <- ggplot(p52A, aes(WeightFunction(data_p52A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p52A <- ggplot(p52A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1413,12 +1429,14 @@ dataprof_p27A$P27A <- factor(dataprof_p27A$P27A, levels = c(1,2,3,4), labels = c
 p27A <- dataprof_p27A %>%
   group_by("Alternativas"=P27A) %>%
   summarise(counts = n())
+pondprof27A <- freq(dataprof_p27A$P27A, weights = dataprof_p27A$pond_prof_reg_dep_tens)
+p27A$prop <- pondprof27A[3:4,4]
 p27A <- p27A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
 colours= brewer.pal(name="Purples", n=nlevels(dataprof_p27A$P27A))
-plot_prof_p27A <- ggplot(p27A, aes(WeightFunction(dataprof_p27A$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27A <- ggplot(p27A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   scale_fill_manual(values = c("#9E9AC8", "#6A51A3","#6A51A3","#6A51A3")) +
@@ -1461,11 +1479,13 @@ dataapod_p34A$P34A <- factor(dataapod_p34A$P34A, levels = c(1,2,3,4), labels = c
 p34A <- dataapod_p34A %>%
   group_by("Alternativas"=P34A) %>%
   summarise(counts = n())
+pondapodp34A <- freq(dataapod_p34A$P34A, weights = dataapod_p34A$pond_apoderado_reg_dep_tens)
+p34A$prop <- pondapodp34A[2:4,4]
 p34A <- p34A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p34A <- ggplot(p34A, aes(WeightFunction(dataapod_p34A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34A <- ggplot(p34A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   scale_fill_manual(values = c("#CBC9E2","#9E9AC8", "#6A51A3","#6A51A3")) +
@@ -1511,11 +1531,13 @@ data_p52B$P52B <- factor(data_p52B$P52B, levels = c(1,2,3,4), labels = c("
 p52B <- data_p52B %>%
   group_by("Alternativas"=P52B) %>%
   summarise(counts = n())
+pondp52B <- freq(data_p52B$P52B, weights = data_p52B$pond_estudiante_reg_dep_tens)
+p52B$prop <- pondp52B[1:4,4]
 p52B <- p52B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p52B <- ggplot(p52B, aes(WeightFunction(data_p52B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p52B <- ggplot(p52B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1556,11 +1578,13 @@ dataprof_p27B$P27B <- factor(dataprof_p27B$P27B, levels = c(1,2,3,4), labels = c
 p27B <- dataprof_p27B %>%
   group_by("Alternativas"=P27B) %>%
   summarise(counts = n())
+pondprof27B <- freq(dataprof_p27B$P27B, weights = dataprof_p27B$pond_prof_reg_dep_tens)
+p27B$prop <- pondprof27B[3:4,4]
 p27B <- p27B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p27B <- ggplot(p27B, aes(WeightFunction(dataprof_p27B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27B <- ggplot(p27B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1602,11 +1626,13 @@ dataapod_p34B$P34B <- factor(dataapod_p34B$P34B, levels = c(1,2,3,4), labels = c
 p34B <- dataapod_p34B %>%
   group_by("Alternativas"=P34B) %>%
   summarise(counts = n())
+pondapodp34B <- freq(dataapod_p34B$P34B, weights = dataapod_p34B$pond_apoderado_reg_dep_tens)
+p34B$prop <- pondapodp34B[1:4,4]
 p34B <- p34B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p34B <- ggplot(p34B, aes(WeightFunction(dataapod_p34B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34B <- ggplot(p34B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1653,11 +1679,13 @@ data_p52C$P52C <- factor(data_p52C$P52C, levels = c(1,2,3,4), labels = c("
 p52C <- data_p52C %>%
   group_by("Alternativas"=P52C) %>%
   summarise(counts = n())
+pondp52C <- freq(data_p52C$P52C, weights = data_p52C$pond_estudiante_reg_dep_tens)
+p52C$prop <- pondp52C[1:4,4]
 p52C <- p52C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p52C <- ggplot(p52C, aes(WeightFunction(data_p52C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p52C <- ggplot(p52C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1697,11 +1725,13 @@ dataprof_p27C$P27C <- factor(dataprof_p27C$P27C, levels = c(1,2,3,4), labels = c
 p27C <- dataprof_p27C %>%
   group_by("Alternativas"=P27C) %>%
   summarise(counts = n())
+pondprof27C <- freq(dataprof_p27C$P27C, weights = dataprof_p27C$pond_prof_reg_dep_tens)
+p27C$prop <- pondprof27C[3:4,4]
 p27C <- p27C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p27C <- ggplot(p27C, aes(WeightFunction(dataprof_p27C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27C <- ggplot(p27C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1741,11 +1771,13 @@ dataapod_p34C$P34C <- factor(dataapod_p34C$P34C, levels = c(1,2,3,4), labels = c
 p34C <- dataapod_p34C %>%
   group_by("Alternativas"=P34C) %>%
   summarise(counts = n())
+pondapodp34C <- freq(dataapod_p34C$P34C, weights = dataapod_p34C$pond_apoderado_reg_dep_tens)
+p34C$prop <- pondapodp34C[1:4,4]
 p34C <- p34C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p34C <- ggplot(p34C, aes(WeightFunction(dataapod_p34C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34C <- ggplot(p34C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1790,11 +1822,13 @@ data_p52D$P52D <- factor(data_p52D$P52D, levels = c(1,2,3,4), labels = c("
 p52D <- data_p52D %>%
   group_by("Alternativas"=P52D) %>%
   summarise(counts = n())
+pondp52D <- freq(data_p52D$P52D, weights = data_p52D$pond_estudiante_reg_dep_tens)
+p52D$prop <- pondp52D[1:4,4]
 p52D <- p52D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p52D <- ggplot(p52D, aes(WeightFunction(data_p52D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p52D <- ggplot(p52D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1834,11 +1868,13 @@ dataprof_p27D$P27D <- factor(dataprof_p27D$P27D, levels = c(1,2,3,4), labels = c
 p27D <- dataprof_p27D %>%
   group_by("Alternativas"=P27D) %>%
   summarise(counts = n())
+pondprof27D <- freq(dataprof_p27D$P27D, weights = dataprof_p27D$pond_prof_reg_dep_tens)
+p27D$prop <- pondprof27D[1:4,4]
 p27D <- p27D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p27D <- ggplot(p27D, aes(WeightFunction(dataprof_p27D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27D <- ggplot(p27D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1878,11 +1914,13 @@ dataapod_p34D$P34D <- factor(dataapod_p34D$P34D, levels = c(1,2,3,4), labels = c
 p34D <- dataapod_p34D %>%
   group_by("Alternativas"=P34D) %>%
   summarise(counts = n())
+pondapodp34D <- freq(dataapod_p34D$P34D, weights = dataapod_p34D$pond_apoderado_reg_dep_tens)
+p34D$prop <- pondapodp34D[1:4,4]
 p34D <- p34D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p34D <- ggplot(p34D, aes(WeightFunction(dataapod_p34D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34D <- ggplot(p34D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1928,11 +1966,13 @@ data_p52E$P52E <- factor(data_p52E$P52E, levels = c(1,2,3,4), labels = c("
 p52E <- data_p52E %>%
   group_by("Alternativas"=P52E) %>%
   summarise(counts = n())
+pondp52E <- freq(data_p52E$P52E, weights = data_p52E$pond_estudiante_reg_dep_tens)
+p52E$prop <- pondp52E[1:4,4]
 p52E <- p52E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p52E <- ggplot(p52E, aes(WeightFunction(data_p52E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p52E <- ggplot(p52E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -1972,11 +2012,13 @@ dataprof_p27E$P27E <- factor(dataprof_p27E$P27E, levels = c(1,2,3,4), labels = c
 p27E <- dataprof_p27E %>%
   group_by("Alternativas"=P27E) %>%
   summarise(counts = n())
+pondprof27E <- freq(dataprof_p27E$P27E, weights = dataprof_p27E$pond_prof_reg_dep_tens)
+p27E$prop <- pondprof27E[2:4,4]
 p27E <- p27E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p27E <- ggplot(p27E, aes(WeightFunction(dataprof_p27E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p27E <- ggplot(p27E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2016,11 +2058,13 @@ dataapod_p34E$P34E <- factor(dataapod_p34E$P34E, levels = c(1,2,3,4), labels = c
 p34E <- dataapod_p34E %>%
   group_by("Alternativas"=P34E) %>%
   summarise(counts = n())
+pondapodp34E <- freq(dataapod_p34E$P34E, weights = dataapod_p34E$pond_apoderado_reg_dep_tens)
+p34E$prop <- pondapodp34E[1:4,4]
 p34E <- p34E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p34E <- ggplot(p34E, aes(WeightFunction(dataapod_p34E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p34E <- ggplot(p34E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2086,11 +2130,13 @@ data_p53$P53 <- factor(data_p53$P53, levels = c("A","B","C","D","E"), labels = c
 p53 <- data_p53 %>%
   group_by("Alternativas"=P53) %>%
   summarise(counts = n())
+pondp53 <- freq(data_p53$P53, weights = data_p53$pond_estudiante_reg_dep_tens)
+p53$prop <- pondp53[1:5,4]
 p53 <- p53 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p53 <- ggplot(p53, aes(WeightFunction(data_p53$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p53 <- ggplot(p53, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
@@ -2139,11 +2185,13 @@ dataprof_p28$P28 <- factor(dataprof_p28$P28, levels = c("A","B","C","D","E"), la
 p28 <- dataprof_p28 %>%
   group_by("Alternativas"=P28) %>%
   summarise(counts = n())
+pondprof28 <- freq(dataprof_p28$P28, weights = dataprof_p28$pond_prof_reg_dep_tens)
+p28$prop <- pondprof28[1:5,4]
 p28 <- p28 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p28 <- ggplot(p28, aes(WeightFunction(dataprof_p28$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p28 <- ggplot(p28, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
@@ -2190,11 +2238,13 @@ dataapod_p35$P35 <- factor(dataapod_p35$P35, levels = c("A","B","C","D","E"), la
 p35 <- dataapod_p35 %>%
   group_by("Alternativas"=P35) %>%
   summarise(counts = n())
+pondapodp35 <- freq(dataapod_p35$P35, weights = dataapod_p35$pond_apoderado_reg_dep_tens)
+p35$prop <- pondapodp35[1:5,4]
 p35 <- p35 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p35 <- ggplot(p35, aes(WeightFunction(dataapod_p35$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p35 <- ggplot(p35, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=5.4) +
@@ -2234,11 +2284,13 @@ data_p55A$P55A <- factor(data_p55A$P55A, levels = c(1,2,3), labels = c("
 p55A <- data_p55A %>%
   group_by("Alternativas"=P55A) %>%
   summarise(counts = n())
+pondp55A <- freq(data_p55A$P55A, weights = data_p55A$pond_estudiante_reg_dep_tens)
+p55A$prop <- pondp55A[1:3,4]
 p55A <- p55A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p55A <- ggplot(p55A, aes(WeightFunction(data_p55A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p55A <- ggplot(p55A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2274,11 +2326,13 @@ dataprof_p30A$P30A <- factor(dataprof_p30A$P30A, levels = c(1,2,3), labels = c("
 p30A <- dataprof_p30A %>%
   group_by("Alternativas"=P30A) %>%
   summarise(counts = n())
+pondprof30A <- freq(dataprof_p30A$P30A, weights = dataprof_p30A$pond_prof_reg_dep_tens)
+p30A$prop <- pondprof30A[1:3,4]
 p30A <- p30A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p30A <- ggplot(p30A, aes(WeightFunction(dataprof_p30A$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p30A <- ggplot(p30A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2313,11 +2367,13 @@ dataapod_p37A$P37A <- factor(dataapod_p37A$P37A, levels = c(1,2,3), labels = c("
 p37A <- dataapod_p37A %>%
   group_by("Alternativas"=P37A) %>%
   summarise(counts = n())
+pondapodp37A <- freq(dataapod_p37A$P37A, weights = dataapod_p37A$pond_apoderado_reg_dep_tens)
+p37A$prop <- pondapodp37A[1:3,4]
 p37A <- p37A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p37A <- ggplot(p37A, aes(WeightFunction(dataapod_p37A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p37A <- ggplot(p37A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2357,11 +2413,13 @@ data_p55B$P55B <- factor(data_p55B$P55B, levels = c(1,2,3), labels = c("
 p55B <- data_p55B %>%
   group_by("Alternativas"=P55B) %>%
   summarise(counts = n())
+pondp55B <- freq(data_p55B$P55B, weights = data_p55B$pond_estudiante_reg_dep_tens)
+p55B$prop <- pondp55B[1:3,4]
 p55B <- p55B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p55B <- ggplot(p55B, aes(WeightFunction(data_p55B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p55B <- ggplot(p55B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2397,11 +2455,13 @@ dataprof_p30B$P30B <- factor(dataprof_p30B$P30B, levels = c(1,2,3), labels = c("
 p30B <- dataprof_p30B %>%
   group_by("Alternativas"=P30B) %>%
   summarise(counts = n())
+pondprof30B <- freq(dataprof_p30B$P30B, weights = dataprof_p30B$pond_prof_reg_dep_tens)
+p30B$prop <- pondprof30B[1:3,4]
 p30B <- p30B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p30B <- ggplot(p30B, aes(WeightFunction(dataprof_p30B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p30B <- ggplot(p30B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2437,11 +2497,13 @@ dataapod_p37B$P37B <- factor(dataapod_p37B$P37B, levels = c(1,2,3), labels = c("
 p37B <- dataapod_p37B %>%
   group_by("Alternativas"=P37B) %>%
   summarise(counts = n())
+pondapodp37B <- freq(dataapod_p37B$P37B, weights = dataapod_p37B$pond_apoderado_reg_dep_tens)
+p37B$prop <- pondapodp37B[1:3,4]
 p37B <- p37B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p37B <- ggplot(p37B, aes(WeightFunction(dataapod_p37B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p37B <- ggplot(p37B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2483,11 +2545,13 @@ data_p55C$P55C <- factor(data_p55C$P55C, levels = c(1,2,3), labels = c("
 p55C <- data_p55C %>%
   group_by("Alternativas"=P55C) %>%
   summarise(counts = n())
+pondp55C <- freq(data_p55C$P55C, weights = data_p55C$pond_estudiante_reg_dep_tens)
+p55C$prop <- pondp55C[1:3,4]
 p55C <- p55C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p55C <- ggplot(p55C, aes(WeightFunction(data_p55C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p55C <- ggplot(p55C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2523,11 +2587,13 @@ dataprof_p30C$P30C <- factor(dataprof_p30C$P30C, levels = c(1,2,3), labels = c("
 p30C <- dataprof_p30C %>%
   group_by("Alternativas"=P30C) %>%
   summarise(counts = n())
+pondprof30C <- freq(dataprof_p30C$P30C, weights = dataprof_p30C$pond_prof_reg_dep_tens)
+p30C$prop <- pondprof30C[1:3,4]
 p30C <- p30C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p30C <- ggplot(p30C, aes(WeightFunction(dataprof_p30C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p30C <- ggplot(p30C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2562,11 +2628,13 @@ dataapod_p37C$P37C <- factor(dataapod_p37C$P37C, levels = c(1,2,3), labels = c("
 p37C <- dataapod_p37C %>%
   group_by("Alternativas"=P37C) %>%
   summarise(counts = n())
+pondapodp37C <- freq(dataapod_p37C$P37C, weights = dataapod_p37C$pond_apoderado_reg_dep_tens)
+p37C$prop <- pondapodp37C[1:3,4]
 p37C <- p37C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p37C <- ggplot(p37C, aes(WeightFunction(dataapod_p37C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p37C <- ggplot(p37C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2607,11 +2675,13 @@ data_p55D$P55D <- factor(data_p55D$P55D, levels = c(1,2,3), labels = c("
 p55D <- data_p55D %>%
   group_by("Alternativas"=P55D) %>%
   summarise(counts = n())
+pondp55D <- freq(data_p55D$P55D, weights = data_p55D$pond_estudiante_reg_dep_tens)
+p55D$prop <- pondp55D[1:3,4]
 p55D <- p55D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p55D <- ggplot(p55D, aes(WeightFunction(data_p55D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p55D <- ggplot(p55D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2647,11 +2717,13 @@ dataprof_p30D$P30D <- factor(dataprof_p30D$P30D, levels = c(1,2,3), labels = c("
 p30D <- dataprof_p30D %>%
   group_by("Alternativas"=P30D) %>%
   summarise(counts = n())
+pondprof30D <- freq(dataprof_p30D$P30D, weights = dataprof_p30D$pond_prof_reg_dep_tens)
+p30D$prop <- pondprof30D[1:3,4]
 p30D <- p30D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p30D <- ggplot(p30D, aes(WeightFunction(dataprof_p30D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p30D <- ggplot(p30D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2686,11 +2758,13 @@ dataapod_p37D$P37D <- factor(dataapod_p37D$P37D, levels = c(1,2,3), labels = c("
 p37D <- dataapod_p37D %>%
   group_by("Alternativas"=P37D) %>%
   summarise(counts = n())
+pondapodp37D <- freq(dataapod_p37D$P37D, weights = dataapod_p37D$pond_apoderado_reg_dep_tens)
+p37D$prop <- pondapodp37D[1:3,4]
 p37D <- p37D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p37D <- ggplot(p37D, aes(WeightFunction(dataapod_p37D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p37D <- ggplot(p37D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2731,11 +2805,13 @@ data_p55E$P55E <- factor(data_p55E$P55E, levels = c(1,2,3), labels = c("
 p55E <- data_p55E %>%
   group_by("Alternativas"=P55E) %>%
   summarise(counts = n())
+pondp55E <- freq(data_p55E$P55E, weights = data_p55E$pond_estudiante_reg_dep_tens)
+p55E$prop <- pondp55E[1:3,4]
 p55E <- p55E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p55E <- ggplot(p55E, aes(WeightFunction(data_p55E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p55E <- ggplot(p55E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2771,11 +2847,13 @@ dataprof_p30E$P30E <- factor(dataprof_p30E$P30E, levels = c(1,2,3), labels = c("
 p30E <- dataprof_p30E %>%
   group_by("Alternativas"=P30E) %>%
   summarise(counts = n())
+pondprof30E <- freq(dataprof_p30E$P30E, weights = dataprof_p30E$pond_prof_reg_dep_tens)
+p30E$prop <- pondprof30E[1:3,4]
 p30E <- p30E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p30E <- ggplot(p30E, aes(WeightFunction(dataprof_p30E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p30E <- ggplot(p30E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2810,11 +2888,13 @@ dataapod_p37E$P37E <- factor(dataapod_p37E$P37E, levels = c(1,2,3), labels = c("
 p37E <- dataapod_p37E %>%
   group_by("Alternativas"=P37E) %>%
   summarise(counts = n())
+pondapodp37E <- freq(dataapod_p37E$P37E, weights = dataapod_p37E$pond_apoderado_reg_dep_tens)
+p37E$prop <- pondapodp37E[1:3,4]
 p37E <- p37E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p37E <- ggplot(p37E, aes(WeightFunction(dataapod_p37E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p37E <- ggplot(p37E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2860,11 +2940,13 @@ data_p43D$P43D <- factor(data_p43D$P43D, levels = c(1,2,3,4), labels = c("
 p43D <- data_p43D %>%
   group_by("Alternativas"=P43D) %>%
   summarise(counts = n())
+pondp43D <- freq(data_p43D$P43D, weights = data_p43D$pond_estudiante_reg_dep_tens)
+p43D$prop <- pondp43D[1:4,4]
 p43D <- p43D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p43D <- ggplot(p43D, aes(WeightFunction(data_p43D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p43D <- ggplot(p43D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2905,11 +2987,13 @@ dataprof_p11$P11 <- factor(dataprof_p11$P11, levels = c(1,2,3,4), labels = c("
 p11 <- dataprof_p11 %>%
   group_by("Alternativas"=P11) %>%
   summarise(counts = n())
+pondprof11 <- freq(dataprof_p11$P11, weights = dataprof_p11$pond_prof_reg_dep_tens)
+p11$prop <- pondprof11[1:4,4]
 p11 <- p11 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p11 <- ggplot(p11, aes(WeightFunction(dataprof_p11$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p11 <- ggplot(p11, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2946,11 +3030,13 @@ dataapod_p38D$P38D <- factor(dataapod_p38D$P38D, levels = c(1,2,3,4), labels = c
 p38D <- dataapod_p38D %>%
   group_by("Alternativas"=P38D) %>%
   summarise(counts = n())
+pondapodp38D <- freq(dataapod_p38D$P38D, weights = dataapod_p38D$pond_apoderado_reg_dep_tens)
+p38D$prop <- pondapodp38D[1:4,4]
 p38D <- p38D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p38D <- ggplot(p38D, aes(WeightFunction(dataapod_p38D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p38D <- ggplot(p38D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -2994,11 +3080,13 @@ data_p43A$P43A <- factor(data_p43A$P43A, levels = c(1,2,3,4), labels = c("
 p43A <- data_p43A %>%
   group_by("Alternativas"=P43A) %>%
   summarise(counts = n())
+pondp43A <- freq(data_p43A$P43A, weights = data_p43A$pond_estudiante_reg_dep_tens)
+p43A$prop <- pondp43A[1:4,4]
 p43A <- p43A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p43A <- ggplot(p43A, aes(WeightFunction(data_p43A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p43A <- ggplot(p43A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3038,11 +3126,13 @@ dataapod_p38A$P38A <- factor(dataapod_p38A$P38A, levels = c(1,2,3,4), labels = c
 p38A <- dataapod_p38A %>%
   group_by("Alternativas"=P38A) %>%
   summarise(counts = n())
+pondapodp38A <- freq(dataapod_p38A$P38A, weights = dataapod_p38A$pond_apoderado_reg_dep_tens)
+p38A$prop <- pondapodp38A[1:4,4]
 p38A <- p38A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p38A <- ggplot(p38A, aes(WeightFunction(dataapod_p38A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p38A <- ggplot(p38A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3086,11 +3176,13 @@ data_p43B$P43B <- factor(data_p43B$P43B, levels = c(1,2,3,4), labels = c("
 p43B <- data_p43B %>%
   group_by("Alternativas"=P43B) %>%
   summarise(counts = n())
+pondp43B <- freq(data_p43B$P43B, weights = data_p43B$pond_estudiante_reg_dep_tens)
+p43B$prop <- pondp43B[1:4,4]
 p43B <- p43B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p43B <- ggplot(p43B, aes(WeightFunction(data_p43B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p43B <- ggplot(p43B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3130,11 +3222,13 @@ dataapod_p38B$P38B <- factor(dataapod_p38B$P38B, levels = c(1,2,3,4), labels = c
 p38B <- dataapod_p38B %>%
   group_by("Alternativas"=P38B) %>%
   summarise(counts = n())
+pondapodp38B <- freq(dataapod_p38B$P38B, weights = dataapod_p38B$pond_apoderado_reg_dep_tens)
+p38B$prop <- pondapodp38B[1:4,4]
 p38B <- p38B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p38B <- ggplot(p38B, aes(WeightFunction(dataapod_p38B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p38B <- ggplot(p38B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3177,11 +3271,13 @@ data_p43C$P43C <- factor(data_p43C$P43C, levels = c(1,2,3,4), labels = c("
 p43C <- data_p43C %>%
   group_by("Alternativas"=P43C) %>%
   summarise(counts = n())
+pondp43C <- freq(data_p43C$P43C, weights = data_p43C$pond_estudiante_reg_dep_tens)
+p43C$prop <- pondp43C[1:4,4]
 p43C <- p43C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p43C <- ggplot(p43C, aes(WeightFunction(data_p43C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p43C <- ggplot(p43C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3221,11 +3317,13 @@ dataapod_p38C$P38C <- factor(dataapod_p38C$P38C, levels = c(1,2,3,4), labels = c
 p38C <- dataapod_p38C %>%
   group_by("Alternativas"=P38C) %>%
   summarise(counts = n())
+pondapodp38C <- freq(dataapod_p38C$P38C, weights = dataapod_p38C$pond_apoderado_reg_dep_tens)
+p38C$prop <- pondapodp38C[1:4,4]
 p38C <- p38C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p38C <- ggplot(p38C, aes(WeightFunction(dataapod_p38C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p38C <- ggplot(p38C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3268,11 +3366,13 @@ data_p15$P15 <- factor(data_p15$P15, levels = c(1,2,3,4), labels = c("
 p15 <- data_p15 %>%
   group_by("Alternativas"=P15) %>%
   summarise(counts = n())
+pondp15 <- freq(data_p15$P15, weights = data_p15$pond_estudiante_reg_dep_tens)
+p15$prop <- pondp15[1:4,4]
 p15 <- p15 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p15 <- ggplot(p15, aes(WeightFunction(data_p15$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p15 <- ggplot(p15, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3314,11 +3414,13 @@ dataapod_p3$P3 <- factor(dataapod_p3$P3, levels = c(1,2,3,4), labels = c("
 p3 <- dataapod_p3 %>%
   group_by("Alternativas"=P3) %>%
   summarise(counts = n())
+pondapodp3 <- freq(dataapod_p3$P3, weights = dataapod_p3$pond_apoderado_reg_dep_tens)
+p3$prop <- pondapodp3[1:4,4]
 p3 <- p3 %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p3 <- ggplot(p3, aes(WeightFunction(dataapod_p3$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p3 <- ggplot(p3, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3362,11 +3464,13 @@ data_p21A$P21A <- factor(data_p21A$P21A, levels = c(1,2,3,4), labels = c("
 p21A <- data_p21A %>%
   group_by("Alternativas"=P21A) %>%
   summarise(counts = n())
+pondp21A <- freq(data_p21A$P21A, weights = data_p21A$pond_estudiante_reg_dep_tens)
+p21A$prop <- pondp21A[1:4,4]
 p21A <- p21A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21A <- ggplot(p21A, aes(WeightFunction(data_p21A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21A <- ggplot(p21A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3406,11 +3510,13 @@ dataprof_p18A$P18A <- factor(dataprof_p18A$P18A, levels = c(1,2,3,4), labels = c
 p18A <- dataprof_p18A %>%
   group_by("Alternativas"=P18A) %>%
   summarise(counts = n())
+pondprof18A <- freq(dataprof_p18A$P18A, weights = dataprof_p18A$pond_prof_reg_dep_tens)
+p18A$prop <- pondprof18A[1:4,4]
 p18A <- p18A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18A <- ggplot(p18A, aes(WeightFunction(dataprof_p18A$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18A <- ggplot(p18A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3448,11 +3554,13 @@ dataapod_p5A$P5A <- factor(dataapod_p5A$P5A, levels = c(1,2,3,4), labels = c("
 p5A <- dataapod_p5A %>%
   group_by("Alternativas"=P5A) %>%
   summarise(counts = n())
+pondapodP5A <- freq(dataapod_p5A$P5A, weights = dataapod_p5A$pond_apoderado_reg_dep_tens)
+p5A$prop <- pondapodP5A[1:4,4]
 p5A <- p5A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5A <- ggplot(p5A, aes(WeightFunction(dataapod_p5A$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5A <- ggplot(p5A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3497,11 +3605,13 @@ data_p21B$P21B <- factor(data_p21B$P21B, levels = c(1,2,3,4), labels = c("
 p21B <- data_p21B %>%
   group_by("Alternativas"=P21B) %>%
   summarise(counts = n())
+pondp21B <- freq(data_p21B$P21B, weights = data_p21B$pond_estudiante_reg_dep_tens)
+p21B$prop <- pondp21B[1:4,4]
 p21B <- p21B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21B <- ggplot(p21B, aes(WeightFunction(data_p21B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21B <- ggplot(p21B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3542,11 +3652,13 @@ dataprof_p18B$P18B <- factor(dataprof_p18B$P18B, levels = c(1,2,3,4), labels = c
 p18B <- dataprof_p18B %>%
   group_by("Alternativas"=P18B) %>%
   summarise(counts = n())
+pondprof18B <- freq(dataprof_p18B$P18B, weights = dataprof_p18B$pond_prof_reg_dep_tens)
+p18B$prop <- pondprof18B[1:4,4]
 p18B <- p18B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18B <- ggplot(p18B, aes(WeightFunction(dataprof_p18B$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18B <- ggplot(p18B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3586,11 +3698,13 @@ dataapod_p5B$P5B <- factor(dataapod_p5B$P5B, levels = c(1,2,3,4), labels = c("
 p5B <- dataapod_p5B %>%
   group_by("Alternativas"=P5B) %>%
   summarise(counts = n())
+pondapodP5B <- freq(dataapod_p5B$P5B, weights = dataapod_p5B$pond_apoderado_reg_dep_tens)
+p5B$prop <- pondapodP5B[1:4,4]
 p5B <- p5B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5B <- ggplot(p5B, aes(WeightFunction(dataapod_p5B$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5B <- ggplot(p5B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3636,11 +3750,13 @@ data_p21C$P21C <- factor(data_p21C$P21C, levels = c(1,2,3,4), labels = c("
 p21C <- data_p21C %>%
   group_by("Alternativas"=P21C) %>%
   summarise(counts = n())
+pondp21C <- freq(data_p21C$P21C, weights = data_p21C$pond_estudiante_reg_dep_tens)
+p21C$prop <- pondp21C[1:4,4]
 p21C <- p21C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21C <- ggplot(p21C, aes(WeightFunction(data_p21C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21C <- ggplot(p21C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3681,11 +3797,13 @@ dataprof_p18C$P18C <- factor(dataprof_p18C$P18C, levels = c(1,2,3,4), labels = c
 p18C <- dataprof_p18C %>%
   group_by("Alternativas"=P18C) %>%
   summarise(counts = n())
+pondprof18C <- freq(dataprof_p18C$P18C, weights = dataprof_p18C$pond_prof_reg_dep_tens)
+p18C$prop <- pondprof18C[1:4,4]
 p18C <- p18C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18C <- ggplot(p18C, aes(WeightFunction(dataprof_p18C$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18C <- ggplot(p18C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3725,11 +3843,13 @@ dataapod_p5C$P5C <- factor(dataapod_p5C$P5C, levels = c(1,2,3,4), labels = c("
 p5C <- dataapod_p5C %>%
   group_by("Alternativas"=P5C) %>%
   summarise(counts = n())
+pondapodP5C <- freq(dataapod_p5C$P5C, weights = dataapod_p5C$pond_apoderado_reg_dep_tens)
+p5C$prop <- pondapodP5C[1:4,4]
 p5C <- p5C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5C <- ggplot(p5C, aes(WeightFunction(dataapod_p5C$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5C <- ggplot(p5C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3775,11 +3895,13 @@ data_p21D$P21D <- factor(data_p21D$P21D, levels = c(1,2,3,4), labels = c("
 p21D <- data_p21D %>%
   group_by("Alternativas"=P21D) %>%
   summarise(counts = n())
+pondp21D <- freq(data_p21D$P21D, weights = data_p21D$pond_estudiante_reg_dep_tens)
+p21D$prop <- pondp21D[1:4,4]
 p21D <- p21D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21D <- ggplot(p21D, aes(WeightFunction(data_p21D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21D <- ggplot(p21D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3820,11 +3942,13 @@ dataprof_p18D$P18D <- factor(dataprof_p18D$P18D, levels = c(1,2,3,4), labels = c
 p18D <- dataprof_p18D %>%
   group_by("Alternativas"=P18D) %>%
   summarise(counts = n())
+pondprof18D <- freq(dataprof_p18D$P18D, weights = dataprof_p18D$pond_prof_reg_dep_tens)
+p18D$prop <- pondprof18D[1:4,4]
 p18D <- p18D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18D <- ggplot(p18D, aes(WeightFunction(dataprof_p18D$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18D <- ggplot(p18D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3864,11 +3988,13 @@ dataapod_p5D$P5D <- factor(dataapod_p5D$P5D, levels = c(1,2,3,4), labels = c("
 p5D <- dataapod_p5D %>%
   group_by("Alternativas"=P5D) %>%
   summarise(counts = n())
+pondapodP5D <- freq(dataapod_p5D$P5D, weights = dataapod_p5D$pond_apoderado_reg_dep_tens)
+p5D$prop <- pondapodP5D[1:4,4]
 p5D <- p5D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5D <- ggplot(p5D, aes(WeightFunction(dataapod_p5D$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5D <- ggplot(p5D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3914,11 +4040,13 @@ data_p21E$P21E <- factor(data_p21E$P21E, levels = c(1,2,3,4), labels = c("
 p21E <- data_p21E %>%
   group_by("Alternativas"=P21E) %>%
   summarise(counts = n())
+pondp21E <- freq(data_p21E$P21E, weights = data_p21E$pond_estudiante_reg_dep_tens)
+p21E$prop <- pondp21E[1:4,4]
 p21E <- p21E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21E <- ggplot(p21E, aes(WeightFunction(data_p21E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21E <- ggplot(p21E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -3959,11 +4087,13 @@ dataprof_p18E$P18E <- factor(dataprof_p18E$P18E, levels = c(1,2,3,4), labels = c
 p18E <- dataprof_p18E %>%
   group_by("Alternativas"=P18E) %>%
   summarise(counts = n())
+pondprof18E <- freq(dataprof_p18E$P18E, weights = dataprof_p18E$pond_prof_reg_dep_tens)
+p18E$prop <- pondprof18E[1:4,4]
 p18E <- p18E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18E <- ggplot(p18E, aes(WeightFunction(dataprof_p18E$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18E <- ggplot(p18E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4002,11 +4132,13 @@ dataapod_p5E$P5E <- factor(dataapod_p5E$P5E, levels = c(1,2,3,4), labels = c("
 p5E <- dataapod_p5E %>%
   group_by("Alternativas"=P5E) %>%
   summarise(counts = n())
+pondapodP5E <- freq(dataapod_p5E$P5E, weights = dataapod_p5E$pond_apoderado_reg_dep_tens)
+p5E$prop <- pondapodP5E[1:4,4]
 p5E <- p5E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5E <- ggplot(p5E, aes(WeightFunction(dataapod_p5E$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5E <- ggplot(p5E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4051,11 +4183,13 @@ data_p21F$P21F <- factor(data_p21F$P21F, levels = c(1,2,3,4), labels = c("
 p21F <- data_p21F %>%
   group_by("Alternativas"=P21F) %>%
   summarise(counts = n())
+pondp21F <- freq(data_p21F$P21F, weights = data_p21F$pond_estudiante_reg_dep_tens)
+p21F$prop <- pondp21F[1:4,4]
 p21F <- p21F %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21F <- ggplot(p21F, aes(WeightFunction(data_p21F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21F <- ggplot(p21F, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4096,11 +4230,13 @@ dataprof_p18F$P18F <- factor(dataprof_p18F$P18F, levels = c(1,2,3,4), labels = c
 p18F <- dataprof_p18F %>%
   group_by("Alternativas"=P18F) %>%
   summarise(counts = n())
+pondprof18F <- freq(dataprof_p18F$P18F, weights = dataprof_p18F$pond_prof_reg_dep_tens)
+p18F$prop <- pondprof18F[1:4,4]
 p18F <- p18F %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18F <- ggplot(p18F, aes(WeightFunction(dataprof_p18F$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18F <- ggplot(p18F, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4139,11 +4275,13 @@ dataapod_p5F$P5F <- factor(dataapod_p5F$P5F, levels = c(1,2,3,4), labels = c("
 p5F <- dataapod_p5F %>%
   group_by("Alternativas"=P5F) %>%
   summarise(counts = n())
+pondapodP5F <- freq(dataapod_p5F$P5F, weights = dataapod_p5F$pond_apoderado_reg_dep_tens)
+p5F$prop <- pondapodP5F[1:4,4]
 p5F <- p5F %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5F <- ggplot(p5F, aes(WeightFunction(dataapod_p5F$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5F <- ggplot(p5F, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4188,11 +4326,13 @@ data_p21G$P21G <- factor(data_p21G$P21G, levels = c(1,2,3,4), labels = c("
 p21G <- data_p21G %>%
   group_by("Alternativas"=P21G) %>%
   summarise(counts = n())
+pondp21G <- freq(data_p21G$P21G, weights = data_p21G$pond_estudiante_reg_dep_tens)
+p21G$prop <- pondp21G[1:4,4]
 p21G <- p21G %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21G <- ggplot(p21G, aes(WeightFunction(data_p21G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21G <- ggplot(p21G, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4233,11 +4373,13 @@ dataprof_p18G$P18G <- factor(dataprof_p18G$P18G, levels = c(1,2,3,4), labels = c
 p18G <- dataprof_p18G %>%
   group_by("Alternativas"=P18G) %>%
   summarise(counts = n())
+pondprof18G <- freq(dataprof_p18G$P18G, weights = dataprof_p18G$pond_prof_reg_dep_tens)
+p18G$prop <- pondprof18G[1:4,4]
 p18G <- p18G %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18G <- ggplot(p18G, aes(WeightFunction(dataprof_p18G$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18G <- ggplot(p18G, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4276,11 +4418,13 @@ dataapod_p5G$P5G <- factor(dataapod_p5G$P5G, levels = c(1,2,3,4), labels = c("
 p5G <- dataapod_p5G %>%
   group_by("Alternativas"=P5G) %>%
   summarise(counts = n())
+pondapodP5G <- freq(dataapod_p5G$P5G, weights = dataapod_p5G$pond_apoderado_reg_dep_tens)
+p5G$prop <- pondapodP5G[1:4,4]
 p5G <- p5G %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5G <- ggplot(p5G, aes(WeightFunction(dataapod_p5G$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5G <- ggplot(p5G, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4325,11 +4469,13 @@ data_p21H$P21H <- factor(data_p21H$P21H, levels = c(1,2,3,4), labels = c("
 p21H <- data_p21H %>%
   group_by("Alternativas"=P21H) %>%
   summarise(counts = n())
+pondp21H <- freq(data_p21H$P21H, weights = data_p21H$pond_estudiante_reg_dep_tens)
+p21H$prop <- pondp21H[1:4,4]
 p21H <- p21H %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21H <- ggplot(p21H, aes(WeightFunction(data_p21H$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21H <- ggplot(p21H, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4370,11 +4516,13 @@ dataprof_p18H$P18H <- factor(dataprof_p18H$P18H, levels = c(1,2,3,4), labels = c
 p18H <- dataprof_p18H %>%
   group_by("Alternativas"=P18H) %>%
   summarise(counts = n())
+pondprof18H <- freq(dataprof_p18H$P18H, weights = dataprof_p18H$pond_prof_reg_dep_tens)
+p18H$prop <- pondprof18H[1:3,4]
 p18H <- p18H %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18H <- ggplot(p18H, aes(WeightFunction(dataprof_p18H$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18H <- ggplot(p18H, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4413,11 +4561,13 @@ dataapod_p5H$P5H <- factor(dataapod_p5H$P5H, levels = c(1,2,3,4), labels = c("
 p5H <- dataapod_p5H %>%
   group_by("Alternativas"=P5H) %>%
   summarise(counts = n())
+pondapodP5H <- freq(dataapod_p5H$P5H, weights = dataapod_p5H$pond_apoderado_reg_dep_tens)
+p5H$prop <- pondapodP5H[1:4,4]
 p5H <- p5H %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5H <- ggplot(p5H, aes(WeightFunction(dataapod_p5H$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5H <- ggplot(p5H, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4462,11 +4612,13 @@ data_p21I$P21I <- factor(data_p21I$P21I, levels = c(1,2,3,4), labels = c("
 p21I <- data_p21I %>%
   group_by("Alternativas"=P21I) %>%
   summarise(counts = n())
+pondp21I <- freq(data_p21I$P21I, weights = data_p21I$pond_estudiante_reg_dep_tens)
+p21I$prop <- pondp21I[1:4,4]
 p21I <- p21I %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p21I <- ggplot(p21I, aes(WeightFunction(data_p21I$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p21I <- ggplot(p21I, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4507,11 +4659,13 @@ dataprof_p18I$P18I <- factor(dataprof_p18I$P18I, levels = c(1,2,3,4), labels = c
 p18I <- dataprof_p18I %>%
   group_by("Alternativas"=P18I) %>%
   summarise(counts = n())
+pondprof18I <- freq(dataprof_p18I$P18I, weights = dataprof_p18I$pond_prof_reg_dep_tens)
+p18I$prop <- pondprof18I[1:3,4]
 p18I <- p18I %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_prof_p18I <- ggplot(p18I, aes(WeightFunction(dataprof_p18I$pond_prof_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_prof_p18I <- ggplot(p18I, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4550,11 +4704,13 @@ dataapod_p5I$P5I <- factor(dataapod_p5I$P5I, levels = c(1,2,3,4), labels = c("
 p5I <- dataapod_p5I %>%
   group_by("Alternativas"=P5I) %>%
   summarise(counts = n())
+pondapodP5I <- freq(dataapod_p5I$P5I, weights = dataapod_p5I$pond_apoderado_reg_dep_tens)
+p5I$prop <- pondapodP5I[1:4,4]
 p5I <- p5I %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_apod_p5I <- ggplot(p5I, aes(WeightFunction(dataapod_p5I$pond_apoderado_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_apod_p5I <- ggplot(p5I, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4599,11 +4755,13 @@ data_p22A$P22A <- factor(data_p22A$P22A, levels = c(1,2,3,4), labels = c("
 p22A <- data_p22A %>%
   group_by("Alternativas"=P22A) %>%
   summarise(counts = n())
+pondp22A <- freq(data_p22A$P22A, weights = data_p22A$pond_estudiante_reg_dep_tens)
+p22A$prop <- pondp22A[1:4,4]
 p22A <- p22A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p22A <- ggplot(p22A, aes(WeightFunction(data_p22A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p22A <- ggplot(p22A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4642,11 +4800,13 @@ data_p22B$P22B <- factor(data_p22B$P22B, levels = c(1,2,3,4), labels = c("
 p22B <- data_p22B %>%
   group_by("Alternativas"=P22B) %>%
   summarise(counts = n())
+pondp22B <- freq(data_p22B$P22B, weights = data_p22B$pond_estudiante_reg_dep_tens)
+p22B$prop <- pondp22B[1:4,4]
 p22B <- p22B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p22B <- ggplot(p22B, aes(WeightFunction(data_p22B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p22B <- ggplot(p22B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4684,11 +4844,13 @@ data_p22C$P22C <- factor(data_p22C$P22C, levels = c(1,2,3,4), labels = c("
 p22C <- data_p22C %>%
   group_by("Alternativas"=P22C) %>%
   summarise(counts = n())
+pondp22C <- freq(data_p22C$P22C, weights = data_p22C$pond_estudiante_reg_dep_tens)
+p22C$prop <- pondp22C[1:4,4]
 p22C <- p22C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p22C <- ggplot(p22C, aes(WeightFunction(data_p22C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p22C <- ggplot(p22C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4726,11 +4888,13 @@ data_p22D$P22D <- factor(data_p22D$P22D, levels = c(1,2,3,4), labels = c("
 p22D <- data_p22D %>%
   group_by("Alternativas"=P22D) %>%
   summarise(counts = n())
+pondp22D <- freq(data_p22D$P22D, weights = data_p22D$pond_estudiante_reg_dep_tens)
+p22D$prop <- pondp22D[1:4,4]
 p22D <- p22D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p22D <- ggplot(p22D, aes(WeightFunction(data_p22D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p22D <- ggplot(p22D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4769,11 +4933,13 @@ data_p22E$P22E <- factor(data_p22E$P22E, levels = c(1,2,3,4), labels = c("
 p22E <- data_p22E %>%
   group_by("Alternativas"=P22E) %>%
   summarise(counts = n())
+pondp22E <- freq(data_p22E$P22E, weights = data_p22E$pond_estudiante_reg_dep_tens)
+p22E$prop <- pondp22E[1:4,4]
 p22E <- p22E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p22E <- ggplot(p22E, aes(WeightFunction(data_p22E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p22E <- ggplot(p22E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4813,11 +4979,13 @@ data_p22F$P22F <- factor(data_p22F$P22F, levels = c(1,2,3,4), labels = c("
 p22F <- data_p22F %>%
   group_by("Alternativas"=P22F) %>%
   summarise(counts = n())
+pondp22F <- freq(data_p22F$P22F, weights = data_p22F$pond_estudiante_reg_dep_tens)
+p22F$prop <- pondp22F[1:4,4]
 p22F <- p22F %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p22F <- ggplot(p22F, aes(WeightFunction(data_p22F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p22F <- ggplot(p22F, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4858,11 +5026,13 @@ data_p30A$P30A <- factor(data_p30A$P30A, levels = c(1,2), labels = c("
 p30A <- data_p30A %>%
   group_by("Alternativas"=P30A) %>%
   summarise(counts = n())
+pondp30A <- freq(data_p30A$P30A, weights = data_p30A$pond_estudiante_reg_dep_tens)
+p30A$prop <- pondp30A[1:2,4]
 p30A <- p30A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30A <- ggplot(p30A, aes(WeightFunction(data_p30A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30A <- ggplot(p30A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4893,11 +5063,13 @@ data_p30B$P30B <- factor(data_p30B$P30B, levels = c(1,2), labels = c("
 p30B <- data_p30B %>%
   group_by("Alternativas"=P30B) %>%
   summarise(counts = n())
+pondp30B <- freq(data_p30B$P30B, weights = data_p30B$pond_estudiante_reg_dep_tens)
+p30B$prop <- pondp30B[1:2,4]
 p30B <- p30B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30B <- ggplot(p30B, aes(WeightFunction(data_p30B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30B <- ggplot(p30B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4930,11 +5102,13 @@ data_p30C$P30C <- factor(data_p30C$P30C, levels = c(1,2), labels = c("
 p30C <- data_p30C %>%
   group_by("Alternativas"=P30C) %>%
   summarise(counts = n())
+pondp30C <- freq(data_p30C$P30C, weights = data_p30C$pond_estudiante_reg_dep_tens)
+p30C$prop <- pondp30C[1:2,4]
 p30C <- p30C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30C <- ggplot(p30C, aes(WeightFunction(data_p30C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30C <- ggplot(p30C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -4980,11 +5154,13 @@ data_p31A$P31A <- factor(data_p31A$P31A, levels = c(1,2,3,4), labels = c("
 p31A <- data_p31A %>%
   group_by("Alternativas"=P31A) %>%
   summarise(counts = n())
+pondp31A <- freq(data_p31A$P31A, weights = data_p31A$pond_estudiante_reg_dep_tens)
+p31A$prop <- pondp31A[1:4,4]
 p31A <- p31A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p31A <- ggplot(p31A, aes(WeightFunction(data_p31A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p31A <- ggplot(p31A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5024,11 +5200,13 @@ data_p31B$P31B <- factor(data_p31B$P31B, levels = c(1,2,3,4), labels = c("
 p31B <- data_p31B %>%
   group_by("Alternativas"=P31B) %>%
   summarise(counts = n())
+pondp31B <- freq(data_p31B$P31B, weights = data_p31B$pond_estudiante_reg_dep_tens)
+p31B$prop <- pondp31B[1:4,4]
 p31B <- p31B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p31B <- ggplot(p31B, aes(WeightFunction(data_p31B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p31B <- ggplot(p31B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5069,11 +5247,13 @@ data_p31C$P31C <- factor(data_p31C$P31C, levels = c(1,2,3,4), labels = c("
 p31C <- data_p31C %>%
   group_by("Alternativas"=P31C) %>%
   summarise(counts = n())
+pondp31C <- freq(data_p31C$P31C, weights = data_p31C$pond_estudiante_reg_dep_tens)
+p31C$prop <- pondp31C[1:4,4]
 p31C <- p31C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p31C <- ggplot(p31C, aes(WeightFunction(data_p31C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p31C <- ggplot(p31C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5114,11 +5294,13 @@ data_p30D$P30D <- factor(data_p30D$P30D, levels = c(1,2), labels = c("
 p30D <- data_p30D %>%
   group_by("Alternativas"=P30D) %>%
   summarise(counts = n())
+pondp30D <- freq(data_p30D$P30D, weights = data_p30D$pond_estudiante_reg_dep_tens)
+p30D$prop <- pondp30D[1:2,4]
 p30D <- p30D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30D <- ggplot(p30D, aes(WeightFunction(data_p30D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30D <- ggplot(p30D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5149,11 +5331,13 @@ data_p30E$P30E <- factor(data_p30E$P30E, levels = c(1,2), labels = c("
 p30E <- data_p30E %>%
   group_by("Alternativas"=P30E) %>%
   summarise(counts = n())
+pondp30E <- freq(data_p30E$P30E, weights = data_p30E$pond_estudiante_reg_dep_tens)
+p30E$prop <- pondp30E[1:2,4]
 p30E <- p30E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30E <- ggplot(p30E, aes(WeightFunction(data_p30E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30E <- ggplot(p30E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5188,11 +5372,13 @@ data_p30F$P30F <- factor(data_p30F$P30F, levels = c(1,2), labels = c("
 p30F <- data_p30F %>%
   group_by("Alternativas"=P30F) %>%
   summarise(counts = n())
+pondp30F <- freq(data_p30F$P30F, weights = data_p30F$pond_estudiante_reg_dep_tens)
+p30F$prop <- pondp30F[1:2,4]
 p30F <- p30F %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30F <- ggplot(p30F, aes(WeightFunction(data_p30F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30F <- ggplot(p30F, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5228,11 +5414,13 @@ data_p33A$P33A <- factor(data_p33A$P33A, levels = c(1,2), labels = c("
 p33A <- data_p33A %>%
   group_by("Alternativas"=P33A) %>%
   summarise(counts = n())
+pondp33A <- freq(data_p33A$P33A, weights = data_p33A$pond_estudiante_reg_dep_tens)
+p33A$prop <- pondp33A[1:2,4]
 p33A <- p33A %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p33A <- ggplot(p33A, aes(WeightFunction(data_p33A$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p33A <- ggplot(p33A, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5265,11 +5453,13 @@ data_p33B$P33B <- factor(data_p33B$P33B, levels = c(1,2), labels = c("
 p33B <- data_p33B %>%
   group_by("Alternativas"=P33B) %>%
   summarise(counts = n())
+pondp33B <- freq(data_p33B$P33B, weights = data_p33B$pond_estudiante_reg_dep_tens)
+p33B$prop <- pondp33B[1:2,4]
 p33B <- p33B %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p33B <- ggplot(p33B, aes(WeightFunction(data_p33B$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p33B <- ggplot(p33B, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5300,11 +5490,13 @@ data_p33C$P33C <- factor(data_p33C$P33C, levels = c(1,2), labels = c("
 p33C <- data_p33C %>%
   group_by("Alternativas"=P33C) %>%
   summarise(counts = n())
+pondp33C <- freq(data_p33C$P33C, weights = data_p33C$pond_estudiante_reg_dep_tens)
+p33C$prop <- pondp33C[1:2,4]
 p33C <- p33C %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p33C <- ggplot(p33C, aes(WeightFunction(data_p33C$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p33C <- ggplot(p33C, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5339,11 +5531,13 @@ data_p33D$P33D <- factor(data_p33D$P33D, levels = c(1,2), labels = c("
 p33D <- data_p33D %>%
   group_by("Alternativas"=P33D) %>%
   summarise(counts = n())
+pondp33D <- freq(data_p33D$P33D, weights = data_p33D$pond_estudiante_reg_dep_tens)
+p33D$prop <- pondp33D[1:2,4]
 p33D <- p33D %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p33D <- ggplot(p33D, aes(WeightFunction(data_p33D$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p33D <- ggplot(p33D, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5384,11 +5578,13 @@ data_p30G$P30G <- factor(data_p30G$P30G, levels = c(1,2), labels = c("
 p30G <- data_p30G %>%
   group_by("Alternativas"=P30G) %>%
   summarise(counts = n())
+pondp30G <- freq(data_p30G$P30G, weights = data_p30G$pond_estudiante_reg_dep_tens)
+p30G$prop <- pondp30G[1:2,4]
 p30G <- p30G %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30G <- ggplot(p30G, aes(WeightFunction(data_p30G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30G <- ggplot(p30G, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5419,11 +5615,13 @@ data_p30H$P30H <- factor(data_p30H$P30H, levels = c(1,2), labels = c("
 p30H <- data_p30H %>%
   group_by("Alternativas"=P30H) %>%
   summarise(counts = n())
+pondp30H <- freq(data_p30H$P30H, weights = data_p30H$pond_estudiante_reg_dep_tens)
+p30H$prop <- pondp30H[1:2,4]
 p30H <- p30H %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30H <- ggplot(p30H, aes(WeightFunction(data_p30H$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30H <- ggplot(p30H, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5457,11 +5655,13 @@ data_p30I$P30I <- factor(data_p30I$P30I, levels = c(1,2), labels = c("
 p30I <- data_p30I %>%
   group_by("Alternativas"=P30I) %>%
   summarise(counts = n())
+pondp30I <- freq(data_p30I$P30I, weights = data_p30I$pond_estudiante_reg_dep_tens)
+p30I$prop <- pondp30I[1:2,4]
 p30I <- p30I %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p30I <- ggplot(p30I, aes(WeightFunction(data_p30I$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p30I <- ggplot(p30I, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5497,11 +5697,13 @@ data_p33E$P33E <- factor(data_p33E$P33E, levels = c(1,2), labels = c("
 p33E <- data_p33E %>%
   group_by("Alternativas"=P33E) %>%
   summarise(counts = n())
+pondp33E <- freq(data_p33E$P33E, weights = data_p33E$pond_estudiante_reg_dep_tens)
+p33E$prop <- pondp33E[1:2,4]
 p33E <- p33E %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p33E <- ggplot(p33E, aes(WeightFunction(data_p33E$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p33E <- ggplot(p33E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5532,11 +5734,13 @@ data_p33F$P33F <- factor(data_p33F$P33F, levels = c(1,2), labels = c("
 p33F <- data_p33F %>%
   group_by("Alternativas"=P33F) %>%
   summarise(counts = n())
+pondp33F <- freq(data_p33F$P33F, weights = data_p33F$pond_estudiante_reg_dep_tens)
+p33F$prop <- pondp33F[1:2,4]
 p33F <- p33F %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p33F <- ggplot(p33F, aes(WeightFunction(data_p33F$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p33F <- ggplot(p33F, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
@@ -5571,11 +5775,13 @@ data_p33G$P33G <- factor(data_p33G$P33G, levels = c(1,2), labels = c("
 p33G <- data_p33G %>%
   group_by("Alternativas"=P33G) %>%
   summarise(counts = n())
+pondp33G <- freq(data_p33G$P33G, weights = data_p33G$pond_estudiante_reg_dep_tens)
+p33G$prop <- pondp33G[1:2,4]
 p33G <- p33G %>%
   arrange(desc(Alternativas)) %>%
-  mutate(prop = round(counts*100/sum(counts), 2),
+  mutate(
          lab.ypos = cumsum(prop) - 0.5*prop)
-plot_p33G <- ggplot(p33G, aes(WeightFunction(data_p33G$pond_estudiante_reg_dep_tens), x = 2, y = prop, fill = Alternativas)) +
+plot_p33G <- ggplot(p33G, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
