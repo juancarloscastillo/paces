@@ -133,7 +133,7 @@ data_p2$P2 <- factor(data_p2$P2, levels = c(1,2,3,4), labels = c("
 p2 <- data_p2 %>%
   group_by("Alternativas"=P2) %>%
   summarise(counts = n())
-pondp2 <- freq(data_p2$P2, weights = data_p2$pond_estudiante_reg_dep_tens)
+  pondp2 <- freq(data_p2$P2, weights = data_p2$pond_estudiante_reg_dep_tens)
 p2$prop <- pondp2[1:4,4]
 p2 <- p2 %>%
   arrange(desc(Alternativas)) %>%
@@ -839,6 +839,8 @@ pregunta_2019$resp <-  c("
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
 str(table_pertot)
 
+table_pertot[5:8,2]<-pondp1[1:4,4]
+
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 
 plot2_p1 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
@@ -927,6 +929,8 @@ pregunta_2019$resp <- c("
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
 str(table_pertot)
 
+table_pertot[5:8,2]<-pondp2[1:4,4]
+
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 
 plot2_p2 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens), x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
@@ -1011,6 +1015,8 @@ pregunta_2019$resp <-  c("
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
 str(table_pertot)
 
+table_pertot[5:8,2]<-pondp3[1:4,4]
+
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 
 plot2_p3 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
@@ -1088,6 +1094,7 @@ pregunta_2019$resp <- c("
   justicia</strong></b>
   <br>")
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
+table_pertot[5:8,2]<-pondp4[1:4,4]
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 plot2_p4 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
@@ -1164,6 +1171,7 @@ pregunta_2019$resp <-  c("
   <br>")
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
 str(table_pertot)
+table_pertot[5:8,2]<-pondp5[1:4,4]
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 plot2_p5 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
@@ -1212,6 +1220,8 @@ pregunta_2019$resp <-  c("Es dañino para las familias <br>
                         mundo son hombres (alternativa correcta) </span></strong></b>")
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
 str(table_pertot)
+
+table_pertot[5:8,2]<-pondp6[1:4,4]
 
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 
@@ -2022,7 +2032,7 @@ plot_prof_p27E <- ggplot(p27E, aes(x = 2, y = prop, fill = Alternativas)) +
   geom_bar(stat = "identity", color = "white") +
   coord_polar(theta = "y", start = 1.5)+
   geom_text(aes(label = format(paste(round(prop,1),"%"), big.mark = ",", scientific = FALSE), y = lab.ypos), color = "black", size=6) +
-  scale_fill_brewer(palette = "Purples") +
+  scale_fill_manual(values = c("#CBC9E2","#9E9AC8", "#6A51A3","#6A51A3")) +
   theme_void()+
   xlim(0.5, 2.5) +
   theme(legend.title = element_text(size=16, face="bold")) +
