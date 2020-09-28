@@ -1070,6 +1070,7 @@ pregunta_2009$resp <- c("
   Supervisar a las cortes de <br> 
   justicia</strong></b>
   <br>")
+
 pregunta_2019$est <-  2 #
 pregunta_2019$resp <- c("
   <br>
@@ -1094,7 +1095,15 @@ pregunta_2019$resp <- c("
   justicia</strong></b>
   <br>")
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
+
+data_p4$P4 <- factor(data_p4$P4, levels = c(1,2,3,4), labels = c("Hacer que las leyes se cumplan, tomando presos a los criminales vecinos", "Discutir y votar las leyes (alternativa correcta)","Evitar cambios en el sistema legislativo", "Supervisar a las cortes de justicia"))
+p4 <- data_p4 %>%
+  group_by("Alternativas"=P4) %>%
+  summarise(counts = n())
+pondp4 <- freq(data_p4$P4, weights = data_p4$pond_estudiante_reg_dep_tens)
+p4$prop <- pondp4[1:4,4]
 table_pertot[5:8,2]<-pondp4[1:4,4]
+
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 plot2_p4 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
      geom_bar(position = 'dodge', stat='identity') +
@@ -1171,6 +1180,12 @@ pregunta_2019$resp <-  c("
   <br>")
 table_pertot <-rbind(pregunta_2009,pregunta_2019)
 str(table_pertot)
+data_p5$P5 <- factor(data_p5$P5, levels = c(1,2,3,4), labels = c("Hacer declaraciones apoyando a otros líderes de su partido vecino", "Realiza una marcha por la democracia en la ciudad más grande","Fija una fecha de elecciones con varios candidatos de distintos partidos (alternativa correcta)","Hace declaraciones en la prensa sobre la necesidad de la democracia"))
+p5 <- data_p5 %>%
+  group_by("Alternativas"=P5) %>%
+  summarise(counts = n())
+pondp5 <- freq(data_p5$P5, weights = data_p5$pond_estudiante_reg_dep_tens)
+p5$prop <- pondp5[1:4,4]
 table_pertot[5:8,2]<-pondp5[1:4,4]
 table_pertot$estudio <- factor(table_pertot$est, levels=c(2,1), labels=c("Estudio ciudadanía 2019","ICCS 2009"))
 plot2_p5 <- ggplot(data=table_pertot, aes(weights(data$pond_estudiante_reg_dep_tens),x=reorder(as.factor(resp),-mean), y=mean, fill=estudio)) +
@@ -1251,8 +1266,17 @@ ggsave(plot2_p6, file = "../output/graphs/graph_p6.png",device = "png",width = 3
 table_preposh1<- rbind(psych::describe(data_antofa$Conocimiento_civico_factual),
                psych::describe(data_maule$Conocimiento_civico_factual),psych::describe(data_metro$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_antofa$Conocimiento_civico_factual,data_antofa$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_maule$Conocimiento_civico_factual,data_maule$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond3 <- weighted.mean(data_metro$Conocimiento_civico_factual,data_metro$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+table_preposh1[3,2]<-pond3
+
 table_preposh1$reg <- c("Antofagasta","Maule","Metropolitana")
-Conocimiento_civico_factual_region <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=reg, y=mean, fill=reg)) +
+Conocimiento_civico_factual_region <-  ggplot(data=table_preposh1, aes(x=reg, y=mean, fill=reg)) +
      geom_bar(position = 'dodge', stat='identity') +
      scale_fill_brewer(palette="Purples") +
      geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
@@ -1277,8 +1301,17 @@ ggsave(Conocimiento_civico_factual_region, file = "../output/graphs/Conocimiento
 table_preposh1<- rbind(psych::describe(data_mun$Conocimiento_civico_factual),
                psych::describe(data_sub$Conocimiento_civico_factual),psych::describe(data_priv$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_mun$Conocimiento_civico_factual,data_mun$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_sub$Conocimiento_civico_factual,data_sub$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond3 <- weighted.mean(data_priv$Conocimiento_civico_factual,data_priv$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+table_preposh1[3,2]<-pond3
+
 table_preposh1$dep <- c("Municipal","Particular Subvencionado","Particular Privado")
-Conocimiento_civico_factual_colegio <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=dep, y=mean, fill=dep)) +
+Conocimiento_civico_factual_colegio <-  ggplot(data=table_preposh1, aes(x=dep, y=mean, fill=dep)) +
      geom_bar(position = 'dodge', stat='identity')+#,width=0.8) 
      scale_fill_brewer(palette="Purples") +
      geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
@@ -1304,8 +1337,15 @@ ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimient
 table_preposh1<- rbind(psych::describe(data_muj$Conocimiento_civico_factual),
                psych::describe(data_hom$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_muj$Conocimiento_civico_factual,data_muj$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_hom$Conocimiento_civico_factual,data_hom$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+
 table_preposh1$sexo <- c("Mujeres","Hombres")
-Conocimiento_civico_factual_sexo <-  ggplot(data=table_preposh1, aes(weights(data$pond_estudiante_reg_dep_tens), x=sexo, y=mean, fill=sexo)) +
+Conocimiento_civico_factual_sexo <-  ggplot(data=table_preposh1, aes(x=sexo, y=mean, fill=sexo)) +
      geom_bar(position = 'dodge', stat='identity')+ 
      scale_fill_brewer(palette="Purples") +
      geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
@@ -1330,6 +1370,19 @@ ggsave(Conocimiento_civico_factual_sexo, file = "../output/graphs/Conocimiento_c
 table_preposh1<- rbind(psych::describe(data_binc$Conocimiento_civico_factual),
                psych::describe(data_bas$Conocimiento_civico_factual),psych::describe(data_media$Conocimiento_civico_factual),psych::describe(data_tec$Conocimiento_civico_factual),psych::describe(data_univ$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_binc$Conocimiento_civico_factual,data_binc$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_bas$Conocimiento_civico_factual,data_bas$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond3 <- weighted.mean(data_media$Conocimiento_civico_factual,data_media$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond4 <- weighted.mean(data_tec$Conocimiento_civico_factual,data_tec$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond5 <- weighted.mean(data_univ$Conocimiento_civico_factual,data_univ$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+table_preposh1[3,2]<-pond3
+table_preposh1[4,2]<-pond4
+table_preposh1[5,2]<-pond5
+
 table_preposh1$edpad <- c("No terminó la educación
 básica", "Completó la educación 
 básica", "Completó la enseñanza 
