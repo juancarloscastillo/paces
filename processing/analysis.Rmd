@@ -1260,9 +1260,47 @@ hecho. ¿Cuál de las siguientes es un HECHO?")  +
 plot2_p6
 ggsave(plot2_p6, file = "../output/graphs/graph_p6.png",device = "png",width = 30,height = 20,dpi = "retina",units = "cm")
 ```
-### Cruces: conocimiento cívico factual
+### Cruces
 #### Región
 ```{r}
+# Conocimiento cívico conceptual #
+
+table_preposh1<- rbind(psych::describe(data_antofa$Conocimiento_civico_conceptual),
+               psych::describe(data_maule$Conocimiento_civico_conceptual),psych::describe(data_metro$Conocimiento_civico_conceptual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_antofa$Conocimiento_civico_conceptual,data_antofa$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_maule$Conocimiento_civico_conceptual,data_maule$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond3 <- weighted.mean(data_metro$Conocimiento_civico_conceptual,data_metro$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+table_preposh1[3,2]<-pond3
+
+table_preposh1$reg <- c("Antofagasta","Maule","Metropolitana")
+Conocimiento_civico_conceptual_region <-  ggplot(data=table_preposh1, aes(x=reg, y=mean, fill=reg)) +
+     geom_bar(position = 'dodge', stat='identity') +
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento 
+conceptual (escala de 0 a 8)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento cívico conceptual por región")
+Conocimiento_civico_conceptual_region
+ggsave(Conocimiento_civico_conceptual_region, file = "../output/graphs/Conocimiento_civico_conceptual_region.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
+
+
+# Conocimiento cívico factual #
+
 table_preposh1<- rbind(psych::describe(data_antofa$Conocimiento_civico_factual),
                psych::describe(data_maule$Conocimiento_civico_factual),psych::describe(data_metro$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
@@ -1296,8 +1334,47 @@ factual (escala de 0 a 6)') + xlab(' ') +
 Conocimiento_civico_factual_region
 ggsave(Conocimiento_civico_factual_region, file = "../output/graphs/Conocimiento_civico_factual_region.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
 ```
-#### Colegio
+#### Dependencia administrativa del colegio
 ```{r}
+# Conocimiento cívico conceptual #
+
+table_preposh1<- rbind(psych::describe(data_mun$Conocimiento_civico_conceptual),
+               psych::describe(data_sub$Conocimiento_civico_conceptual),psych::describe(data_priv$Conocimiento_civico_conceptual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_mun$Conocimiento_civico_conceptual,data_mun$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_sub$Conocimiento_civico_conceptual,data_sub$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond3 <- weighted.mean(data_priv$Conocimiento_civico_conceptual,data_priv$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+table_preposh1[3,2]<-pond3
+
+table_preposh1$dep <- c("Municipal","Particular Subvencionado","Particular Privado")
+Conocimiento_civico_conceptual_colegio <-  ggplot(data=table_preposh1, aes(x=dep, y=mean, fill=dep)) +
+     geom_bar(position = 'dodge', stat='identity')+#,width=0.8) 
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento 
+conceptual (escala de 0 a 8)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento cívico conceptual por tipo de dependencia 
+administrativa de la escuela")
+Conocimiento_civico_conceptual_colegio
+ggsave(Conocimiento_civico_conceptual_colegio, file = "../output/graphs/Conocimiento_civico_conceptual_colegio.png",device = "png",width = 23,height = 13,dpi = "retina",units = "cm")
+
+
+# Conocimiento cívico factual #
+
 table_preposh1<- rbind(psych::describe(data_mun$Conocimiento_civico_factual),
                psych::describe(data_sub$Conocimiento_civico_factual),psych::describe(data_priv$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
@@ -1327,13 +1404,49 @@ factual (escala de 0 a 6)') + xlab(' ') +
           text = element_text(size = 14, face = "bold"),
           plot.title = element_text(hjust=0.5),
           legend.position = "none") + 
-     ggtitle("Conocimiento cívico factual por tipo dependencia 
+     ggtitle("Conocimiento cívico factual por tipo de dependencia 
 administrativa de la escuela")
 Conocimiento_civico_factual_colegio
-ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimiento_civico_factual_colegio.png",device = "png",width = 21,height = 13,dpi = "retina",units = "cm")
+ggsave(Conocimiento_civico_factual_colegio, file = "../output/graphs/Conocimiento_civico_factual_colegio.png",device = "png",width = 23,height = 13,dpi = "retina",units = "cm")
 ```
 #### Sexo
 ```{r}
+# Conocimiento cívico conceptual #
+
+table_preposh1<- rbind(psych::describe(data_muj$Conocimiento_civico_conceptual),
+               psych::describe(data_hom$Conocimiento_civico_conceptual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_muj$Conocimiento_civico_conceptual,data_muj$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_hom$Conocimiento_civico_conceptual,data_hom$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+
+table_preposh1$sexo <- c("Mujeres","Hombres")
+Conocimiento_civico_conceptual_sexo <-  ggplot(data=table_preposh1, aes(x=sexo, y=mean, fill=sexo)) +
+     geom_bar(position = 'dodge', stat='identity')+ 
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento 
+conceptual (escala de 0 a 8)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento cívico conceptual por género")
+Conocimiento_civico_conceptual_sexo
+ggsave(Conocimiento_civico_conceptual_sexo, file = "../output/graphs/Conocimiento_civico_conceptual_sexo.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
+
+
+# Conocimiento cívico factual #
+
 table_preposh1<- rbind(psych::describe(data_muj$Conocimiento_civico_factual),
                psych::describe(data_hom$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
@@ -1367,6 +1480,61 @@ ggsave(Conocimiento_civico_factual_sexo, file = "../output/graphs/Conocimiento_c
 ```
 #### Nivel educativo de los padres (más alto)
 ```{r}
+# Conocimiento cívico conceptual #
+
+table_preposh1<- rbind(psych::describe(data_binc$Conocimiento_civico_conceptual),
+               psych::describe(data_bas$Conocimiento_civico_conceptual),psych::describe(data_media$Conocimiento_civico_conceptual),psych::describe(data_tec$Conocimiento_civico_conceptual),psych::describe(data_univ$Conocimiento_civico_conceptual))
+table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
+
+pond1 <- weighted.mean(data_binc$Conocimiento_civico_conceptual,data_binc$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond2 <- weighted.mean(data_bas$Conocimiento_civico_conceptual,data_bas$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond3 <- weighted.mean(data_media$Conocimiento_civico_conceptual,data_media$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond4 <- weighted.mean(data_tec$Conocimiento_civico_conceptual,data_tec$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+pond5 <- weighted.mean(data_univ$Conocimiento_civico_conceptual,data_univ$pond_estudiante_reg_dep_tens,na.rm=TRUE)
+
+table_preposh1[1,2]<-pond1
+table_preposh1[2,2]<-pond2
+table_preposh1[3,2]<-pond3
+table_preposh1[4,2]<-pond4
+table_preposh1[5,2]<-pond5
+
+table_preposh1$edpad <- c("No terminó la educación
+básica", "Completó la educación 
+básica", "Completó la enseñanza 
+media", "Completó estudios en
+un IP o CFT", "Completó una carrera 
+en la Universidad")
+
+Conocimiento_civico_conceptual_edpadres <- table_preposh1 %>%
+  mutate(edpad = fct_relevel(edpad, "No terminó la educación
+básica", "Completó la educación 
+básica", "Completó la enseñanza 
+media", "Completó estudios en
+un IP o CFT", "Completó una carrera 
+en la Universidad")) %>% ggplot(aes(weights(data$pond_estudiante_reg_dep_tens), x=edpad, y=mean, fill=edpad)) +
+     geom_bar(position = 'dodge', stat='identity')+
+     scale_fill_brewer(palette="Purples") +
+     geom_text(aes(label=format(round(mean,1)), x=edpad, y=0), position=position_dodge(0.9), hjust=-0.25, size=6) +
+     theme_bw(base_size = 14) +
+     scale_y_continuous(labels = scales::comma) +
+     ylab('Puntaje promedio en la prueba de conocimiento 
+conceptual (escala de 0 a 8)') + xlab(' ') + 
+     theme(legend.position="top") +
+     labs(fill = " ") +
+    coord_flip()+
+    theme(axis.text.x = element_text(colour = "grey20", size = 14, angle = 90, hjust = 0.5, vjust = 0.5, face = "bold"),
+          axis.text.y = element_text(colour = "grey20", size = 14), 
+          text = element_text(size = 14, face = "bold"),
+          plot.title = element_text(hjust=0.5),
+          legend.position = "none") + 
+     ggtitle("Conocimiento cívico conceptual por nivel educativo
+de los padres (el más alto entre los dos)")   
+Conocimiento_civico_conceptual_edpadres
+ggsave(Conocimiento_civico_conceptual_edpadres, file = "../output/graphs/Conocimiento_civico_conceptual_edpadres.png",device = "png",width = 22,height = 13,dpi = "retina",units = "cm")
+
+
+# Conocimiento cívico factual #
+
 table_preposh1<- rbind(psych::describe(data_binc$Conocimiento_civico_factual),
                psych::describe(data_bas$Conocimiento_civico_factual),psych::describe(data_media$Conocimiento_civico_factual),psych::describe(data_tec$Conocimiento_civico_factual),psych::describe(data_univ$Conocimiento_civico_factual))
 table_preposh1 <- table_preposh1 %>% select(n,mean,sd,median,trimmed,min,max)
@@ -1415,7 +1583,7 @@ factual (escala de 0 a 6)') + xlab(' ') +
      ggtitle("Conocimiento cívico factual por nivel educativo
 de los padres (el más alto entre los dos)")   
 Conocimiento_civico_factual_edpadres
-ggsave(Conocimiento_civico_factual_edpadres, file = "../output/graphs/Conocimiento_civico_factual_edpadres.png",device = "png",width = 20,height = 13,dpi = "retina",units = "cm")
+ggsave(Conocimiento_civico_factual_edpadres, file = "../output/graphs/Conocimiento_civico_factual_edpadres.png",device = "png",width = 22,height = 13,dpi = "retina",units = "cm")
 ```
 ## Clima democrático en el aula
 ### ¿Qué tan importante crees tú que deberían ser cada uno de los siguientes aspectos en la Formación Ciudadana?
